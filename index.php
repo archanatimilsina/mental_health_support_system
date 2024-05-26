@@ -59,6 +59,10 @@
         height: 30px;
          margin-top: -20px;
     } 
+    body{
+        display: flex;
+        flex-direction: column
+    }
     .welcome
     {
         width: 94%;
@@ -76,9 +80,9 @@
         width: 96%;
         margin: auto;
         margin-top: 20px;
-        height: 700px;  
-        border: 1px solid black; 
-        
+      max-height: 1000px;
+        /* border: 1px solid black;  */
+    
     }
     .servicesbox{
       width: 30%;
@@ -95,6 +99,7 @@ padding-left: 30px;
         max-height: 400px;
         border: 1px solid black;
     padding: 20px;
+margin: 20px 40px;
     }
     .servicesbox h4{
         font-size: 25px;
@@ -125,6 +130,66 @@ padding-left: 30px;
         height: 150px;
         margin: auto;
     }
+    .whyus
+{
+    width: 100%;
+    border: 1px solid black;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.whyusbox
+{
+    margin-top: 70px;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    position: absolute;
+    width: 100%;
+    height: 500px;
+}
+.wcontent
+{
+    width: 40%;
+    height: 100%;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wimage
+{
+    width: 60%;
+    height: 100%;
+    border: 1px solid black;
+border-collapse: collapse;
+position: relative; 
+display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wimage img{
+    position: absolute;
+    width: 90%;
+    height: 90%;
+    margin: auto;
+   
+}
+.whyus h4{
+    font-size: 25px;
+        font-weight: 300px;
+    padding: 10px;
+        margin: 20px 0px;
+
+}
+footer{
+    width: 100%;
+    height: 400px;
+    border: 1px solid black;
+    margin-top: 20px;
+    background-color: black;
+}
     </style>
 </head>
 <body>
@@ -167,7 +232,7 @@ padding-left: 30px;
 <h4>Yoga</h4>
 <p>
     Lorem ipsum dolor, sit amet consectetur adipi
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque qui ea est libero ipsum.sicing Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, dolores eos. Temporibus repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
+    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
 </p>
 <a href="yoga.php"><button>Yoga</button></a>
     </div>
@@ -178,17 +243,7 @@ padding-left: 30px;
 <h4>Yoga</h4>
 <p>
     Lorem ipsum dolor, sit amet consectetur adipi
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque qui ea est libero ipsum.sicing Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, dolores eos. Temporibus repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
-</p>
-<a href="yoga.php"><button>Yoga</button></a>
-    </div>
-   
-    <div class="servicesbox">
-        <div class="serviceimg">
-        <img src="assets/images/hello.jpg" alt="" width="100%" height="100%"></div>
-<h4>Yoga</h4>
-<p>
-   or sit amet consectetur adipisicing elit. Cum, dolores eos. Temporibus repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
+    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
 </p>
 <a href="yoga.php"><button>Yoga</button></a>
     </div>
@@ -199,7 +254,7 @@ padding-left: 30px;
 <h4>Yoga</h4>
 <p>
     Lorem ipsum dolor, sit amet consectetur adipi
-    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cum quas suscipit, nesciunt, dolorem iure laboriosam esse cumque odio perferendis laudantium numquam excepturi? Ullam! Itaque qui ea est libero ipsum.sicing Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum, dolores eos. Temporibus repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
+    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
 </p>
 <a href="yoga.php"><button>Yoga</button></a>
     </div>
@@ -209,13 +264,48 @@ padding-left: 30px;
         <img src="assets/images/hello.jpg" alt="" width="100%" height="100%"></div>
 <h4>Yoga</h4>
 <p>
-adipisicing elit. Cum, dolores eos. Temporibus repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
+    Lorem ipsum dolor, sit amet consectetur adipi
+    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
 </p>
 <a href="yoga.php"><button>Yoga</button></a>
     </div>
    
+    <div class="servicesbox">
+        <div class="serviceimg">
+        <img src="assets/images/hello.jpg" alt="" width="100%" height="100%"></div>
+<h4>Yoga</h4>
+<p>
+    Lorem ipsum dolor, sit amet consectetur adipi
+    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
+</p>
+<a href="yoga.php"><button>Yoga</button></a>
+    </div>
+    <div class="servicesbox">
+        <div class="serviceimg">
+        <img src="assets/images/hello.jpg" alt="" width="100%" height="100%"></div>
+<h4>Yoga</h4>
+<p>
+    Lorem ipsum dolor, sit amet consectetur adipi
+    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
+</p>
+<a href="yoga.php"><button>Yoga</button></a>
+    </div>
+ </section>
 
-
+ 
+ <section class="whyus">
+    <h4>Why us?</h4>
+    <div class="whyusbox">
+        <div class="wcontent"></div>
+        <div class="wimage">
+            <img src="assets/images/hello.jpg" alt="" width="100%" height="100%">
+        </div>
+    </div>
+ </section>
+ <section class="footer">
+    <footer>
+        
+    </footer>
  </section>
 </body>
 </html>
