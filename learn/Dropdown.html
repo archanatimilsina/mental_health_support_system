@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown practice</title>
+    <style>
+        .paste-button{
+          position: relative;
+          width: 200px;
+          margin: auto;
+          border: 1px solid black;
+          display: inline-block;
+
+        }
+        .dropdown-content
+        {
+            display: none;
+            position: absolute;
+            left: 20px;
+            border: 1px solid red;
+        }
+        .paste-button:hover .dropdown-content
+        {
+display: block;
+        }
+        .dropdown-content a{
+            display: block;
+            text-decoration: none;
+            color: black;
+        }
+        /* .paste-button button{
+            position: absolute;
+           
+        } */
+    </style>
+</head>
+<body>
+    <div class="paste-button">
+        <button class="button">Paste</button>
+        <div class="dropdown-content">
+            <a href="index.php">Helllo</a>
+            <a href="index.php">Helllo1</a>
+            <a href="index.php">Helllo2</a>
+        </div>
+    </div>
+</body>
+</html>
+<!-- Here inner div will move as according to the outer div so
+outer div has position relative while inner div contain position absolute
+
+-->

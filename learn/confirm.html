@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Box</title>
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+        .content
+        { 
+            width: 250px;
+            height: 150px;
+            border: 1px solid black;
+            margin: auto;
+    margin-top: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+        }
+        .content a button{
+          width: 60px;
+          height: 40px;
+        }
+        .confirm-box h3{
+          font-size: 20px;
+          text-align: center;
+          margin-bottom: 20px;
+          
+        }
+        .content a{
+            margin: 20px;
+        }
+         .yes
+        {
+            background-color: green;
+        }
+        .no{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirm-box">
+        <div class="content">
+        <h3>Do You confirm?</h3>
+        <div class="button">
+            <a href="" class="yes"><button>Yes</button></a>
+        <a href="" class="no"><button>no</button></a>
+        </div>
+        </div>
+    </div>
+</body>
+</html>
