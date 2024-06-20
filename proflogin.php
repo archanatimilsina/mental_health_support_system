@@ -7,26 +7,14 @@
     <title>Login Page</title>
 </head>
 <body>
-    
-<div class="login-popup">
-        <div class="login-form">
-<form action="#" method="POST">
- <label for="email">Email/username</label>
-   <input type="text" required name="email_username">
-   <label for="password">Password</label>
-   <input type="password" required name="password">
-   <input type="submit" required name="submit">
-</form>
-        </div>
-    </div>
-
+  
     <?php 
     if(isset($_POST['submit']))
     {
         $username=$_POST['username'];
         $email_username=$_POST['email_username'];
         $password=$_POST['password'];
-      $select_query="SELECT * from users where email='$email_username' OR username='$email_username'";
+      $select_query="SELECT * from papplication where email='$email_username' OR username='$email_username'";
       $select_result=mysqli_query($con,$select_query);
       $count=mysqli_num_rows($select_result);
         
@@ -35,9 +23,9 @@
 $data=mysqli_fetch_array($select_result);
 if(password_verify($password,$data['password']))
 {
-    $_SESSION['userpanel']['logged_in']=true;
-    $_SESSION['userpanel']['username']='$username';
-    $_SESSION['userpanel']['email']='$email';
+    $_SESSION['professional']['logged_in']=true;
+    $_SESSION['professional']['username']='$username';
+    $_SESSION['professional']['email']='$email';
     ?>
     <script>
 window.location.href='index.php'; 

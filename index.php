@@ -1,9 +1,14 @@
+<?php require('connection.php');
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c5a4938a4c.js" crossorigin="anonymous"></script>
     <style>
     *
     {
@@ -216,6 +221,51 @@ background-color: #f0f0f0;
     left: 400px;
     top: 90px;
         }
+        #proflogin-popup
+        {
+            width: 300px;
+    height: 300px;
+border: 1px solid rgb(58, 46, 163);
+display: none;
+flex-direction: column;
+z-index: 1;
+background-color: #f0f0f0;
+     border-radius: 5px;
+    padding: 20px 25px 25px 25px;
+    position: fixed;
+    left: 400px;
+    top: 90px;
+        }
+        #offlogin-popup
+        {
+            width: 300px;
+    height: 300px;
+border: 1px solid rgb(58, 46, 163);
+display: none;
+flex-direction: column;
+z-index: 1;
+background-color: #f0f0f0;
+     border-radius: 5px;
+    padding: 20px 25px 25px 25px;
+    position: fixed;
+    left: 400px;
+    top: 90px;
+        }
+        #adminlogin-popup
+        {
+            width: 300px;
+    height: 300px;
+border: 1px solid rgb(58, 46, 163);
+display: none;
+flex-direction: column;
+z-index: 1;
+background-color: #f0f0f0;
+     border-radius: 5px;
+    padding: 20px 25px 25px 25px;
+    position: fixed;
+    left: 400px;
+    top: 90px;
+        }
         #register-popup
         {
             width: 300px;
@@ -225,6 +275,24 @@ display: none;
 margin:auto;
 flex-direction: column;
 
+z-index: 1;
+background-color: #f0f0f0;
+     border-radius: 5px;
+    padding: 5px 10px 10px 5px;
+    position: fixed;
+    left: 400px;
+    top: 90px;
+    outline: none;
+        }
+
+        #profregister-popup
+        {
+            width: 300px;
+    height: 350px;
+border: 1px solid rgb(199, 26, 26);
+display: none;
+margin:auto;
+flex-direction: column;
 z-index: 1;
 background-color: #f0f0f0;
      border-radius: 5px;
@@ -322,8 +390,12 @@ margin:auto;
 flex-direction: column;
 margin-top: 100px;
 z-index: 1;
-display: flex;
+display: none;
 padding: 10px 10px 20px 10px;
+position: fixed;
+background-color: white;
+left: 450px;
+top: 100px;
 }
 .reset-heading{
     display: flex;
@@ -369,45 +441,62 @@ padding: 10px 10px 20px 10px;
     <li><a href="quiz.php">Quizzes</a></li>
     <li><a href="forum.php">Forum</a></li>
     <?php
-      if(isset($_SESSION['user_panel']['logged_in']) && $_SESSION['user_panel']['logged_in']==true)
+      if(isset($_SESSION['userpanel']['logged_in']) && $_SESSION['userpanel']['logged_in']==true)
     {
+        
         ?>
-        <div id="user-icon">
-        <i class="fa-solid fa-user"></i>
+      
+
+          <li>
+         <div class="paste-button">  
+    <div id="user-icon">
+         <i class="fa-solid fa-user"></i>
       </div>
-      <?php
+         <div class="dropdown-content">
+             <a href="logout.php">Logout</a>
+          
+        </div>
+    </div>
+     </li> 
+    
+    <?php
     }
     else
     {
-    ?>
-    <li>
-        
-    <div class="paste-button">
-        <button class="button login-button">Login</button>
-        <div class="dropdown-content">
-            <a onclick="popupbox('login-popup')">User</a>
-            <a href="index.php">Official User</a>
-            <a href="professionallogin.php">Professional</a>
-            <a href="admin.php">Admin</a>
-        </div>
-    </div>
-            <!-- <button class="login-button" onclick="popupbox('login-popup')">
-                Login
-            </button> -->
-    </li>
-    <li>
-    <div class="paste-button">
-        <button class="button register-button">Login</button>
-        <div class="dropdown-content">
-            <a onclick="popupbox('register-popup')">User</a>
-            <a onclick="subpopup()">Official User</a>
-            <a href="professionallogin.php">Professional</a>
-            <a href="admin.php">Admin</a>
-        </div>
-    </div>
-        
-    </li>
-    <?php
+        ?>
+      <!-- hello1 -->  
+      <div class="paste-button">
+          <button class="button login-button">Login</button>
+          <div class="dropdown-content">
+              <a onclick="popupbox('login-popup')">User</a>
+              <a onclick="offlogin()">Official User</a>
+              <a onclick="proflogin()">Professional</a>
+              <a onclick="adminlogin()">Admin</a>
+          </div>
+      </div> 
+  <!-- hello1 -->
+  
+  <!-- comment -->
+  <!-- <button class="login-button" onclick="popupbox('login-popup')">
+      Login
+      </button> -->
+  <!-- comment -->
+  
+  <!-- hello1 -->
+       </li>
+      <li>
+      <div class="paste-button">
+          <button class="button register-button">Register</button>
+          <div class="dropdown-content">
+              <a onclick="popupbox('register-popup')">User</a>
+              <a onclick="subpopup()">Official User</a>
+              <a onclick="profregpopup()">Professional</a>
+          </div>
+      </div>
+       
+      </li> 
+      <!-- hello1 -->
+       <?php
      }
     ?>
 </ul>
@@ -430,27 +519,79 @@ padding: 10px 10px 20px 10px;
     <!-- login popup -->
     <div id="login-popup">
     <div class="login popup">
-        <form action="login.php" method="POST">
+        <form action="userlogin.php" method="POST">
             <h2 class="reset-heading">
                 <span>User Login</span>
                 <button type="reset" onclick="popupbox('login-popup')">X</button>
             </h2>
             <input type="text" placeholder="E-mail or Username" name="email_username" required>
             <input type="password" placeholder="Password" name="password" required>
-            <button type="submit" class="login-btn" name="login">Login</button>
+            <button type="submit" class="login-btn" name="submit">Login</button>
         </form>
     
      <button onclick="popupbox('forgot-popup')">Forget password?</button>
     </div>
   </div>  
     <!-- login popup -->
+       <!-- official user login popup -->
+    <div id="offlogin-popup">
+    <div class="login popup">
+        <form action="offlogin.php" method="POST">
+            <h2 class="reset-heading">
+                <span>Official userLogin</span>
+                <button type="reset" onclick="offlogin()">X</button>
+            </h2>
+            <input type="text" placeholder="E-mail or Username" name="email_username" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <button type="submit" class="login-btn" name="submit">Login</button>
+        </form>
+    
+     <button onclick="popupbox('forgot-popup')">Forget password?</button>
+    </div>
+  </div>  
+    <!-- login popup -->
+       <!-- professional login popup -->
+    <div id="proflogin-popup">
+    <div class="login popup">
+        <form action="proflogin.php" method="POST">
+            <h2 class="reset-heading">
+                <span>Professional Login</span>
+                <button type="reset" onclick="proflogin()">X</button>
+            </h2>
+            <input type="text" placeholder="E-mail or Username" name="email_username" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <button type="submit" class="login-btn" name="submit">Login</button>
+        </form>
+    
+     <button onclick="popupbox('forgot-popup')">Forget password?</button>
+    </div>
+  </div>  
+    <!-- login popup -->
+     <!-- admin login popup -->
+     <div id="adminlogin-popup">
+         <div class="login popup">
+             <form action="login.php" method="POST">
+                 <h2 class="reset-heading">
+                     <span>Admin Login</span>
+                     <button type="reset" onclick="adminlogin()">X</button>
+                     </h2>
+                     <input type="text" placeholder="E-mail or Username" name="email_username" required>
+                     <input type="password" placeholder="Password" name="password" required>
+                     <button type="submit" class="login-btn" name="submit">Login</button>
+                     </form>
+                     
+                     <button onclick="popupbox('forgot-popup')">Forget password?</button>
+                     </div>
+                     </div>  
+                    <!-- admin login popup -->
+
      <!-- register popup -->
       
   <div id="register-popup">
     <div class="register popup">
-        <form action="register.php" method="POST" enctype="multipart/form-data">
+        <form action="userregister.php" method="POST" enctype="multipart/form-data">
                 <h2 class="reset-heading">
-                    <span>User REGISTER</span>
+                    <span>User Register</span>
                     <button type="reset" onclick="popupbox('register-popup')" >X</button>
                 </h2>
                  <label for="image">Upload profile:</label> 
@@ -460,11 +601,37 @@ padding: 10px 10px 20px 10px;
                 <input type="text" placeholder="User Name" id="username" name="username">
                 <input type="email" placeholder="E-mail"  id="email" name="email">
                 <input type="password" placeholder="Password"  id="password" name="password">
-                <button type="submit" class="register-btn" name="register">Register</button>
+                <button type="submit" class="register-btn" name="submit">Register</button>
             </form>
         </div>
   </div> 
      <!-- register popup -->
+       <!-- professional register popup -->
+      
+  <div id="profregister-popup">
+    <div class="register popup">
+        <form action="profregister.php" method="POST" enctype="multipart/form-data">
+                <h2 class="reset-heading">
+                    <span>Professional Register</span>
+                    <button type="reset" onclick="profregpopup()" >X</button>
+                </h2>
+                 <label for="image">Upload profile:</label> 
+                <input type="file" name="profile" >
+                <input type="text" name="fname" placeholder="first name" required>
+                <input type="text" name="lname"  placeholder="last name"  required>
+                <input type="text" name="username"  placeholder="username" required>
+                <input type="text" name="address" placeholder="address"  required>
+                <input type="text" name="phnum"  placeholder="Phone Number" required>
+                <input type="email" required name="email"  placeholder="email" >
+                <input type="password" required name="password" placeholder="password" >
+                <button type="submit" class="register-btn" name="submit">Register</button>
+            </form>
+        
+        </div>
+  </div> 
+     <!-- professional register popup -->
+     <?php
+     echo $_SESSION['userpanel']['email']; ?>
  <section class="welcome">
     <img src="assets/images/hello.jpg" alt="#">
  </section>
@@ -552,29 +719,93 @@ padding: 10px 10px 20px 10px;
     </footer>
  </section>
  <script>
-       function popupbox(popupname)
+    // user login and register
+    function popupbox(popupname)
     {
-let x=document.getElementById(popupname);
+        let x=document.getElementById(popupname);
+        
+        if(x.style.display=="none")
+        {
+            x.style.display="flex";
+            }
+            else{
+                x.style.display="none";
+                }
+                }
+            // user login and register
 
-if(x.style.display=="none")
-{
-    x.style.display="flex";
-}
-else{
-    x.style.display="none";
-}
-    }
-  function subpopup()
-  {
-    let x=document.getElementById('offuserpopup');
-    if(x.style.display=="none")
-{
-    x.style.display="flex";
-}
-else{
-    x.style.display="none";
-}
-  }
- </script>
+
+            // official user register
+            function subpopup()
+            {
+                let x=document.getElementById('offuserpopup');
+                if(x.style.display=="none")
+                {
+                    x.style.display="flex";
+                    }
+                    else{
+                        x.style.display="none";
+                        }
+                        }
+                    // official user register
+
+                    // professional register
+                    function profregpopup()
+                    {
+                        let x=document.getElementById('profregister-popup');
+                        if(x.style.display=="none")
+                        {
+                            x.style.display="flex";
+                            }
+                            else{
+                                x.style.display="none";
+                                }
+                                }
+                                // professional register
+                                
+                    // professional login
+                    function proflogin()
+                    {
+                        let x=document.getElementById('proflogin-popup');
+                        if(x.style.display=="none")
+                        {
+                            x.style.display="flex";
+                            }
+                            else{
+                                x.style.display="none";
+                                }
+                                }
+                                // professional login
+
+                                // official user login
+                                function offlogin()
+                                {
+                                    let x=document.getElementById('offlogin-popup');
+                                    if(x.style.display=="none")
+                                    {
+                                        x.style.display="flex";
+                                        }
+                                        else{
+                                            x.style.display="none";
+                                            }
+                                            }
+                                        // official user login
+
+
+                                        // admin login
+                                        function adminlogin()
+                                        {
+                                            let x=document.getElementById('adminlogin-popup');
+                                            if(x.style.display=="none")
+                                            {
+                                                x.style.display="flex";
+                                                }
+                                                else{
+                                                    x.style.display="none";
+                                                    }
+                                                    }
+                                                // admin login
+
+                                                    </script>
 </body>
 </html>

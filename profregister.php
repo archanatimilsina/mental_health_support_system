@@ -10,8 +10,8 @@
     </style>
 </head>
 <body>
-</body>
-<div class="register-popup">
+
+<!-- <div class="register-popup">
         <div class="register-form">
 <form action="#" method="POST">
     <label for="firstname">First Name</label>
@@ -31,7 +31,7 @@
    <input type="submit" required name="submit">
 </form>
         </div>
-    </div>
+    </div> -->
 <?php 
 if(isset($_POST['submit']))
 {
@@ -45,7 +45,7 @@ if(isset($_POST['submit']))
 
 if($email!=""&&$password!="")
 {
-   
+    
 // professional
 
     $select_query="SELECT * FROM papplication where email='$email'or username='$username'";
@@ -57,29 +57,32 @@ if($email!=""&&$password!="")
     {
         if($email=$data['email'])
         {
+         
             echo" <script>
             alert('Email already taken you need to wait till your account registered officially after that you get your secret code');
-            window.location.href='professionalregister.php';
+            window.location.href='profregister.php';
             </script>";
         }
         else
         {
+           
     echo" <script>
     alert('username already taken  you need to wait till your account registered officially after that you get your secret code');
-    window.location.href='professionalregister.php';
+    window.location.href='profregister.php';
     </script>";
 }
 }
 else
 {
+     
 $password=password_hash($password,PASSWORD_BCRYPT);
 $query="INSERT INTO papplication (fname,lname,username,address,phnum,email,password) values('$fname','$lname','$username','$address','$phnum','$email','$password')";
 $result=mysqli_query($con,$query);
 if($result)
 {
     echo" <script>
-    alert('Data is submitted succesfully');
-    window.location.href='professionalregister.php';
+    alert('your account is registered succesfully');
+    window.location.href='index.php';
     </script>";
 }
 else{

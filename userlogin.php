@@ -9,18 +9,6 @@ session_start();
     <title>Login Page</title>
 </head>
 <body>
-    
-<div class="login-popup">
-        <div class="login-form">
-<form action="#" method="POST">
- <label for="email">Email/username</label>
-   <input type="text" required name="email_username">
-   <label for="password">Password</label>
-   <input type="password" required name="password">
-   <input type="submit" required name="submit">
-</form>
-        </div>
-    </div>
 
     <?php 
     if(isset($_POST['submit']))
@@ -37,7 +25,11 @@ $data=mysqli_fetch_array($select_result);
 if(password_verify($password,$data['password']))
 {
     $_SESSION['userpanel']['logged_in']=true;
+
     $_SESSION['userpanel']['username']=$data['username'];
+    $_SESSION['userpanel']['fname']=$data['fname'];
+    $_SESSION['userpanel']['lname']=$data['lname'];
+    $_SESSION['userpanel']['account_type']='user';
     $_SESSION['userpanel']['email']=$data['email'];
     ?>
     <script>
