@@ -4,14 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Professional Login Page</title>
 </head>
 <body>
   
     <?php 
     if(isset($_POST['submit']))
     {
-        $username=$_POST['username'];
+       
+      
         $email_username=$_POST['email_username'];
         $password=$_POST['password'];
       $select_query="SELECT * from papplication where email='$email_username' OR username='$email_username'";
@@ -23,20 +24,24 @@
 $data=mysqli_fetch_array($select_result);
 if(password_verify($password,$data['password']))
 {
-    $_SESSION['professional']['logged_in']=true;
-    $_SESSION['professional']['username']='$username';
-    $_SESSION['professional']['email']='$email';
+    
+    $_SESSION['logged_in']=true;
+    $_SESSION['professional']['username']=$data['username'];
+    $_SESSION['professional']['email']=$data['email'];
+    $_SESSION['professional']['fullname']=$data['fullname'];
+    $_SESSION['professional']['account_type']='professional';
     ?>
-    <script>
+     <script>
 window.location.href='index.php'; 
-</script>
+</script> 
 <?php
 }
 else
 {
+    
     echo" <script>
     alert('password incorrect!Try again');
-    window.location.href='register.php';
+    window.location.href='index.php';
     </script>";
 }
 
@@ -45,7 +50,7 @@ else
       {
         echo" <script>
     alert('No email or any username is found!!');
-    window.location.href='register.php';
+    window.location.href='index.php';
     </script>";
       }
     }

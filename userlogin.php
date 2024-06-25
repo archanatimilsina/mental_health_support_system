@@ -24,13 +24,12 @@ session_start();
 $data=mysqli_fetch_array($select_result);
 if(password_verify($password,$data['password']))
 {
-    $_SESSION['userpanel']['logged_in']=true;
-
+    $_SESSION['logged_in']=true;
     $_SESSION['userpanel']['username']=$data['username'];
-    $_SESSION['userpanel']['fname']=$data['fname'];
-    $_SESSION['userpanel']['lname']=$data['lname'];
+    $_SESSION['userpanel']['fullname']=$data['fullname'];
     $_SESSION['userpanel']['account_type']='user';
     $_SESSION['userpanel']['email']=$data['email'];
+ 
     ?>
     <script>
 window.location.href='index.php'; 

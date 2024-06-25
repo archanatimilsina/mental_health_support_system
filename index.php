@@ -49,7 +49,7 @@ session_start();
     }
     .right-nav ul li{
         display: inline-block;
-        margin: 20px;
+        margin: 10px;
         font-family: 'Courier New', Courier, monospace;
         font-size: 17px;
     
@@ -438,15 +438,13 @@ top: 100px;
 <ul>
     <li><a href="index.php">Home</a></li>
     <li><a href="resources.php">Resources</a></li>
+    <li><a href="feedback.php">Feedback</a></li>
     <li><a href="quiz.php">Quizzes</a></li>
     <li><a href="forum.php">Forum</a></li>
     <?php
-      if(isset($_SESSION['userpanel']['logged_in']) && $_SESSION['userpanel']['logged_in']==true)
+      if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true)
     {
-        
         ?>
-      
-
           <li>
          <div class="paste-button">  
     <div id="user-icon">
@@ -454,11 +452,9 @@ top: 100px;
       </div>
          <div class="dropdown-content">
              <a href="logout.php">Logout</a>
-          
         </div>
     </div>
      </li> 
-    
     <?php
     }
     else
@@ -570,7 +566,7 @@ top: 100px;
      <!-- admin login popup -->
      <div id="adminlogin-popup">
          <div class="login popup">
-             <form action="login.php" method="POST">
+             <form action="adminlogin.php" method="POST">
                  <h2 class="reset-heading">
                      <span>Admin Login</span>
                      <button type="reset" onclick="adminlogin()">X</button>
@@ -596,8 +592,7 @@ top: 100px;
                 </h2>
                  <label for="image">Upload profile:</label> 
                 <input type="file" name="profile" >
-                <input type="text" placeholder="First NAME" name="fname" required>
-                <input type="text" placeholder="Last NAME" name="lname" required>
+                <input type="text" placeholder="FULL NAME" id="fullname" name="fullname">
                 <input type="text" placeholder="User Name" id="username" name="username">
                 <input type="email" placeholder="E-mail"  id="email" name="email">
                 <input type="password" placeholder="Password"  id="password" name="password">
@@ -617,8 +612,7 @@ top: 100px;
                 </h2>
                  <label for="image">Upload profile:</label> 
                 <input type="file" name="profile" >
-                <input type="text" name="fname" placeholder="first name" required>
-                <input type="text" name="lname"  placeholder="last name"  required>
+                <input type="text" placeholder="FULL NAME" id="fullname" name="fullname">
                 <input type="text" name="username"  placeholder="username" required>
                 <input type="text" name="address" placeholder="address"  required>
                 <input type="text" name="phnum"  placeholder="Phone Number" required>
@@ -630,8 +624,7 @@ top: 100px;
         </div>
   </div> 
      <!-- professional register popup -->
-     <?php
-     echo $_SESSION['userpanel']['email']; ?>
+     
  <section class="welcome">
     <img src="assets/images/hello.jpg" alt="#">
  </section>

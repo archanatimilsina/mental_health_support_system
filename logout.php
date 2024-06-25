@@ -1,5 +1,6 @@
 <?php 
 session_start();
-unset($_SESSION['userpanel']['email']);
+$_SESSION = [];
+unset($_SESSION);
 echo header('location:index.php');
 ?>

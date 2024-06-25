@@ -8,7 +8,7 @@ session_start(); ?>
     <title>Login Page</title>
 </head>
 <body>
-    
+<!--     
 <div class="login-popup">
         <div class="login-form">
 <form action="#" method="POST">
@@ -16,20 +16,20 @@ session_start(); ?>
    <input type="text" required name="email_username">
    <label for="password">Password</label>
    <input type="password" required name="password">
-   <label for="Secret code">Secret Code</label>
-   <input type="password" required name="scode">
-   <input type="submit" required name="submit">
-</form>
+  <label for="Secret code">Secret Code</label> -->
+   <!-- <input type="password" required name="scode"> -->
+   <!-- <input type="submit" required name="submit"> -->
+<!-- </form> 
         </div>
-    </div>
+    </div> -->
 
     <?php 
     if(isset($_POST['submit']))
     {
-        $scode=$_POST['scode'];
+        // $scode=$_POST['scode'];
         $email_username=$_POST['email_username'];
         $password=$_POST['password'];
-      $select_query="SELECT * from admin where email='$email_username' OR username='$email_username'";
+      $select_query="SELECT * from aapplication where email='$email_username' OR username='$email_username'";
       $select_result=mysqli_query($con,$select_query);
       $count=mysqli_num_rows($select_result);
         
@@ -38,12 +38,12 @@ session_start(); ?>
 $data=mysqli_fetch_array($select_result);
 if(password_verify($password,$data['password']))
 {
-    $_SESSION['admin']['logged_in']=true;
+    $_SESSION['logged_in']=true;
     $_SESSION['admin']['username']=$data['username'];
     $_SESSION['admin']['email']=$data['email'];
     ?>
     <script>
-window.location.href='resources.php'; 
+window.location.href='index.php'; 
 </script>
 <?php
 }

@@ -28,12 +28,13 @@ flex-direction: column;
             height: 90px;
             border: 1px solid black;
             background:sandybrown;
+            position: relative;
         }
     .box1 nav ul li{
-    /* display: inline-block;   */
+
     margin: 30px;  
-    float: right;
 list-style-type: none;
+
     }
     .box1 nav ul li a button{
        background-color:white;
@@ -42,7 +43,7 @@ list-style-type: none;
        width: 150px;
        height: 30px;
        font-size: 17px;
-      
+       float: right;
     }
     .post-containeer
         {
@@ -175,15 +176,38 @@ font-size: 20px;
     height: 100%;
     border: 1px solid black;
 }
+.threedot
+{
+    font-size:14px;
+}
+.profile{
+
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 1px solid black; 
+    background-color: white;  
+    position: absolute;       
+margin-top: -20px;
+}
     </style>
 </head>
 <body>
     <section id="section1">
         <div class="main box1">
 <nav>
+
     <ul>
+        <li><div class="profile"><a href="dashboard.php">hello</a></div></li>
+        <?php
+    if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true)
+    {
+?>
         <li><a href="createpost.php"><button>Create New Post</button></a></li>
-    </ul>
+    <?php
+    }
+    ?>
+</ul>
 </nav>
     </div>
     
@@ -191,12 +215,12 @@ font-size: 20px;
         <div class="post-head">
             <div class="ph hprofile"></div>
             <div class="ph hname">
-                <div class="ainfo pname"><?php $name; ?></div>
-                <div class="ainfo paccount-type"><?php $account_type; ?></div>
-                <div class="ainfo post-time"><?php $posttime; ?></div>
+                <div class="ainfo pname"><?php echo $fname; ?></div>
+                <div class="ainfo paccount-type"><?php echo $account_type; ?></div>
+                <div class="ainfo post-time"><?php echo $posttime; ?></div>
 
             </div>
-            <div class="ph three-dot"><i class="fa-solid fa-three-dots fa-sm"></i></div>
+            <div class="ph three-dot"><i class="fa-solid fa-ellipsis threedot"></i></div>
         </div>
         <div class="post-body">
         <?php $post; ?>
@@ -204,32 +228,33 @@ font-size: 20px;
         <div class="post-footer">
             <div class="fh star">
                 <div class="star-icon">
-                    <i class="fa-solid fa-star fa-sm"></i>
+                    <i class="fa-solid fa-star fa-sm" onclick="starcount()"></i>
                 </div>
                 <div class="star-count"></div>
             </div>
             <div class="fh comment">
-                <div class="comment-icon"><i class="fa-solid fa-comment fa-sm" style="color: #63E6BE;" title="Open Chatbox"></i></div>
+                <div class="comment-icon"><i class="fa-solid fa-comment fa-sm" style="color: #63E6BE;"></i></div>
                 <div class="comment-count"></div>
             </div>
         </div>
     </div>
      </section>
+     
 </body>
 </html>
 <?php 
-
+$n=0;
 $query1="SELECT * from posts";
 $result=mysqli_query($con,$query1);
-$data=mysqli_fetch_array($result);
-while($data)
+while($data=mysqli_fetch_array($result))
 {
 $fname=$data['pfname'];
 $lname=$data['plname'];
-$name="$fname"." "."$lname";
+// $name="$fname"." "."$lname";
 $username=$data['pusername'];
 $post=$data['post'];
 $account_type=$data['account_type'];
 $posttime=$data['created_at'];
+$n++;
 }
 ?>

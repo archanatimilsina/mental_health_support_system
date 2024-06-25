@@ -11,32 +11,15 @@
 </head>
 <body>
 
-<!-- <div class="register-popup">
-        <div class="register-form">
-<form action="#" method="POST">
-    <label for="firstname">First Name</label>
-   <input type="text" name="fname" required>
-   <label for="lastname">Last Name</label>
-   <input type="text" name="lname" required>
-   <label for="username">Username</label>
-   <input type="text" name="username" required>
-   <label for="Address">Address</label>
-   <input type="text" name="address" required>
-   <label for="phone number">Phone number</label>
-   <input type="text" name="phnum" required>
-   <label for="email">Email</label>
-   <input type="email" required name="email">
-   <label for="password">Password</label>
-   <input type="password" required name="password">
-   <input type="submit" required name="submit">
-</form>
-        </div>
-    </div> -->
+
 <?php 
 if(isset($_POST['submit']))
 {
-    $fname=$_POST['fname'];
-    $lname=$_POST['lname'];
+    $filename=$_FILES['profile']['name'];
+    $tmpname=$_FILES['profile']['tmp_name'];
+    $folder="uploads/".$filename;
+    move_uploaded_file($tmpname,$folder);
+    $name=$_POST['fullname'];
     $address=$_POST['address'];
     $phnum=$_POST['phnum'];
     $username=$_POST['username'];
@@ -76,7 +59,7 @@ else
 {
      
 $password=password_hash($password,PASSWORD_BCRYPT);
-$query="INSERT INTO papplication (fname,lname,username,address,phnum,email,password) values('$fname','$lname','$username','$address','$phnum','$email','$password')";
+$query="INSERT INTO papplication (profile,fullname,username,address,phnum,email,password) values('$folder','$name','$username','$address','$phnum','$email','$password')";
 $result=mysqli_query($con,$query);
 if($result)
 {
