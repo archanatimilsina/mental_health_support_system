@@ -1,4 +1,4 @@
-<?php require('../connection.php');
+<?php require('../../connection.php');
 session_start();
 ?>
 <!DOCTYPE html>
@@ -201,20 +201,106 @@ display: block;
         margin: auto;
         border: 1px solid black;
         margin-top: 15px;
+        background-color: lavender;
 
     }
-    .welcome img{
+    /* .welcome img{
         width: 100%;
         height: 100%;
-    }
+        z-index: -7;
+    } */
+    .paste-button1{
+          position: relative;
+      
+          margin: auto;
+     left: 30px;
+          display: inline-block;
 
+        }
+        .paste-button1 button 
+        {
+         
+       position: absolute;
+       height: 35px;
+        }
+        .paste-button1 button i{
+font-size: 30px;
+margin-top: 10px;
+
+        }
+        .paste-button2{
+          position: relative;
+          width: 200px;
+          margin: auto;
+        
+          display: inline-block;
+      height: 40px;
+        }
+        .dropdown-content1
+        {
+            display: none;
+            position: absolute;
+            left: 20px;
+              z-index: 1;
+              top: 27px;
+        }
+        .dropdown-content2
+        {
+            display: none;
+            position: absolute;
+            left: 130px;
+       top: 15px;
+            z-index: 5;
+        height: 40px;
+        }
+        .paste-button1:hover .dropdown-content1
+        {
+display: block;
+        }
+        .paste-button2:hover .dropdown-content2
+        {
+display: block;
+        }
+        .dropdown-content1 a{
+            display: block;
+            text-decoration: none;
+            color: black;
+            background-color: white;
+            height:100%;
+            border-radius: 5px;
+            border: 1px solid black;
+            font-size: 20px;
+           text-align: center;
+           font-family: cursive;
+        }
+        .dropdown-content2 a{
+            display: block;
+            text-decoration: none;
+            color: black;
+            height: 55px;
+            background-color: lavender;
+            width: 200px;
+            font-size: 20px;
+            text-align: center;
+            font-family: cursive;
+
+        }
+        .dropdown-content1 a:hover{
+            border: 1px solid black;
+            background-color: lavender;
+
+        }
+        .dropdown-content2 a:hover{
+            border: 1px solid black;
+            background-color: white;
+        }
     </style>
 </head>
 <body>
   
     <nav>
         <div class="left-nav">
-<img src="assets/images/hello.jpg" alt="#" width="100%" height="100%">
+<img src="../../assets/images/hello.jpg" alt="#" width="100%" height="100%">
         </div>
         <div class="right-nav">
 <ul>
@@ -222,7 +308,7 @@ display: block;
     <li><a href="resources.php">Resources</a></li>
     <li><a href="quiz.php">Quizzes</a></li>
     <li><a href="forum.php">Forum</a></li>
-    <li><a href="userdata/index.php">user Data</a></li>
+    <li><a href="userdata.php">user Data</a></li>
     <?php
       if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true)
     {
@@ -270,7 +356,30 @@ display: block;
 
         
  <section class="welcome">
-    <img src="assets/images/hello.jpg" alt="#">
+ <div class="paste-button1">
+        <button class="button"><i class="fa-solid fa-bars fa-lg"></i></button>
+        <div class="dropdown-content1">
+        <div class="paste-button2">
+            <a href="index.php">Applications</a>
+            <div class="dropdown-content2">
+            <a href="index.php">Admin Application</a>
+            <a href="index.php">Professional Application</a>
+            </div>
+            </div>
+            <div class="paste-button2">
+            <a href="index.php">User data</a>
+            <div class="dropdown-content2">
+            <a href="index.php">Admin</a>
+            <a href="index.php">professional</a>
+            <a href="index.php">Officaial Users</a>
+            <a href="index.php">Users</a>
+            </div>
+            </div>
+          
+
+        </div>
+    </div>
+   
  </section>
 
  <script>

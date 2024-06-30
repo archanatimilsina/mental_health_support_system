@@ -20,25 +20,25 @@
           position: relative;
           width: 200px;
           margin: auto;
-          border: 1px solid black;
+        
           display: inline-block;
-
+        height:40px;
         }
         .dropdown-content1
         {
             display: none;
             position: absolute;
             left: 20px;
-     
-            z-index: 1;
+              z-index: 1;
         }
         .dropdown-content2
         {
             display: none;
             position: absolute;
-            left: 190px;
-           border: 1px solid black;
+            left: 130px;
+       top: 15px;
             z-index: 5;
+        height: 40px;
         }
         .paste-button1:hover .dropdown-content1
         {
@@ -52,12 +52,28 @@ display: block;
             display: block;
             text-decoration: none;
             color: black;
-            background-color: sandybrown;
+            background-color: white;
+            height:100%;
+            border-radius: 5px;
+            border: 1px solid black;
+            
         }
-        .dropdown-2 a{
+        .dropdown-content2 a{
             display: block;
             text-decoration: none;
             color: black;
+            height: 100%;
+            background-color: sandybrown;
+            width: 200px;
+        }
+        .dropdown-content1 a:hover{
+            border: 1px solid black;
+            background-color: sandybrown;
+
+        }
+        .dropdown-content2 a:hover{
+            border: 1px solid black;
+            background-color: white;
         }
     </style>
 </head>

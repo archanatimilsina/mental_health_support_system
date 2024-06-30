@@ -1,15 +1,12 @@
-<?php require('connection.php');
-session_start();
-?>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/c5a4938a4c.js" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Title</title>
     <style>
+      
     *
     {
         margin: 0;
@@ -424,12 +421,42 @@ top: 100px;
     position: relative;
     left: 53px;
 }
+.container{
+    width: 100%;
+    height: 400px;
+    border: 1px solid black;
 
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+.container p{
+    margin: 20px;
+    width: fit-content;
+    height: fit-content;
+    z-index: 1;
+}
+.container a button{
+    position: absolute;
+    z-index: 1;
+    margin: auto;
+}
+.container img{
+    position: absolute;
+   width: 100%;
+    height: 400px;
+ 
+}
 
     </style>
 </head>
 <body>
-  
+    
     <nav>
         <div class="left-nav">
 <img src="assets/images/hello.jpg" alt="#" width="100%" height="100%">
@@ -461,7 +488,7 @@ top: 100px;
     else
     {
         ?>
-      <!-- hello1 -->  
+      
       <div class="paste-button">
           <button class="button login-button">Login</button>
           <div class="dropdown-content">
@@ -471,15 +498,7 @@ top: 100px;
               <a onclick="adminlogin()">Admin</a>
           </div>
       </div> 
-  <!-- hello1 -->
-  
-  <!-- comment -->
-  <!-- <button class="login-button" onclick="popupbox('login-popup')">
-      Login
-      </button> -->
-  <!-- comment -->
-  
-  <!-- hello1 -->
+ 
        </li>
       <li>
       <div class="paste-button">
@@ -625,181 +644,109 @@ top: 100px;
         </div>
   </div> 
      <!-- professional register popup -->
-     
- <section class="welcome">
-    <img src="assets/images/hello.jpg" alt="#">
- </section>
- <section class="services">
-    <h1>Services</h1>
-    <div class="servicesbox">
-        <div class="serviceimg">
-        <img src="assets/images/hello.jpg" alt="" width="100%" height="100%"></div>
-<h4>Yoga</h4>
-<p>
-    Lorem ipsum dolor, sit amet consectetur adipi
-    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
-</p>
-<a href="yoga.php"><button>Yoga</button></a>
-    </div>
-   
-    <div class="servicesbox">
-        <div class="serviceimg">
-        <img src="assets/images/hello.jpg" alt="" width="100%" height="100%"></div>
-<h4>Yoga</h4>
-<p>
-    Lorem ipsum dolor, sit amet consectetur adipi
-    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
-</p>
-<a href="yoga.php"><button>Yoga</button></a>
-    </div>
-   
-    <div class="servicesbox">
-        <div class="serviceimg">
-        <img src="assets/images/hello.jpg" alt="" width="100%" height="100%"></div>
-<h4>Yoga</h4>
-<p>
-    Lorem ipsum dolor, sit amet consectetur adipi
-    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
-</p>
-<a href="yoga.php"><button>Yoga</button></a>
-    </div>
-   
-    <div class="servicesbox">
-        <div class="serviceimg">
-        <img src="assets/images/hello.jpg" alt="" width="100%" height="100%"></div>
-<h4>Yoga</h4>
-<p>
-    Lorem ipsum dolor, sit amet consectetur adipi
-    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
-</p>
-<a href="yoga.php"><button>Yoga</button></a>
-    </div>
-   
-    <div class="servicesbox">
-        <div class="serviceimg">
-        <img src="assets/images/hello.jpg" alt="" width="100%" height="100%"></div>
-<h4>Yoga</h4>
-<p>
-    Lorem ipsum dolor, sit amet consectetur adipi
-    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
-</p>
-<a href="yoga.php"><button>Yoga</button></a>
-    </div>
-    <div class="servicesbox">
-        <div class="serviceimg">
-        <img src="assets/images/hello.jpg" alt="" width="100%" height="100%"></div>
-<h4>Yoga</h4>
-<p>
-    Lorem ipsum dolor, sit amet consectetur adipi
-    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
-</p>
-<a href="yoga.php"><button>Yoga</button></a>
-    </div>
- </section>
+<div class=" container bg-light mt-5">
+    <img src="../assets/images/hello.jpg" alt="">
+<p>We are here to provide you a beautiful articles. If you want to access click below</p>
+<a href="article.php"><button type="button" class="btn btn-primary">Button</button></a>
+</div>
+<div class=" container bg-light mt-5">
 
- 
- <section class="whyus">
-    <h4>Why us?</h4>
-    <div class="whyusbox">
-        <div class="wcontent"></div>
-        <div class="wimage">
-            <img src="assets/images/hello.jpg" alt="" width="100%" height="100%">
-        </div>
-    </div>
- </section>
- <section class="footer">
-    <footer>
-        
-    </footer>
- </section>
- <script>
-    // user login and register
-    function popupbox(popupname)
-    {
-        let x=document.getElementById(popupname);
-        
-        if(x.style.display=="none")
+</div>
+<div class=" container bg-light mt-5">
+
+</div>
+<div class=" container bg-light mt-5">
+
+</div>
+     <script>
+        // user login and register
+        function popupbox(popupname)
         {
-            x.style.display="flex";
-            }
-            else{
-                x.style.display="none";
-                }
-                }
-            // user login and register
-
-
-            // official user register
-            function subpopup()
+            let x=document.getElementById(popupname);
+            
+            if(x.style.display=="none")
             {
-                let x=document.getElementById('offuserpopup');
-                if(x.style.display=="none")
-                {
-                    x.style.display="flex";
+                x.style.display="flex";
+                }
+                else{
+                    x.style.display="none";
                     }
-                    else{
-                        x.style.display="none";
-                        }
-                        }
-                    // official user register
-
-                    // professional register
-                    function profregpopup()
+                    }
+                // user login and register
+    
+    
+                // official user register
+                function subpopup()
+                {
+                    let x=document.getElementById('offuserpopup');
+                    if(x.style.display=="none")
                     {
-                        let x=document.getElementById('profregister-popup');
-                        if(x.style.display=="none")
-                        {
-                            x.style.display="flex";
+                        x.style.display="flex";
+                        }
+                        else{
+                            x.style.display="none";
                             }
-                            else{
-                                x.style.display="none";
-                                }
-                                }
-                                // professional register
-                                
-                    // professional login
-                    function proflogin()
-                    {
-                        let x=document.getElementById('proflogin-popup');
-                        if(x.style.display=="none")
-                        {
-                            x.style.display="flex";
                             }
-                            else{
-                                x.style.display="none";
+                        // official user register
+    
+                        // professional register
+                        function profregpopup()
+                        {
+                            let x=document.getElementById('profregister-popup');
+                            if(x.style.display=="none")
+                            {
+                                x.style.display="flex";
                                 }
+                                else{
+                                    x.style.display="none";
+                                    }
+                                    }
+                                    // professional register
+                                    
+                        // professional login
+                        function proflogin()
+                        {
+                            let x=document.getElementById('proflogin-popup');
+                            if(x.style.display=="none")
+                            {
+                                x.style.display="flex";
                                 }
-                                // professional login
-
-                                // official user login
-                                function offlogin()
-                                {
-                                    let x=document.getElementById('offlogin-popup');
-                                    if(x.style.display=="none")
+                                else{
+                                    x.style.display="none";
+                                    }
+                                    }
+                                    // professional login
+    
+                                    // official user login
+                                    function offlogin()
                                     {
-                                        x.style.display="flex";
-                                        }
-                                        else{
-                                            x.style.display="none";
-                                            }
-                                            }
-                                        // official user login
-
-
-                                        // admin login
-                                        function adminlogin()
+                                        let x=document.getElementById('offlogin-popup');
+                                        if(x.style.display=="none")
                                         {
-                                            let x=document.getElementById('adminlogin-popup');
-                                            if(x.style.display=="none")
-                                            {
-                                                x.style.display="flex";
+                                            x.style.display="flex";
+                                            }
+                                            else{
+                                                x.style.display="none";
                                                 }
-                                                else{
-                                                    x.style.display="none";
+                                                }
+                                            // official user login
+    
+    
+                                            // admin login
+                                            function adminlogin()
+                                            {
+                                                let x=document.getElementById('adminlogin-popup');
+                                                if(x.style.display=="none")
+                                                {
+                                                    x.style.display="flex";
                                                     }
-                                                    }
-                                                // admin login
-
-                                                    </script>
+                                                    else{
+                                                        x.style.display="none";
+                                                        }
+                                                        }
+                                                    // admin login
+    b
+                                                        </script>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -78,16 +78,15 @@ session_start();
 if(isset($_POST['submit']))
 {
   
-    $fname=$_SESSION['userpanel']['fname'];
-    $lname=$_SESSION['userpanel']['lname'];
-    $account_type=$_SESSION['userpanel']['account_type'];
-    $account_type=$_SESSION['userpanel']['username'];
+    $fullname=$_SESSION['userpanel']['fullname'];
+     $account_type=$_SESSION['userpanel']['account_type'];
+    $username=$_SESSION['userpanel']['username'];
 $post=$_POST['post'];
 
 if($post!="")
 {
    
-$insert_query="INSERT INTO posts (pfname,plname,account_type,post,pusername) values ('$fname','$lname','$account_type','$post','$username')";
+$insert_query="INSERT INTO posts (pfullname,account_type,post,pusername) values ('$fullname','$account_type','$post','$username')";
 $result=mysqli_query($con,$insert_query);
 }
 if($result)

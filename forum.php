@@ -190,6 +190,12 @@ font-size: 20px;
     position: absolute;       
 margin-top: -20px;
 }
+.messageprint
+{
+    display: flex;
+    flex-direction: column;
+
+}
     </style>
 </head>
 <body>
@@ -211,11 +217,29 @@ margin-top: -20px;
 </nav>
     </div>
     
+<section class="messageprint">
+<?php
+$query1="SELECT * from posts";
+$result=mysqli_query($con,$query1);
+$n=1;
+while($data=mysqli_fetch_array($result))
+{
+    $profile=$data['profile'];
+    $name=$data['pfullname'];
+$username=$data['pusername'];
+$posttime=$data['created_at'];
+$account_type=$data['account_type'];
+$post=$data['post'];
+$star_count=$data['star'];
+$comment=$data['comment'];
+$n++;
+}
+?>
     <div class="post-containeer">
         <div class="post-head">
-            <div class="ph hprofile"></div>
+            <div class="ph hprofile"><?php $data['profile']; ?></div>
             <div class="ph hname">
-                <div class="ainfo pname"><?php echo $fname; ?></div>
+                <div class="ainfo pname"><?php echo $name; ?></div>
                 <div class="ainfo paccount-type"><?php echo $account_type; ?></div>
                 <div class="ainfo post-time"><?php echo $posttime; ?></div>
 
@@ -237,24 +261,11 @@ margin-top: -20px;
                 <div class="comment-count"></div>
             </div>
         </div>
-    </div>
+    </div></section>
      </section>
      
 </body>
 </html>
 <?php 
-$n=0;
-$query1="SELECT * from posts";
-$result=mysqli_query($con,$query1);
-while($data=mysqli_fetch_array($result))
-{
-$fname=$data['pfname'];
-$lname=$data['plname'];
-// $name="$fname"." "."$lname";
-$username=$data['pusername'];
-$post=$data['post'];
-$account_type=$data['account_type'];
-$posttime=$data['created_at'];
-$n++;
-}
+
 ?>
