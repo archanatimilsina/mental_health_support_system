@@ -136,6 +136,44 @@ top: 100px;
     flex-direction: row;
 }
 
+#offuserpopup1
+{
+    width: 300px;
+    height: 190px;
+border: 1px solid black;
+margin:auto;
+flex-direction: column;
+margin-top: 100px;
+z-index: 1;
+display: none;
+padding: 10px 10px 20px 10px;
+position: fixed;
+background-color: white;
+left: 450px;
+top: 100px;  
+
+}
+
+#offuserpopup1 .reset-btn{
+   position: relative;
+   right: 0;
+
+}
+#offuserpopup1 form p{
+    font-size:17px;
+    padding: 35px 5px 15px 5px;
+
+}
+#offuserpopup1 .sub-btn{
+    width: 150px;
+    height: 50px;
+    background-color: blue;
+    color: white;
+    border: 1px solid blue;
+    border-radius:5px;
+    position: relative;
+    left: 53px;
+}
     </style>
 </head>
 <body>
@@ -157,7 +195,6 @@ top: 100px;
                     </tr>
                 </thead>
                 <tbody>
-                   
                     <?php
 $query="SELECT * from aapplication";
 $result=mysqli_query($con,$query);
@@ -166,7 +203,7 @@ while($data=mysqli_fetch_array($result))
 {
     ?> 
     <tr>
-    <td><?php echo $n;?></td>
+    <td><?php echo $n++;?></td>
     <!-- <td><?php echo $data['profile'] ?></td> -->
      <td>
         <img src="../../<?php echo $data['profile']; ?>" alt="Not Found" class="profile-img">
@@ -191,9 +228,19 @@ while($data=mysqli_fetch_array($result))
 <p>Are You sure You want to accept Application?</p>
 <div class="buttons">
     <a href="accept.php?id=<?php echo $data['aaid'];?>"><button >Yes,Sure</button></a>
-<a href="#"><button onclick="subpopup()" >No</button></a>
+    <a href="#"><button onclick="subpopup()">No</button></a>
 </div>
-
+<!-- onclick="subpopup1()" -->
+</div>
+<div id="offuserpopup1">
+<h3 class="reset-heading">
+<span>Admin Application</span>
+<button type="reset" onclick="subpopup1()" class="reset-btn">X</button></h3>
+<form action="accept.php" method="GET">
+<p>Enter the secret code:</p>
+<input type="password" class="scode-input" placeholder="Upto 5 character" name="scode">
+    <a href="accept.php?id=<?php echo $data['aaid'];?>"><input type="submit" value="submit" name="submit"></a>
+</form>
 </div>
     <?php
 }
@@ -212,6 +259,20 @@ while($data=mysqli_fetch_array($result))
                     }
                     else{
                         x.style.display="none";
+                        }
+                        }
+                        function subpopup1()
+            {
+                let y=document.getElementById('offuserpopup1');
+                let z=document.getElementById('offuserpopup');
+                if(y.style.display=="none" )
+                {
+                    y.style.display="flex";
+                    z.style.display="none";
+                    }
+                    else{
+                        y.style.display="none";
+                       
                         }
                         }
 </script>
