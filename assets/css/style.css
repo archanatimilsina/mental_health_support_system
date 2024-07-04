@@ -1,0 +1,277 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+nav img{
+  float: left;  
+ width: 100px;
+ height: 100px;
+margin-left: 20px;
+margin-top: 5px;
+}
+nav{
+
+    height: 110px;
+}
+nav ul{
+    float: right;
+    position: relative;
+    right: 100px;
+}
+.paste-button{
+  position: relative;
+  margin: auto;
+display: inline-block;
+
+}
+
+nav ul li{
+    display: inline-block;
+    list-style-type: none;
+    margin: 30px 40px 0px 10px;
+
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+.dropdown-content
+{
+    width: 150px;
+    height: 150px;
+    display: none;
+    position: absolute;
+    left: 30px;
+    z-index: 1;
+}
+.paste-button:hover .dropdown-content
+{
+display: block;
+}
+.dropdown-content a{
+    display: block;
+    text-decoration: none;
+    background-color: lavender;
+    border: 0.09px solid black;
+    color: black;
+    height: 25%;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 20px;
+}
+.dropdown-content a:hover{
+    background-color: white;
+    color: black;
+}
+.abutton{
+    width: 100px;
+    height: 40px;
+    background-color: lavender;
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 0.1px solid black;  
+}
+
+        /* popup box */
+        .reset-heading{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .popup input{
+            width: 100%;
+            margin-bottom: 8px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #30475e;
+            border-radius: 0px;
+            padding: 2px 0;
+            font-size: 12px;
+            
+        }
+        #user-icon
+        {
+            padding: 10px;
+            position: relative;
+            display: inline-block;
+        
+        }
+        
+        .popup{
+            background-color: #f0f0f0;
+             border-radius: 5px;
+            padding: 20px 25px 30px 25px;
+            width: 100%;
+            height: 100%;
+        }
+        .popup h2{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            color: #30475e;
+            border: none;
+            background-color: transparent;
+            outline: none;
+            font-size: 18px;
+            font-weight: 550;
+          
+        }
+        .login-btn
+        {
+            margin-bottom: 15px;
+        }
+                /* popup box */
+        
+                /* official user popup */
+                #offuserpopup
+        {
+            width: 300px;
+            height: 190px;
+        border: 1px solid black;
+        margin:auto;
+        flex-direction: column;
+        margin-top: 100px;
+        z-index: 1;
+        display: none;
+        padding: 10px 10px 20px 10px;
+        position: fixed;
+        background-color: white;
+        left: 450px;
+        top: 100px;
+        }
+        .reset-heading{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        #offuserpopup .reset-btn{
+           position: relative;
+           right: 0;
+        
+        }
+        #offuserpopup p{
+            font-size:17px;
+            padding: 35px 5px 15px 5px;
+        
+        }
+        #offuserpopup .sub-btn{
+            width: 150px;
+            height: 50px;
+            background-color: blue;
+            color: white;
+            border: 1px solid blue;
+            border-radius:5px;
+            position: relative;
+            left: 53px;
+        }
+        
+        
+                /* official user popup */
+                /* login register .popup */
+                
+        /* Login Register */
+        #login-popup
+                {
+                    width: 300px;
+            height: 300px;
+        border: 1px solid rgb(58, 46, 163);
+        display: none;
+        flex-direction: column;
+        z-index: 1;
+        background-color: #f0f0f0;
+             border-radius: 5px;
+            padding: 20px 25px 25px 25px;
+            position: fixed;
+            left: 400px;
+            top: 90px;
+                }
+                #proflogin-popup
+                {
+                    width: 300px;
+            height: 300px;
+        border: 1px solid rgb(58, 46, 163);
+        display: none;
+        flex-direction: column;
+        z-index: 1;
+        background-color: #f0f0f0;
+             border-radius: 5px;
+            padding: 20px 25px 25px 25px;
+            position: fixed;
+            left: 400px;
+            top: 90px;
+                }
+                #offlogin-popup
+                {
+                    width: 300px;
+            height: 300px;
+        border: 1px solid rgb(58, 46, 163);
+        display: none;
+        flex-direction: column;
+        z-index: 1;
+        background-color: #f0f0f0;
+             border-radius: 5px;
+            padding: 20px 25px 25px 25px;
+            position: fixed;
+            left: 400px;
+            top: 90px;
+                }
+                #adminlogin-popup{
+                    width: 300px;
+            height: 300px;
+        border: 1px solid rgb(58, 46, 163);
+        display: none;
+        flex-direction: column;
+        z-index: 1;
+        background-color: #f0f0f0;
+             border-radius: 5px;
+            padding: 20px 25px 25px 25px;
+            position: fixed;
+            left: 400px;
+            top: 90px;
+                }
+                #register-popup{
+                    width: 300px;
+            height: 300px;
+        border: 1px solid rgb(199, 26, 26);
+        display: none;
+        margin:auto;
+        flex-direction: column;
+        
+        z-index: 1;
+        background-color: #f0f0f0;
+             border-radius: 5px;
+            padding: 5px 10px 10px 5px;
+            position: fixed;
+            left: 400px;
+            top: 90px;
+            outline: none;
+                }
+        
+                #profregister-popup{
+                    width: 300px;
+            height: 350px;
+        border: 1px solid rgb(199, 26, 26);
+        display: none;
+        margin:auto;
+        flex-direction: column;
+        z-index: 1;
+        background-color: lavender;
+             border-radius: 5px;
+            padding: 5px 10px 10px 5px;
+            position: fixed;
+            left: 400px;
+            top: 90px;
+            outline: none;
+                }
+                /* login register .popup */

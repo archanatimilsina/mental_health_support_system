@@ -1,448 +1,236 @@
-<?php require('connection.php');
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/c5a4938a4c.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
     <style>
-    *
-    {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    nav{
-        width: 100%;
-        height: 60px;
-        border: 1px solid black;
-        background: lavender;
-    
-    }
-    .left-nav{
-        width: 18%;
-        height: 100%;
-        position: relative;
-        display: inline-block;
-        padding-left: 30px;
-    }
-    .right-nav{
-        width: 80%;
-        height: 100%;
-        display: inline-block;
-        position: relative;
-    }
-    .left-nav img{
-        position: absolute;
-        width: 30%;
-        height: 60px;
-       
-    }
-    .right-nav ul{
-      list-style-type: none;
-      position: absolute;
-
-    }
-    .right-nav ul li{
-        display: inline-block;
-        margin: 10px;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 17px;
-    
-
-    }
-    .right-nav ul li a{
-        text-decoration: none;
-        color: black;
-    }
-     .right-nav ul li a button{
-        width: 100px;
-        height: 30px;
-         margin-top: -20px;
-    } 
-    .login-button
-    {
-        width: 150px;
-        height: 30px;
-    }
-    .register-button
-    {
-        width: 150px;
-        height: 30px;
-    }
-    body{
-        display: flex;
-        flex-direction: column
-    }
-    .welcome
-    {
-        width: 94%;
-        height: 700px;
-        margin: auto;
-        border: 1px solid black;
-        margin-top: 15px;
-
-    }
-    .welcome img{
-        width: 100%;
-        height: 100%;
-    }
-    .services{
-        width: 96%;
-        margin: auto;
-        margin-top: 20px;
-      max-height: 1000px;
-        /* border: 1px solid black;  */
-    
-    }
-    .servicesbox{
-      width: 30%;
-        float: left;
-    }
-    .services h1{
-font-size: 30px;
-font-weight: 500px;
-padding-left: 30px;
-    }
-    .servicesbox{
-         margin: 20px;
-        width: 25%;
-        max-height: 400px;
-        border: 1px solid black;
-    padding: 20px;
-margin: 20px 40px;
-    }
-    .servicesbox h4{
-        font-size: 25px;
-        font-weight: 300px;
-        text-align: center;
-        margin: 5px;
-
-    }
-.servicesbox p{
-    margin:20px 0px;
-}
-    .servicesbox a button
-    {
-        width: 100px;
-        height: 40px;
-        border-radius: 10px;
-        color: black;
-        font-size: 20px;
-        font-family: cursive;
-    }
-    .servicesbox a{
-        text-decoration:none;
-        margin-left: 72px;
-
-    }
-    .serviceimg{
-        width: 80%;
-        height: 150px;
-        margin: auto;
-    }
-    .whyus
-{
-    width: 100%;
-    border: 1px solid black;
-    height: 700px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-}
-.whyusbox
-{
-    margin-top: 70px;
-    display: flex;
-    flex-direction: row;
-    border: 1px solid black;
-    position: absolute;
-    width: 100%;
-    height: 500px;
-}
-.wcontent
-{
-    width: 40%;
-    height: 100%;
-    border: 1px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.wimage
-{
-    width: 60%;
-    height: 100%;
-    border: 1px solid black;
-border-collapse: collapse;
-position: relative; 
-display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.wimage img{
-    position: absolute;
-    width: 90%;
-    height: 90%;
-    margin: auto;
-   
-}
-.whyus h4{
-    font-size: 25px;
-        font-weight: 300px;
-    padding: 10px;
-        margin: 20px 0px;
-
-}
-footer{
-    width: 100%;
-    height: 400px;
-    border: 1px solid black;
-    margin-top: 20px;
-    background-color: black;
-}
-/* Login Register */
-#login-popup
+        .box1
         {
-            width: 300px;
-    height: 300px;
-border: 1px solid rgb(58, 46, 163);
-display: none;
-flex-direction: column;
-z-index: 1;
-background-color: #f0f0f0;
-     border-radius: 5px;
-    padding: 20px 25px 25px 25px;
-    position: fixed;
-    left: 400px;
-    top: 90px;
+            display: flex;
+            flex-direction: row;
+           
+            height: 400px;
+          padding: 20px;
+          margin-top: 30px;
         }
-        #proflogin-popup
+        .box11
         {
-            width: 300px;
-    height: 300px;
-border: 1px solid rgb(58, 46, 163);
-display: none;
-flex-direction: column;
-z-index: 1;
-background-color: #f0f0f0;
-     border-radius: 5px;
-    padding: 20px 25px 25px 25px;
-    position: fixed;
-    left: 400px;
-    top: 90px;
-        }
-        #offlogin-popup
-        {
-            width: 300px;
-    height: 300px;
-border: 1px solid rgb(58, 46, 163);
-display: none;
-flex-direction: column;
-z-index: 1;
-background-color: #f0f0f0;
-     border-radius: 5px;
-    padding: 20px 25px 25px 25px;
-    position: fixed;
-    left: 400px;
-    top: 90px;
-        }
-        #adminlogin-popup
-        {
-            width: 300px;
-    height: 300px;
-border: 1px solid rgb(58, 46, 163);
-display: none;
-flex-direction: column;
-z-index: 1;
-background-color: #f0f0f0;
-     border-radius: 5px;
-    padding: 20px 25px 25px 25px;
-    position: fixed;
-    left: 400px;
-    top: 90px;
-        }
-        #register-popup
-        {
-            width: 300px;
-    height: 300px;
-border: 1px solid rgb(199, 26, 26);
-display: none;
-margin:auto;
-flex-direction: column;
-
-z-index: 1;
-background-color: #f0f0f0;
-     border-radius: 5px;
-    padding: 5px 10px 10px 5px;
-    position: fixed;
-    left: 400px;
-    top: 90px;
-    outline: none;
-        }
-
-        #profregister-popup
-        {
-            width: 300px;
-    height: 350px;
-border: 1px solid rgb(199, 26, 26);
-display: none;
-margin:auto;
-flex-direction: column;
-z-index: 1;
-background-color: #f0f0f0;
-     border-radius: 5px;
-    padding: 5px 10px 10px 5px;
-    position: fixed;
-    left: 400px;
-    top: 90px;
-    outline: none;
-        }
-
-      .popup{
-    background-color: #f0f0f0;
-     border-radius: 5px;
-    padding: 20px 25px 30px 25px;
-    width: 100%;
-    height: 100%;
-}
-.popup h2{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 30px;
-    color: #30475e;
-    border: none;
-    background-color: transparent;
-    outline: none;
-    font-size: 18px;
-    font-weight: 550;
-  
-}
-.login-btn
-{
-    margin-bottom: 15px;
-}
-
-.popup input{
-    width: 100%;
-    margin-bottom: 8px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid #30475e;
-    border-radius: 0px;
-    padding: 2px 0;
-    font-size: 12px;
-    
-}
-#user-icon
-{
-    padding: 10px;
-    position: relative;
-    display: inline-block;
-
-}
-/* Login Register */
-/* dropdown */
-.paste-button{
-          position: relative;
-          margin: auto;
-     display: inline-block;
-
-        }
-        .dropdown-content
-        {
-            width: 150px;
-            height: 150px;
-            display: none;
-            position: absolute;
-            left: 30px;
-            z-index: 1;
-        }
-        .paste-button:hover .dropdown-content
-        {
-display: block;
-        }
-        .dropdown-content a{
-            display: block;
-            text-decoration: none;
-            background-color: lavender;
-            border: 2px solid black;
-            color: black;
-            height: 25%;
-            border-radius: 5px;
-        }
-        .dropdown-content a:hover{
-            background-color: white;
-        }
-/* dropdown */
-#offuserpopup
-{
-    width: 300px;
-    height: 190px;
+width: 40%;
+margin-right: 100px;
+height: 100%;
 border: 1px solid black;
-margin:auto;
-flex-direction: column;
-margin-top: 100px;
-z-index: 1;
-display: none;
-padding: 10px 10px 20px 10px;
-position: fixed;
-background-color: white;
-left: 450px;
-top: 100px;
-}
-.reset-heading{
+border-radius: 50%;
+position: relative;
+
+        }
+        .box11 img
+        {
+            width:100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 50%;
+            
+        }
+        .box11:hover{
+            border: none;
+        }
+        .box12
+        {
+        
+width: 500px;
+height: 350px;
+border-radius: 20%;
+
+background-color: lavender;
+
+padding: 20px;
+        }
+        .box12:hover{
+            border: 1px solid black;
+        }
+        .heading{
+            font-size: 2rem;
+            font-family: cursive;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .paragraph{
+            padding: 20px;
+            text-align: center;
+            font-family: cursive;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+        .link-button1{
+            width: 110px;
+            height: 45px;
+            border:1px solid grey;
+            background-color: white;
+        position: absolute;
+        right: 25%;
+        font-family: cursive;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 5px;
+        }
+        .link-button2{
+            width: 110px;
+            height: 45px;
+            border:1px solid grey;
+            background-color: white;
+        position: absolute;
+       
+        font-family: cursive;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 5px;
+            margin-left: -40px;
+        }
+
+        /* box2 */
+        .box2{
+            width: 90%;
+            margin: auto;
+            height: 350px;
+            background-color: lavender;
+            border: apx solid black;
+            border-radius: 20px;
+            margin-top: 40px;
+          
+            display: flex;
+            /* justify-content: center; */
+             align-items: center; 
+            flex-direction: column;
+            padding: 40px;
+        }
+        
+        /* box2 */
+        /* box3 */
+.box3
+{
+    width: 96%;
+margin: auto;
+border-radius: 5px;
+    height:400px;
+    margin-top: 70px;
+    background-color: lavender;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
+    flex-direction: row;  
+align-items: center;
+        
 
-#offuserpopup .reset-btn{
-   position: relative;
-   right: 0;
 
 }
-#offuserpopup p{
-    font-size:17px;
-    padding: 35px 5px 15px 5px;
+.box31
+{
+
+  width: 48%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+justify-content: center;
 
 }
-#offuserpopup .sub-btn{
-    width: 150px;
-    height: 50px;
-    background-color: blue;
-    color: white;
-    border: 1px solid blue;
-    border-radius:5px;
-    position: relative;
-    left: 53px;
+.box311
+{
+    
+  width: 60%;
+  height: 60%; 
+  background-color: white;
+  border-radius: 5px;
+  position: relative;
 }
+.box311 img{
+    width: 100%;
+    height: 100%; 
+    border-radius: 5px;
+    position: absolute;
+}
+.box32
+{
+    width: 48%; 
+    height:90%; 
+      background-color: white;
+      margin: auto; 
+      display: flex;
+  align-items: center;
+justify-content: center;
+flex-direction: column;
 
 
+}
+.link-button3{
+            width: 150px;
+            height: 45px;
+            border:1px solid grey;
+            background-color: lavender;
+        position: absolute;
+        font-family: cursive;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 5px;margin-left:-38px;
+        }
+  .third
+        {
+          
+         border-radius: 5px;
+           
+        }
+.box4
+{
+    width: 100%;
+    height:900px;
+    border: 1px solid black;
+    margin-top: 70px;
+    background-color: lavender;
+    
+}
+        /* box3 */
+        .fourth
+        {
+            display: flex;
+            flex-direction: row;
+            height: 400px;
+          padding: 20px;
+          margin-top: 40px;
+          background-color: white;
+        }
+        .box411{
+            width: 40%;
+margin-right: 100px;
+height: 100%;
+border: 1px solid black;
+border-radius: 50%;
+position: relative;
+        }
+        .box411 img{
+            width:100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 50%;
+        }
+        .box412
+        {
+width: 60%;
+height: 350px;
+background-color: lavender;
+padding: 20px;
+        }
     </style>
 </head>
 <body>
-  
-    <nav>
-        <div class="left-nav">
-<img src="assets/images/hello.jpg" alt="#" width="100%" height="100%">
-        </div>
-        <div class="right-nav">
-<ul>
+<nav>
+    <img src="assets/images/meditate.jpg" alt="" id="logo">
+    <ul>
     <li><a href="index.php">Home</a></li>
     <li><a href="resources.php">Resources</a></li>
-    <li><a href="feedback.php">Feedback</a></li>
-    <li><a href="quiz.php">Quizzes</a></li>
-    <li><a href="forum.php">Forum</a></li>
-    
-    <?php
+   <li><a href="forum.php">Forum</a></li>
+   <li><a href="forum.php">About us</a></li>
+   <?php
       if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true)
     {
         ?>
@@ -461,9 +249,9 @@ top: 100px;
     else
     {
         ?>
-      <!-- hello1 -->  
+    
       <div class="paste-button">
-          <button class="button login-button">Login</button>
+          <button class="abutton login-button">Login</button>
           <div class="dropdown-content">
               <a onclick="popupbox('login-popup')">User</a>
               <a onclick="offlogin()">Official User</a>
@@ -471,19 +259,11 @@ top: 100px;
               <a onclick="adminlogin()">Admin</a>
           </div>
       </div> 
-  <!-- hello1 -->
-  
-  <!-- comment -->
-  <!-- <button class="login-button" onclick="popupbox('login-popup')">
-      Login
-      </button> -->
-  <!-- comment -->
-  
-  <!-- hello1 -->
+
        </li>
       <li>
       <div class="paste-button">
-          <button class="button register-button">Register</button>
+          <button class="abutton register-button">Register</button>
           <div class="dropdown-content">
               <a onclick="popupbox('register-popup')">User</a>
               <a onclick="subpopup()">Official User</a>
@@ -492,99 +272,12 @@ top: 100px;
       </div>
        
       </li> 
-      <!-- hello1 -->
+      
        <?php
      }
-    ?>
-</ul>
-        </div>
-
-    </nav>
-
-<!-- official user register -->
-<div id="offuserpopup">
-<h3 class="reset-heading">
-<span>Official user Register</span>
-<button type="reset" onclick="subpopup()" class="reset-btn">X</button></h3>
-<p>You have to subscribe to be a official user</p>
-
-<a href="subscribe.php"><button class="sub-btn">Subscribe Now</button></a>
-</div>
-<!-- official user register -->
-
-
-    <!-- login popup -->
-    <div id="login-popup">
-    <div class="login popup">
-        <form action="userlogin.php" method="POST">
-            <h2 class="reset-heading">
-                <span>User Login</span>
-                <button type="reset" onclick="popupbox('login-popup')">X</button>
-            </h2>
-            <input type="text" placeholder="E-mail or Username" name="email_username" required>
-            <input type="password" placeholder="Password" name="password" required>
-            <button type="submit" class="login-btn" name="submit">Login</button>
-        </form>
-    
-     <button onclick="popupbox('forgot-popup')">Forget password?</button>
-    </div>
-  </div>  
-    <!-- login popup -->
-       <!-- official user login popup -->
-    <div id="offlogin-popup">
-    <div class="login popup">
-        <form action="offlogin.php" method="POST">
-            <h2 class="reset-heading">
-                <span>Official userLogin</span>
-                <button type="reset" onclick="offlogin()">X</button>
-            </h2>
-            <input type="text" placeholder="E-mail or Username" name="email_username" required>
-            <input type="password" placeholder="Password" name="password" required>
-            <button type="submit" class="login-btn" name="submit">Login</button>
-        </form>
-    
-     <button onclick="popupbox('forgot-popup')">Forget password?</button>
-    </div>
-  </div>  
-    <!-- login popup -->
-       <!-- professional login popup -->
-    <div id="proflogin-popup">
-    <div class="login popup">
-        <form action="proflogin.php" method="POST">
-            <h2 class="reset-heading">
-                <span>Professional Login</span>
-                <button type="reset" onclick="proflogin()">X</button>
-            </h2>
-            <input type="text" placeholder="E-mail or Username" name="email_username" required>
-            <input type="password" placeholder="Password" name="password" required>
-            <button type="submit" class="login-btn" name="submit">Login</button>
-        </form>
-    
-     <button onclick="popupbox('forgot-popup')">Forget password?</button>
-    </div>
-  </div>  
-    <!-- login popup -->
-     <!-- admin login popup -->
-     <div id="adminlogin-popup">
-         <div class="login popup">
-             <form action="adminlogin.php" method="POST">
-                 <h2 class="reset-heading">
-                     <span>Admin Login</span>
-                     <button type="reset" onclick="adminlogin()">X</button>
-                     </h2>
-                     <input type="text" placeholder="E-mail or Username" name="email_username" required>
-                     <input type="password" placeholder="Password" name="password" required>
-                     <button type="submit" class="login-btn" name="submit">Login</button>
-                     </form>
-                     
-                     <button onclick="popupbox('forgot-popup')">Forget password?</button>
-                     </div>
-                     </div>  
-                    <!-- admin login popup -->
-
-     <!-- register popup -->
-      
-  <div id="register-popup">
+?>
+<!-- user register -->
+<div id="register-popup">
     <div class="register popup">
         <form action="userregister.php" method="POST" enctype="multipart/form-data">
                 <h2 class="reset-heading">
@@ -601,10 +294,57 @@ top: 100px;
             </form>
         </div>
   </div> 
-     <!-- register popup -->
-       <!-- professional register popup -->
-      
-  <div id="profregister-popup">
+<!-- user register -->
+
+<!-- user login -->
+<div id="login-popup">
+    <div class="login popup">
+        <form action="userlogin.php" method="POST">
+            <h2 class="reset-heading">
+                <span>User Login</span>
+                <button type="reset" onclick="popupbox('login-popup')">X</button>
+            </h2>
+            <input type="text" placeholder="E-mail or Username" name="email_username" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <button type="submit" class="login-btn" name="submit">Login</button>
+        </form>
+    
+     <button onclick="popupbox('forgot-popup')">Forget password?</button>
+    </div>
+  </div>  
+<!-- user login -->
+
+<!-- subscribe now -->
+<div id="offuserpopup">
+<h3 class="reset-heading">
+<span>Official user Register</span>
+<button type="reset" onclick="subpopup()" class="reset-btn">X</button></h3>
+<p>You have to subscribe to be a official user</p>
+
+<a href="subscribe.php"><button class="sub-btn">Subscribe Now</button></a>
+</div>
+<!-- subscribe now -->
+
+<!-- official user login -->
+<div id="offlogin-popup">
+    <div class="login popup">
+        <form action="offlogin.php" method="POST">
+            <h2 class="reset-heading">
+                <span>Official userLogin</span>
+                <button type="reset" onclick="offlogin()">X</button>
+            </h2>
+            <input type="text" placeholder="E-mail or Username" name="email_username" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <button type="submit" class="login-btn" name="submit">Login</button>
+        </form>
+    
+     <button onclick="popupbox('forgot-popup')">Forget password?</button>
+    </div>
+  </div>  
+<!-- official user login -->
+
+<!-- professional register -->
+<div id="profregister-popup">
     <div class="register popup">
         <form action="profregister.php" method="POST" enctype="multipart/form-data">
                 <h2 class="reset-heading">
@@ -624,182 +364,113 @@ top: 100px;
         
         </div>
   </div> 
-     <!-- professional register popup -->
-     
- <section class="welcome">
-    <img src="assets/images/hello.jpg" alt="#">
- </section>
- <section class="services">
-    <h1>Services</h1>
-    <div class="servicesbox">
-        <div class="serviceimg">
-        <img src="assets/images/hello.jpg" alt="" width="100%" height="100%"></div>
-<h4>Yoga</h4>
-<p>
-    Lorem ipsum dolor, sit amet consectetur adipi
-    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
+<!-- professional register -->
+
+<!-- professional login -->
+<div id="proflogin-popup">
+    <div class="login popup">
+        <form action="proflogin.php" method="POST">
+            <h2 class="reset-heading">
+                <span>Professional Login</span>
+                <button type="reset" onclick="proflogin()">X</button>
+            </h2>
+            <input type="text" placeholder="E-mail or Username" name="email_username" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <button type="submit" class="login-btn" name="submit">Login</button>
+        </form>
+    
+     <button onclick="popupbox('forgot-popup')">Forget password?</button>
+    </div>
+  </div>  
+<!-- professional login -->
+
+<!-- admin login -->
+<div id="adminlogin-popup">
+         <div class="login popup">
+             <form action="adminlogin.php" method="POST">
+                 <h2 class="reset-heading">
+                     <span>Admin Login</span>
+                     <button type="reset" onclick="adminlogin()">X</button>
+                     </h2>
+                     <input type="text" placeholder="E-mail or Username" name="email_username" required>
+                     <input type="password" placeholder="Password" name="password" required>
+                     <button type="submit" class="login-btn" name="submit">Login</button>
+                     </form>
+                     
+                     <button onclick="popupbox('forgot-popup')">Forget password?</button>
+                     </div>
+                     </div>
+<!-- admin login -->
+    </ul>
+</nav>
+<div class="box1 first">
+    <div class="box11">
+        <img src="assets/images/meditate.jpg" alt="">
+    </div>
+    <div class="box12">
+        <h1 class="heading">
+            Why us?
+        </h1>
+        <p class="paragraph"> hic soluta ullam tenetur perspiciatis quidem laboriosam quia asperiores dolorem, magni ipsam deserunt, quas, adipisci minima beatae fuga corporis aliquid aperiam laudantium! Expedita, fugit repudiandae distinctio ea eaque, totam perspiciatis, dolore omnis veritatis dolor reiciendis quos quidem esse. Quidem!</p>
+        <a href="aboutus.php"><button class="link-button1">About us</button></a>
+    </div>
+
+</div>
+<div class="box2">
+<h1 class="heading">
+            Resources
+        </h1>
+        <p class="paragraph">We provide you resources for being more clear about mental health.
+            You can access our best articles. We also provide the articles concerning the recent problems about mental health problems in Nepal.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus, eveniet est nulla sunt molestias commodi praesentium maxime delectus tenetur libero.
+        </p>
+        <a href="resources.php"><button class="link-button2">Click Here</button></a>
+</div>
+
+<div class="box3">
+<div class="box31 third">
+<div class="box311">
+<img src="assets/images/company.jpg" alt="Not found">
+</div>
+</div>
+<div class="box32 third">
+<h1 class="heading">Forum panel</h1>
+<p class="paragraph">Sometimes all we need to do is spill our heart. We need to accept our story and move on.
+    You can share your stories to the world. Not just stories, You can write articles and post. just write and post...and connect to the world.
 </p>
-<a href="yoga.php"><button>Yoga</button></a>
+<a href="resources.php"><button class="link-button3">open Discussion Forum</button></a>
+</div>
+</div>
+<div class="box4">
+    <h1 class="heading">Our Services</h1>
+    <div class="box41 fourth">
+    
+    <div class="box411">
+        <img src="assets/images/stoptime.jpg" alt="">
     </div>
-   
-    <div class="servicesbox">
-        <div class="serviceimg">
-        <img src="assets/images/hello.jpg" alt="" width="100%" height="100%"></div>
-<h4>Yoga</h4>
-<p>
-    Lorem ipsum dolor, sit amet consectetur adipi
-    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
-</p>
-<a href="yoga.php"><button>Yoga</button></a>
+    <div class="box412">
+        <h1 class="heading">
+           Yoga and Online Counsil
+        </h1>
+        <p class="paragraph">We provide online council and yoga session. If you are interested on
+             joining us, please be a official user and connect with us. </p>
+        <a><button class="link-button1" onclick="subpopup()">Subscribe Now</button></a>
     </div>
-   
-    <div class="servicesbox">
-        <div class="serviceimg">
-        <img src="assets/images/hello.jpg" alt="" width="100%" height="100%"></div>
-<h4>Yoga</h4>
-<p>
-    Lorem ipsum dolor, sit amet consectetur adipi
-    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
-</p>
-<a href="yoga.php"><button>Yoga</button></a>
     </div>
-   
-    <div class="servicesbox">
-        <div class="serviceimg">
-        <img src="assets/images/hello.jpg" alt="" width="100%" height="100%"></div>
-<h4>Yoga</h4>
-<p>
-    Lorem ipsum dolor, sit amet consectetur adipi
-    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
-</p>
-<a href="yoga.php"><button>Yoga</button></a>
+    <div class="box42 fourth">
+    <div class="box412">
+        <h1 class="heading">
+           Yoga and Online Counsil
+        </h1>
+        <p class="paragraph">We provide online council and yoga session. If you are interested on
+             joining us, please be a official user and connect with us. </p>
+        <a><button class="link-button1" onclick="subpopup()">Subscribe Now</button></a>
     </div>
-   
-    <div class="servicesbox">
-        <div class="serviceimg">
-        <img src="assets/images/hello.jpg" alt="" width="100%" height="100%"></div>
-<h4>Yoga</h4>
-<p>
-    Lorem ipsum dolor, sit amet consectetur adipi
-    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
-</p>
-<a href="yoga.php"><button>Yoga</button></a>
+    <div class="box411">
+        <img src="assets/images/stoptime.jpg" alt="">
     </div>
-    <div class="servicesbox">
-        <div class="serviceimg">
-        <img src="assets/images/hello.jpg" alt="" width="100%" height="100%"></div>
-<h4>Yoga</h4>
-<p>
-    Lorem ipsum dolor, sit amet consectetur adipi
-    repudiandae ratione quas mollitia nulla magnam. elit. Fugiat ad impedit quae ipsam. Nulla!
-</p>
-<a href="yoga.php"><button>Yoga</button></a>
     </div>
- </section>
-
- 
- <section class="whyus">
-    <h4>Why us?</h4>
-    <div class="whyusbox">
-        <div class="wcontent"></div>
-        <div class="wimage">
-            <img src="assets/images/hello.jpg" alt="" width="100%" height="100%">
-        </div>
-    </div>
- </section>
- <section class="footer">
-    <footer>
-        
-    </footer>
- </section>
- <script>
-    // user login and register
-    function popupbox(popupname)
-    {
-        let x=document.getElementById(popupname);
-        
-        if(x.style.display=="none")
-        {
-            x.style.display="flex";
-            }
-            else{
-                x.style.display="none";
-                }
-                }
-            // user login and register
-
-
-            // official user register
-            function subpopup()
-            {
-                let x=document.getElementById('offuserpopup');
-                if(x.style.display=="none")
-                {
-                    x.style.display="flex";
-                    }
-                    else{
-                        x.style.display="none";
-                        }
-                        }
-                    // official user register
-
-                    // professional register
-                    function profregpopup()
-                    {
-                        let x=document.getElementById('profregister-popup');
-                        if(x.style.display=="none")
-                        {
-                            x.style.display="flex";
-                            }
-                            else{
-                                x.style.display="none";
-                                }
-                                }
-                                // professional register
-                                
-                    // professional login
-                    function proflogin()
-                    {
-                        let x=document.getElementById('proflogin-popup');
-                        if(x.style.display=="none")
-                        {
-                            x.style.display="flex";
-                            }
-                            else{
-                                x.style.display="none";
-                                }
-                                }
-                                // professional login
-
-                                // official user login
-                                function offlogin()
-                                {
-                                    let x=document.getElementById('offlogin-popup');
-                                    if(x.style.display=="none")
-                                    {
-                                        x.style.display="flex";
-                                        }
-                                        else{
-                                            x.style.display="none";
-                                            }
-                                            }
-                                        // official user login
-
-
-                                        // admin login
-                                        function adminlogin()
-                                        {
-                                            let x=document.getElementById('adminlogin-popup');
-                                            if(x.style.display=="none")
-                                            {
-                                                x.style.display="flex";
-                                                }
-                                                else{
-                                                    x.style.display="none";
-                                                    }
-                                                    }
-                                                // admin login
-
-                                                    </script>
+</div>
+<script src="assets/js/script.js"></script>
 </body>
 </html>
