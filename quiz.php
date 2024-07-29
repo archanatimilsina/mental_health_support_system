@@ -5,6 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quizzes(official)</title>
 </head>
+<style>
+    body
+    {
+        height:1000px;
+        background: url("assets/images/f.jpg") no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+</style>
 <body>
     
 </body>

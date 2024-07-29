@@ -12,12 +12,21 @@
             padding: 0;
             box-sizing: border-box;
         }
+        body
+    {
+        
+        background: url("../assets/images/f.jpg") no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
         .addquiz
         {
             width: 80%;
             height:550px;
             margin: auto;
             border: 1px solid black;
+            margin-top:70px;
+            margin-buttom:70px;
         }
         .addquiz form{
             width: 100%;
