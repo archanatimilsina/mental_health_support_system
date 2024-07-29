@@ -123,7 +123,7 @@ font-size: 22px;
     <?php
     if(isset($_POST['submit']))
         {
-            $question=$_POST['question']; 
+$question=$_POST['question']; 
 $option1=$_POST['option1'];
 $value1=$_POST['value1'];
 $option2=$_POST['option2'];

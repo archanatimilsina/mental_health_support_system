@@ -26,6 +26,7 @@ if(password_verify($password,$data['password']))
 {
     $_SESSION['logged_in']=true;
     $_SESSION['userpanel']['username']=$data['username'];
+    $_SESSION['userpanel']['profile']=$data['profile'];
     $_SESSION['userpanel']['fullname']=$data['fullname'];
     $_SESSION['userpanel']['account_type']='user';
     $_SESSION['userpanel']['email']=$data['email'];

@@ -23,7 +23,7 @@ session_start();
             margin: auto;
             margin-top: 40px;
             padding: 20px;
-            background-color:sandybrown;
+            background-color:lavender;
         }
         .addpost h1{
             text-align: center;
@@ -81,14 +81,16 @@ if(isset($_POST['submit']))
     $fullname=$_SESSION['userpanel']['fullname'];
      $account_type=$_SESSION['userpanel']['account_type'];
     $username=$_SESSION['userpanel']['username'];
+    $profile=$_SESSION['userpanel']['profile'];
 $post=$_POST['post'];
+
 
 if($post!="")
 {
    
-$insert_query="INSERT INTO posts (pfullname,account_type,post,pusername) values ('$fullname','$account_type','$post','$username')";
+$insert_query="INSERT INTO posts (profile,pfullname,account_type,post,pusername) values ('$profile','$fullname','$account_type','$post','$username')";
 $result=mysqli_query($con,$insert_query);
-}
+
 if($result)
 {
       
@@ -105,5 +107,12 @@ else{
     </script>";
 }
 }
-
+else
+{
+    echo" <script>
+    alert('You have to put contents');
+    window.location.href='createpost.php';
+    </script>";
+}
+}
 ?>

@@ -3,26 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home page</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c5a4938a4c.js" crossorigin="anonymous"></script>
     <style>
+        body
+        {
+         background-color: lavender;
+        }
+        .chatbox{
+display: inline-block;
+width: 60px;
+height: 60px;
+position:fixed;
+right: 90px;
+bottom: 90px;
+z-index: 50;
+}
+.chatbox i
+{
+    width: 60px;
+    font-size: 100px;
+   /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); */ 
+}
+
+/* .chatbox i:hover{
+font-size: 0px;
+
+  
+} */
         .box1
         {
             display: flex;
             flex-direction: row;
-           
+          
             height: 400px;
           padding: 20px;
           margin-top: 30px;
+          width: 90%;
+          margin: auto;
+border: 3px solid white;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); 
+          border-radius: 20px;
+          
+          /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); */
         }
         .box11
         {
 width: 40%;
 margin-right: 100px;
 height: 100%;
-border: 1px solid black;
+
 border-radius: 50%;
 position: relative;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 
         }
         .box11 img
@@ -34,7 +69,7 @@ position: relative;
             
         }
         .box11:hover{
-            border: none;
+          border: 1px solid black; 
         }
         .box12
         {
@@ -42,13 +77,13 @@ position: relative;
 width: 500px;
 height: 350px;
 border-radius: 20%;
-
+border: 1px solid black;
 background-color: lavender;
 
 padding: 20px;
         }
         .box12:hover{
-            border: 1px solid black;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
         .heading{
             font-size: 2rem;
@@ -56,6 +91,13 @@ padding: 20px;
             font-weight: bold;
             text-align: center;
             margin-top: 10px;
+        }
+        .heading-top{
+            font-size: 2rem;
+            font-family: cursive;
+            font-weight: bold;
+            text-align: center;
+       
         }
         .paragraph{
             padding: 20px;
@@ -68,7 +110,7 @@ padding: 20px;
         .link-button1{
             width: 110px;
             height: 45px;
-            border:1px solid grey;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
             background-color: white;
         position: absolute;
         right: 25%;
@@ -80,8 +122,8 @@ padding: 20px;
         .link-button2{
             width: 110px;
             height: 45px;
-            border:1px solid grey;
-            background-color: white;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            background-color: lavender;
         position: absolute;
        
         font-family: cursive;
@@ -96,16 +138,17 @@ padding: 20px;
             width: 90%;
             margin: auto;
             height: 350px;
-            background-color: lavender;
-            border: apx solid black;
+            background-color: white;
+         
             border-radius: 20px;
             margin-top: 40px;
-          
+            border: 1px solid black;
             display: flex;
             /* justify-content: center; */
              align-items: center; 
             flex-direction: column;
             padding: 40px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
         
         /* box2 */
@@ -121,7 +164,8 @@ border-radius: 5px;
     display: flex;
     flex-direction: row;  
 align-items: center;
-        
+        /* border: 1px solid black; */
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 
 
 }
@@ -160,19 +204,31 @@ justify-content: center;
   align-items: center;
 justify-content: center;
 flex-direction: column;
-
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 
 }
 .link-button3{
             width: 150px;
             height: 45px;
-            border:1px solid grey;
+          
             background-color: lavender;
         position: absolute;
         font-family: cursive;
             font-weight: bold;
             font-size: 1rem;
             margin-top: 5px;margin-left:-38px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+        .link-button4{
+            width: 200px;
+            height: 45px;
+           
+            background-color: white;
+            font-family: cursive;
+            font-weight: bold;
+            font-size: 1rem;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+           
         }
   .third
         {
@@ -183,22 +239,30 @@ flex-direction: column;
 .box4
 {
     width: 100%;
-    height:900px;
-    border: 1px solid black;
+    height:1510px;
+  
     margin-top: 70px;
     background-color: lavender;
+  
     
 }
         /* box3 */
         .fourth
         {
+            width: 90%;
+            margin: auto;
             display: flex;
             flex-direction: row;
             height: 400px;
           padding: 20px;
-          margin-top: 40px;
+          margin-top: 80px;
           background-color: white;
+          border-radius: 10px;
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
         }
+       .fourth:hover{
+     border: 1px solid whitesmoke;
+       }
         .box411{
             width: 40%;
 margin-right: 100px;
@@ -220,15 +284,53 @@ height: 350px;
 background-color: lavender;
 padding: 20px;
         }
+        
+        .box422
+        {
+            width: 40%;  
+            height: 100%;
+            border: 1px solid black;
+            border-radius: 50%;
+            position: relative;
+            margin-left: 40px;
+        }
+        .box422 img{
+            width:100%;
+            height: 100%;
+            position: absolute;
+            border-radius: 50%;
+           
+        }
+        .box421
+        {
+width: 60%;
+height: 350px;
+background-color: lavender;
+padding: 20px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+        }
+        footer{
+            width: 100%;
+            height: 350px;
+            background-color: lavender;
+            margin-top: 70px;
+            border: 1px solid black;
+        }
     </style>
 </head>
 <body>
+    <!-- <i class="fa-solid fa-message fa-xlg" style="color: #555555;" title="Open Chatbox"></i> -->
+<a href="index.php" class="chatbox"><i class="fa-solid fa-comment-sms" style="color:purple;" title="Open Chatbox"></i></a>
 <nav>
     <img src="assets/images/meditate.jpg" alt="" id="logo">
     <ul>
     <li><a href="index.php">Home</a></li>
     <li><a href="resources.php">Resources</a></li>
    <li><a href="forum.php">Forum</a></li>
+   <li><a href="quiz.php">Quizzes</a></li>
    <li><a href="forum.php">About us</a></li>
    <?php
       if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true)
@@ -442,7 +544,7 @@ padding: 20px;
 </div>
 </div>
 <div class="box4">
-    <h1 class="heading">Our Services</h1>
+    <h1 class="heading-top">Our Services</h1>
     <div class="box41 fourth">
     
     <div class="box411">
@@ -458,6 +560,23 @@ padding: 20px;
     </div>
     </div>
     <div class="box42 fourth">
+    <div class="box421">
+        <h1 class="heading">
+           Quizzes
+        </h1>
+        <p class="paragraph">We provide you mental health quizzes from which we can report your mental health status.
+            </p>
+        <a href="quiz.php"><button class="link-button4">Test your mental health</button></a>
+    </div>
+    <div class="box422">
+        <img src="assets/images/fly.jpg" alt="not found">
+    </div>
+    </div>
+    <div class="box41 fourth">
+    
+    <div class="box411">
+        <img src="assets/images/yes.jpg" alt="">
+    </div>
     <div class="box412">
         <h1 class="heading">
            Yoga and Online Counsil
@@ -466,11 +585,12 @@ padding: 20px;
              joining us, please be a official user and connect with us. </p>
         <a><button class="link-button1" onclick="subpopup()">Subscribe Now</button></a>
     </div>
-    <div class="box411">
-        <img src="assets/images/stoptime.jpg" alt="">
-    </div>
     </div>
 </div>
+<!-- <a href="index.php" class="chatbox"><i class="fa-solid fa-message fa-xlg" style="color: #63E6BE;" title="Open Chatbox"></i></a> -->
+<footer>
+
+</footer>
 <script src="assets/js/script.js"></script>
 </body>
 </html>
