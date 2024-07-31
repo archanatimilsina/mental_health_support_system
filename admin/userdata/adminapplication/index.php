@@ -44,13 +44,15 @@ font-size: 18px;
 .adapplication-table table tr td{
 text-align: center;
 font-size: 19px;
+
+
 }
 
 #accept-btn
 {
   width: 80px;
   height: 35px;
-  border: black solid 1px;
+ 
   margin-top: 50%;
   margin-left:10px;
    background-color: Green; 
@@ -65,13 +67,12 @@ font-size: 19px;
   margin-top: 50%;
  margin-left:10px;
    background-color: Red; 
-   border: black solid 1px;
-  color: Black;
 }
+
 #response-col{
-    padding: 5px;
+    padding:15px;
     display: flex;
-    flex-direction: row;
+     flex-direction: row; 
     justify-content: center;
     align-items: center;
  

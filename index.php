@@ -322,7 +322,7 @@ align-items: center;
     </style>
 </head>
 <body>
-    <!-- <i class="fa-solid fa-message fa-xlg" style="color: #555555;" title="Open Chatbox"></i> -->
+
 <a href="index.php" class="chatbox"><i class="fa-solid fa-comment-sms" style="color:purple;" title="Open Chatbox"></i></a>
 <nav>
     <img src="assets/images/meditate.jpg" alt="" id="logo">
@@ -331,7 +331,7 @@ align-items: center;
     <li><a href="resources.php">Resources</a></li>
    <li><a href="forum.php">Forum</a></li>
    <li><a href="quiz.php">Quizzes</a></li>
-   <li><a href="forum.php">About us</a></li>
+   <li><a href="admin/admin.php">About us</a></li>
    <?php
       if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true)
     {

@@ -106,9 +106,7 @@ if($result1)
 {
     echo" <script>
 alert('Registration successful');
-window.location.href='index.php';
 </script>";
-
 $remove_query="Delete from aapplication where a_id='$id'";
 $remove_result=mysqli_query($con,$remove_query);
 

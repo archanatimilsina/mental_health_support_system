@@ -68,6 +68,7 @@ session_start();
     <div class="addpost">
         <h1>Create New Post</h1>
 <form action="#" method="POST">
+    <input type="file" name="postimg">
 <input type="text" placeholder="Write Here" max-length="1000" id="post" name="post">
 <input type="submit" value="Post" id="submit-btn" name="submit">
 </form>
@@ -77,7 +78,10 @@ session_start();
 <?php 
 if(isset($_POST['submit']))
 {
-  
+    $filename=$_FILES['postimg']['name'];
+$tmpname=$_FILES['postimg']['tmp_name'];
+$folder="uploads/".$filename;
+move_uploaded_file($tmpname,$folder);
     $fullname=$_SESSION['userpanel']['fullname'];
      $account_type=$_SESSION['userpanel']['account_type'];
     $username=$_SESSION['userpanel']['username'];
@@ -88,7 +92,7 @@ $post=$_POST['post'];
 if($post!="")
 {
    
-$insert_query="INSERT INTO posts (profile,pfullname,account_type,post,pusername) values ('$profile','$fullname','$account_type','$post','$username')";
+$insert_query="INSERT INTO posts (profile,pfullname,account_type,post,pusername,postimg) values ('$profile','$fullname','$account_type','$post','$username','$folder')";
 $result=mysqli_query($con,$insert_query);
 
 if($result)

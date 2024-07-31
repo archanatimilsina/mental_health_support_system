@@ -16,6 +16,14 @@
     $query1="Delete FROM aapplication where aaid='$id'";
     $result1=mysqli_query($con,$query1);
 
+    if($result1)
+    {
+        
+    echo" <script>
+    alert('Admin application REJECTED!!');
+    window.location.href='index.php';
+    </script>";
+    }
     }
     ?>
 </body>

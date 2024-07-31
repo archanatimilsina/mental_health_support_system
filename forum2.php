@@ -82,7 +82,7 @@ list-style-type: none;
             margin: auto;
              /* border: 1px solid black;  */
              box-shadow: 0 2px 6px rgba(0,0,0,0.5);
-          height: 700px;
+          height: 350px;
            
             margin-top: 40px;
         }
@@ -281,20 +281,6 @@ border-radius: 50%
     flex-direction: column;
 
 }
-.postimg
-{
-    width:300px;
-    height: 300px;
-    margin: auto;
-    position: relative;
-}
-.postimg img{
-   width:100%;
-   height: 100%;
-  
-
-}
-
     </style>
 </head>
 <body>
@@ -341,11 +327,9 @@ $name=$data['pfullname'];
 $username=$data['pusername'];
 $posttime=$data['created_at'];
 $account_type=$data['account_type'];
-$postimg=$data['postimg'];
 $post=$data['post'];
 $star_count=$data['star'];
 $comment=$data['comment'];
-
 ?>
     <div class="post-containeer">
         <div class="post-head">
@@ -372,17 +356,12 @@ $comment=$data['comment'];
         </div>
         </div>
         <div class="post-body">
-            <div class="postimg">
-<img src="<?php echo $postimg;?>" alt="">
-            </div>
-            <div class="post">
-                <?php echo $post; ?>
-            </div>
+        <?php echo $post; ?>
         </div>
         <div class="post-footer">
             <div class="fh star">
                 <div class="star-icon">
-                    <i class="fa-solid fa-star fa-sm" style="color: red" onclick="starcount()"></i>
+                    <i class="fa-solid fa-star fa-sm" onclick="starcount()"></i>
                 </div>
                 <div class="star-count">1000</div>
             </div>
