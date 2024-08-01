@@ -13,14 +13,14 @@
     if(isset($_GET['id']))
     {
     $id=$_GET['id'];
-    $query1="Delete FROM aapplication where aaid='$id'";
+    $query1="Delete FROM papplication where paid='$id'";
     $result1=mysqli_query($con,$query1);
 
     if($result1)
     {
         
     echo" <script>
-    alert('Admin application REJECTED!!');
+    alert('professional application REJECTED!!');
     window.location.href='index.php';
     </script>";
     }

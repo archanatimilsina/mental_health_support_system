@@ -61,7 +61,7 @@ display: flex;
 <button type="reset" onclick="subpopup1()" class="reset-btn">X</button></h3>
 <form action="accept.php" method="POST">
 <p>Enter the secret code:</p>
-<input type="password" class="scode-input" placeholder="Upto 5 character" name="scode">
+<input type="password" class="scode-input" placeholder="Upto 5 character" name="profcode">
 <input type="hidden" value="<?php echo $_GET['id'];?>" name="urlid" class="">
     <input type="submit" value="submit" name="submit">
 </form>
@@ -70,8 +70,8 @@ display: flex;
   if(isset($_POST['submit']))
   {
         $id=$_POST['urlid'];
-       $scode=$_POST['scode']; 
-$query1="SELECT * FROM aapplication where aaid='$id' ";
+       $profcode=$_POST['profcode']; 
+$query1="SELECT * FROM papplication where paid='$id' ";
 $result=mysqli_query($con,$query1);
 $data=mysqli_fetch_array($result);
 
@@ -83,7 +83,7 @@ $phnum=$data['phnum'];
 $email=$data['email'];
 $password=$data['password'];
 $created_at=$data['created_at'];
-$check_query="SELECT * FROM admin WHERE email='$email'";
+$check_query="SELECT * FROM professional WHERE email='$email'";
 $check_result=mysqli_query($con,$check_query);
 $data1=mysqli_fetch_array($check_result);
 if($check_result)
@@ -100,22 +100,21 @@ if($email=$data1['email'])
 }
 else{ 
     
-$insert_query="INSERT INTO admin (profile, fullname, username, address, phnum, email, password, scode, created_at) VALUES('$profile','$fullname','$username','$address','$phnum','$email','$password','$scode','$created_at')";
+$insert_query="INSERT INTO professional (profile, fullname, username, address, phnum, email, password, pcode, created_at) VALUES('$profile','$fullname','$username','$address','$phnum','$email','$password','$profcode','$created_at')";
 $result1=mysqli_query($con,$insert_query);
 if($result1)
 {
     echo" <script>
 alert('Registration successful');
 </script>";
-$remove_query="Delete from aapplication where a_id='$id'";
+$remove_query="Delete from papplication where paid='$id'";
 $remove_result=mysqli_query($con,$remove_query);
 
 if($remove_result)
 {
     
     echo" <script>
-    alert('Deleted from applkal');
-    
+     window.location.href='index.php';
     </script>";
 }
 }

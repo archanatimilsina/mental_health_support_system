@@ -107,15 +107,15 @@ if($result1)
     echo" <script>
 alert('Registration successful');
 </script>";
-$remove_query="Delete from aapplication where a_id='$id'";
+$remove_query="Delete from aapplication where aaid='$id'";
 $remove_result=mysqli_query($con,$remove_query);
 
 if($remove_result)
 {
     
     echo" <script>
-    alert('Deleted from applkal');
-    
+   
+        window.location.href='index.php';
     </script>";
 }
 }

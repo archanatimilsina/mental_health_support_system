@@ -87,7 +87,7 @@ font-size: 19px;
 {
     text-align: center;
     font-size: 27px;
-    font-family: cursive
+    font-family: cursive;
 }
 #offuserpopup
 {
@@ -179,7 +179,7 @@ top: 100px;
 </head>
 <body>
     <section class="adapplication">
-        <h1 id="adapplication-head">Admin Register Application</h1>
+        <h1 id="adapplication-head">Professional Register Application</h1>
         <div class="adapplication-table">
             <table>
                 <thead>
@@ -197,7 +197,7 @@ top: 100px;
                 </thead>
                 <tbody>
                     <?php
-$query="SELECT * from aapplication";
+$query="SELECT * from papplication";
 $result=mysqli_query($con,$query);
 $n=1;
 while($data=mysqli_fetch_array($result))
@@ -217,30 +217,30 @@ while($data=mysqli_fetch_array($result))
     <td><?php echo $data['created_at'] ?></td>
     <td id="response-col">
         <a><button id="accept-btn"  onclick="subpopup()">Accept</button></a>
-        <a href="reject.php?id=<?php echo $data['aaid'];?>"><button id="reject-btn" >Reject</button></a>
+        <a href="reject.php?id=<?php echo $data['paid'];?>"><button id="reject-btn" >Reject</button></a>
     </td>
 </tr>   
 </div>
     </section>
     <div id="offuserpopup">
 <h3 class="reset-heading">
-<span>Admin Application</span>
+<span>Professional Application</span>
 <button type="reset" onclick="subpopup()" class="reset-btn">X</button></h3>
 <p>Are You sure You want to accept Application?</p>
 <div class="buttons">
-    <a href="accept.php?id=<?php echo $data['aaid'];?>"><button >Yes,Sure</button></a>
+    <a href="accept.php?id=<?php echo $data['paid'];?>"><button >Yes,Sure</button></a>
     <a href="#"><button onclick="subpopup()">No</button></a>
 </div>
 <!-- onclick="subpopup1()" -->
 </div>
 <div id="offuserpopup1">
 <h3 class="reset-heading">
-<span>Admin Application</span>
+<span>professional Application</span>
 <button type="reset" onclick="subpopup1()" class="reset-btn">X</button></h3>
 <form action="accept.php" method="GET">
 <p>Enter the secret code:</p>
 <input type="password" class="scode-input" placeholder="Upto 5 character" name="scode">
-    <a href="accept.php?id=<?php echo $data['aaid'];?>"><input type="submit" value="submit" name="submit"></a>
+    <a href="accept.php?id=<?php echo $data['prof_id'];?>"><input type="submit" value="submit" name="submit"></a>
 </form>
 </div>
     <?php
