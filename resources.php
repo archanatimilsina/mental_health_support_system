@@ -1,4 +1,106 @@
-<?php include('connection.php'); ?>
+<?php include('connection.php'); 
+// get page
+if($_GET['page1'])
+{
+  $page1=$_GET['page1'];
+  
+}
+else{
+  $page1=1;
+}
+if($_GET['page2'])
+{
+  $pgae2=$_GET['page2'];
+}
+else{
+  $page2=1;
+}
+
+if($_GET['page3'])
+{
+  $page3=$_GET['page3'];
+}
+else{
+  $page3=1;
+}
+if($_GET['page4'])
+{
+  $page4=$_GET['page4'];
+}
+else{
+  $page4=1;
+}
+// get page
+
+// initialize limit 
+$limit1=3; //articles
+$limit2=4; //books
+$limit3=5; //videos
+$limit4=4; //health supporter
+// initialize limit
+
+// calculate offset
+$offset1=($page1-1)*$limit1;
+$offset2=($page2-1)*$limit2;
+$offset3=($page3-1)*$limit3;
+$offset4=($page4-1)*$limit4;
+// calculate offset
+
+// take data from database
+// articles
+$query1="SELECT * FROM articles LIMIT $offset1,$limit1";
+$result1=mysqli_query($con,$query1);
+// articles
+
+// books
+$query2="SELECT * FROM Books LIMIT $offset2, $limit2";
+$result2=mysqli_query($con,$query2);
+// books
+
+// videos
+$query3="SELECT * FROM videos LIMIT $offset3,$limit3";
+$result3=mysqli_query($con,$query3);
+// videos
+
+// health supporter
+$query4="SELECT * FROM supporter LIMIT $offset4,$limit4";
+$result4=mysqli_query($con,$query4);
+// health supporter
+// take data from database
+?>
+<?php
+//extract data from database to check total_record and calculate total_page we can make
+
+//articles
+$aquery="SELECT * FROM articles";
+$aresult=mysqli_query($con,$aquery);
+$trecord1=mysqli_num_rows($aresult);
+$tpage1=ceil($trecord1/$limit1);
+//articles
+
+// books
+$bquery="SELECT * FROM books";
+$bresult=mysqli_query($con,$bquery);
+$trecord2=mysqli_num_rows($bresult);
+$tpage2=ceil($trecord2/$limit2);
+// books
+
+// videos
+$vquery="SELECT * FROM videos";
+$vresult=mysqli_query($con,$vquery);
+$trecord3=mysqli_num_rows($vresult);
+$tpage3=ceil($trecord3/$limit3);
+// videos
+
+// supporter
+$squery="SELECT * FROM supporter";
+$sresult=mysqli_query($con,$squery);
+$trecord4=mysqli_num_rows($sresult);
+$tpage4=ceil($trecord4/$limit4);
+// supporter
+
+//extract data from database to check total_record and calculate total_page we can make
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -79,7 +181,14 @@ border: 1px solid black;
   height:170px;
   border:1px solid black;
   margin: auto;
-  
+  position: relative;
+
+}
+.img img{
+  position: absolute;
+  width: 170px;
+  height: 170px;
+
 }
 .topic{
   width: 100%;
@@ -114,35 +223,93 @@ border: 1px solid black;
   Articles
 </h1>
   <div class="main-block">
-
+<!-- box 1 -->
+ <?php
+ while($data1=mysqli_fetch_array($result1))
+ {
+ ?>
 <div class="box1">
-<div class="img">
-
-</div>
-<div class="topic">
-  
-</div>
-<div class="summary">
-Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non exercitationem vero doloremque veritatis amet a cupiditate, neque, eaque eum, officiis sint fuga. Earum qui necessitatibus possimus esse aut, itaque assumenda, alias dignissimos consectetur saepe, vitae culpa? Aperiam veritatis ab optio velit a sunt inventore. Quo maxime dignissimos velit nihil quae.
-</div>
-<div class="acces-btn">
-
-</div>
-
-</div>
-<div class="box1">
-
-
-</div><div class="box1">
-
-
-</div>
+  <div class="img">
+    <img src="<?php $data['profile']; ?>" alt="">
+    </div>
+    <div class="topic">
+    <?php $data1['writer'];  ?>
+      </div>
+      <div class="summary">
+        <p><?php $data1['content']; ?></p>
+        </div>
+      </div> 
+     
+    <?php
+    }
+    ?>
+      <!-- box 1 -->
+       <?php 
+      //  print page numbers
+if($page1>1)
+{
+echo '<a href="resources.php?page1='.($page1-1).'" class="prev-btn">Previous</a>'  ;
+}
+      for($i=1; $i<=$tpage1; $i++)
+      {
+echo '<a href="resources.php?page1='.$i.'" class="page-btn">'.$i.'</a>';
+      }
+      if($page1<$tpage1)
+      {
+echo '<a href="resources.php?page1='.($page1+1).'" class="next-btn">Next</a>';
+      }
+      // print page numbers
+       ?>
   </div>
   <div class="main-block">
-    
+  <?php 
+  if($page2>1)
+  {
+    echo '<a href="resources.php?page2='.($page2-1).'" class="prev-btn">Previous</a>';
+  }
+  for($j=1; $j<=$tpage2; $j++)
+  {
+    echo '<a href="resources.php?page2='.$j.'" class="page-btn">'.$j.'</a>';
+  }
+  if($page2<$tpage2)
+  {
+echo '<a href="resources.php?page2='.($page2+1).'" class="next-btn">Next</a>';
+  }
+  ?>
     </div>
     <div class="main-block">
-    
+    <?php 
+    if($page3>1)
+    {
+echo '<a href="resources.php?page3='.($page3-1).'" class="prev-btn">Previous</a>';
+    }
+    for($k=1; $k<=$tpage3; $k++)
+    {
+      echo '<a href="resources.php?page3='.$k.'" class="page-btn">'.$k.'</a>';
+    }
+    if($page3<$tpage3)
+    {
+      echo '<a href="resources.php?page3='.($page3+1).'" class="next-btn">Next</a>';
+    }
+    ?>
+    </div>
+    <div class="main-block">
+<?php
+if($page4>1)
+{
+  echo '<a href="resources.php?page4='.($page4-1).'" class="prev-btn">Previous</a>';
+
+}
+for($l=1; $l<=$tpage4; $l++) 
+{
+  echo '<a href="resources.php?page3='.$l.'" class="page-btn">'.$l.'</a>';
+}
+if($page4<$tpage4)
+{
+  echo '<a href="resources.php?page4='.($page4+1).'" class="next-btn">Next</a>';
+
+}
+?>
     </div>
 </body>
 </html>

@@ -63,7 +63,7 @@ $result1 = mysqli_query($con, $query1);
 
 
     }
-    if ($page < ($i - 1)) {
+    if ($page < ($total_page)) {
         echo '<a href="pagination.php?page=' . ($page + 1) . '">Next</a>';
     }
     ?>
