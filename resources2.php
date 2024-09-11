@@ -1,6 +1,5 @@
 <?php 
-
-
+require('connection.php')
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,78 +16,188 @@
         padding: 0;
         box-sizing: border-box;
      }
-body{
-  background-color: lavender;
-}
-.a
+.main 
 {
-width: 100%;
-height: 400px;
-border: 1px solid black;
-margin-bottom: 80px;
+  width: 100%;
+  height: 500px;
+  
+  display: flex;
+  flex-direction: row;
+  
 }
+.book-profile
+{
+  width: 80%;
+  height: 30%;
 
-.bname{
-    text-align: center;
-  width: 60%;
-height: 9%;
-box-shadow: 4px 4px 7px gray;
-color: #0a0a0a;
-margin: auto;
-margin-top: 5%;
-font-family: 'Baloo 2', cursive;
-border-radius: 10px;
-background-color: rgb(252, 228, 236);
-font-size: 1.5rem;
+  margin: auto;
+position: relative;
 }
-.img1
-{ 
-height: 37%;
-width: 60%;
-top: 10px;
-margin: auto;
+.book-profile img{
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
-.img1 img{
-  border-radius: 3%;
+.book-topic 
+{
+  width: 100%;
+  height: 8%;
+  border: 1px solid black;
+  text-align: center;
+  font-family: cursive;
+  font-size: 20px;
+  padding: 3px;
 }
-.b{
-  width:30%;
-  height: 80%;
+.book-caption
+{
+  width: 100%;
+  height: 50%;
+
+font-size: 14px;
+font-family: cursive;
+padding: 5px;
+
+}
+.access-btn
+
+{
+  width: 140px;
+  height: 10%;
+ margin: auto;
+  margin-top: 5px;
+}
+.access-btn button{
+  width: 100%;
+  height: 100%;
+  
+}
+.books
+{
+  width: 20%;
+  height: 400px;
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
-  background-color: white;
 }
-.b:hover{
- border: 1px solid black;
- background-color:  whitesmoke;
- border-radius: 10px;
+</style>
+<style>
+.videos
+{
+  width: 20%;
+  height: 200px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
 }
+.video{
+  border: 1px solid black;
+  width: 100%;
+  height: 85%;
+  display: block;
+  position: relative;
+}
+.time
+{
+  display: inline-block;
+  z-index: 1;
+ 
+  background-color: transparent;
+  position: absolute;
+bottom: 2px;
+right: 2px;
+color: black;
+}
+.video-caption
+{
+  font-family: 'Times New Roman', Times, serif;
 
-.detail1{
+  font-size: 18px;
+}
+</style>
+<style>
+  /* supporters stlyling */
+.supporter
+{
+  width: 20%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+
+}
+.sprofile
+{
 width: 100%;
-height: 53%;
-margin-top: 5px;
-font-size:12px;
-font-family: 'Baloo 2', cursive;
+height: 85%;
+border: 1px solid black;
+margin: auto;
+position: relative;
+}
+.sprofile img{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.sname
+{
+  width: 100%;
+  height: 12%;
+
+font-size: 18px;
 text-align: center;
-color: #0a0a0a; 
+}
+.field 
+{
+  width: 100%;
+  height: 13%;
+ text-align: center;
+  
 }
 </style>
 <body>
-    <div class="a">
-    <div class="b box1">
-<div class="img1">
-  <img src="img/about11.avif" width="100%" height="100%" alt="">
+  <div class="main">
+<div class="books">
+  <div class="book-profile">
+    <img src="" alt="">
+  </div>
+  <div class="book-topic">
+saya
+  </div>
+  <div class="book-caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est repellendus dolore amet necessitatibus aliquam nostrum debitis consectetur consequuntur porro maxime sed libero, tenetur tempora repellat hic laborum dolores explicabo inventore?50
 </div>
-<p class="f bname">Dr.pudasaini</p>
-<p class="detail1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, distinctio.</p>
-    </div>
-    </div>
-    <div class="a">
+  <a href="resorces.php" class="access-btn"><button>access here</button> </a> 
+</div>
+</div>
 
-    </div>
-    <div class="a">
+<div class="main">
+  <div class="videos">
+      <a href="resources.php" class="video">
+       <div class="time">
+       <?php $data3['time_interval']; ?>
+       </div>
+      </a>
+    
+    <div class="video-caption" title="<?php $data3['caption']; ?>"><b>sky  is changing</b> </div>
+  </div>
+ 
 
+</div>
+
+
+<div class="main">
+  <div class="supporter">
+    <div class="sprofile">
+<img src="" alt="">
     </div>
+    <div class="sname">
+      <b>
+        Dr. Sita kumari Timilsina
+      </b>
+    </div>
+    <div class="field">
+pshychatrist,sadyfuis
+    </div>
+  </div>
+</div>
 </body>
 </html>
