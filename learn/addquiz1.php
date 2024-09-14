@@ -174,7 +174,7 @@ $value6=$_POST['value6'];
             echo $value6;
 
         }
-        ?>
+        ?>                         
     </div>
     <script>
      

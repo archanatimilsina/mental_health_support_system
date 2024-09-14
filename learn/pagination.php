@@ -28,25 +28,23 @@ $result1 = mysqli_query($con, $query1);
             <th>Class</th>
             <th>Address</th>
         </tr>
+        
         <?php
-        while ($data = mysqli_fetch_assoc($result1)) {
-
+        $n=$offset+1;
+        
+        while($data = mysqli_fetch_assoc($result1)) {
             ?>
             <tr>
-                <td><?php echo $data['id']; ?></td>
+                <td><?php echo $n; ?></td>
                 <td><?php echo $data['name']; ?></td>
                 <td><?php echo $data['class']; ?></td>
                 <td><?php echo $data['address']; ?></td>
-
-
             </tr>
-
-
-
             <?php
-        }
-        ?>
+       $n++;
+     }
 
+        ?>
     </table>
     <?php
     $pr_query = "SELECT * FROM pagination";

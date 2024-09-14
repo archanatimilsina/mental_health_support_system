@@ -1,10 +1,43 @@
-<?php require("connection.php");?>
+<?php 
+require("connection.php");
+?>
+
+<?php
+if(isset($_GET['page']))
+{
+    $page=$_GET['page'];
+}
+else
+{
+    $page=1;
+}
+
+$limit=10;
+$offset=($page-1)*$limit;
+
+$squery="SELECT * FROM quizzes LIMIT $offset, $limit";
+$sresult=mysqli_query($con,$squery);
+
+
+$squery1="SELECT * FROM quizzes";
+$sresult1=mysqli_query($con,$squery1);
+$trecord=mysqli_num_rows($sresult1);
+$tpage=ceil($trecord/$limit);
+if($page>1)
+{
+echo '<a href="quiz1.php?page='.($page-1).'"><button>Previous</button></a>';
+}
+if($page<$tpage)
+{
+    echo '<a href="quiz1.php?page='.($page+1).'"><button>Previous</button></a>';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Quiz</title>
     <style>
         *
         {
@@ -103,19 +136,13 @@ display: flex;
     </style>
 </head>
 <body>
-   <div class="head">
-    Take The mental Quiz
-   </div>
-<form action="#" method="POST" class="quizform">
-   <?php 
-   $n=1;
-   $query="SELECT * FROM quizzes";
-   $result=mysqli_query($con,$query);
-   while($data=mysqli_fetch_array($result))
-   {
-   ?>
-   
-   <div class="quizbody">  
+    <form action="" method="POST">
+  <?php
+  $n=1;
+  while($data=mysqli_fetch_array(($sresult)))
+  {
+    ?>
+    <div class="quizbody">  
 <input class="question" name="<?php echo 'question'.$n; ?>" value="<?php echo $data['question'];?>" readonly></input>
 <div class="options">
 <label for=""><?php echo $data['option1'];?></label>
@@ -128,56 +155,21 @@ display: flex;
 <input type="radio" value="<?php echo $data['value4'];?>" name="<?php echo 'answer'.$n; ?>">
 </div> 
 </div>
+
 <?php 
  $n++;
+  }
+  ?><?php
+if($page>1)
+{
+echo '<a href="quiz1.php?page='.($page-1).'"><button>Previous</button></a>';
 }
-
+if($page<$tpage)
+{
+    echo '<a href="quiz1.php?page='.($page+1).'"><button>Previous</button></a>';
+}
 ?>
-
     <input type="submit" value="Submit Quiz" class="submitbtn" name="submit">
-</form>
-<?php
-
-if(isset($_POST['submit']))
-{
-   $question1=$_POST['question1'];
-   $answer1=$_POST['answer1'];
-   $question2=$_POST['question2'];
-   $answer2=$_POST['answer2'];
-   $question3=$_POST['question3'];
-   $answer3=$_POST['answer3'];
-   $question4=$_POST['question4'];
-   $answer4=$_POST['answer4'];
-   $question5=$_POST['question5'];
-   $answer5=$_POST['answer5'];
-   $question6=$_POST['question6'];
-   $answer6=$_POST['answer6'];
-   $question7=$_POST['question7'];
-   $answer7=$_POST['answer7'];
-   $question8=$_POST['question8'];
-   $answer8=$_POST['answer8'];
-   $question9=$_POST['question9'];
-   $answer9=$_POST['answer9'];
-   $question10=$_POST['question10'];
-   $answer10=$_POST['answer10'];
-
-// $fullname=$_SESSION['userpanel']['fullname'];
-// $email=$_SESSION['userpanel']['email'];
-$fullname="Arcahana TImilsina";
-$email="archu@gmail.com";
-$query="INSERT INTO quiz_report (fullname,email,question1,answer1,question2,answer2,question3,answer3,question4,answer4,question5,answer5,question6,answer6,question7,answer7,question8,answer8,question9,answer9,question10,answer10) Values('$fullname','$email','$question1','$answer1','$question2','$answer2','$question3','$answer3','$question4','$answer4','$question5','$answer5','$question6','$answer6','$question7','$answer7','$question8','$answer8','$question9','$answer9','$question10','$answer10')";
-$result=mysqli_query($con,$query);
-
-if($result)
-{
-    echo "Data inserted successfully";
-
-}
-else{
-    echo "Try Again";
-}
-}
-?>
- 
+  </form>
 </body>
 </html>
