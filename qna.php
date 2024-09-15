@@ -154,11 +154,11 @@ if($page<$tpage)
 <?php
 if(isset($_POST['next']))
 {
-        for($j=1; $j=$t
+        
             $k='question'.$n;
             $data=$_POST[$k];
             echo $data;
-        }
+        
 }
 ?>
  </div>
