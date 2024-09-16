@@ -1,4 +1,4 @@
-<?php require('connection.php');
+<?php require('../connection.php');
 session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +43,7 @@ if(password_verify($password,$data['password']))
     $_SESSION['admin']['email']=$data['email'];
     ?>
     <script>
-window.location.href='index.php'; 
+window.location.href='../index.php'; 
 </script>
 <?php
 }
@@ -51,7 +51,7 @@ else
 {
     echo" <script>
     alert('password incorrect!Try again');
-    window.location.href='index.php';
+    window.location.href='../index.php';
     </script>";
 }
 
@@ -60,7 +60,7 @@ else
       {
         echo" <script>
     alert('No email or any username is found!!');
-    window.location.href='index.php';
+    window.location.href='../index.php';
     </script>";
       }
     }

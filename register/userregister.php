@@ -1,4 +1,4 @@
-<?php require('connection.php'); ?>
+<?php require('../connection.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +13,7 @@ if(isset($_POST['submit']))
 {
     $filename=$_FILES['profile']['name'];
 $tmpname=$_FILES['profile']['tmp_name'];
-$folder="uploads/".$filename;
+$folder="../uploads/".$filename;
 move_uploaded_file($tmpname,$folder);
 $name=$_POST['fullname'];
 $username=$_POST['username'];
@@ -33,14 +33,14 @@ if($email!=""&&$password!="")
             {
                 echo" <script>
                 alert('Email already taken');
-                window.location.href='index.php';
+                window.location.href='../index.php';
                 </script>";
             }
             else
             {
         echo" <script>
         alert('username already taken');
-        window.location.href='index.php';
+        window.location.href='../index.php';
         </script>";
     }
 }
@@ -53,7 +53,7 @@ else
     {
         echo" <script>
         alert('you are registered succesfully');
-        window.location.href='index.php';
+        window.location.href='../index.php';
         </script>";
     }
     else{

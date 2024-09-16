@@ -226,7 +226,7 @@ display: block;
         }
         .paste-button1 button 
         {
-         
+         width: 40px;
        position: absolute;
        height: 35px;
         }
@@ -383,9 +383,49 @@ display: block;
             <a href="index.php">Users</a>
             </div>
             </div>
-          
-
+            <div class="paste-button2">
+            <a href="../index.php">Home page</a>
         </div>
+        <div class="paste-button2">
+            <a href="../resources.php">Resources Page</a>
+        </div>
+        <div class="paste-button2">
+            <a href="index.php">Forum Page</a>
+            <div class="dropdown-content2">
+            <a href="../forum.php">Forum Page</a>
+            <a href="forum/edit.php">Edit Forum</a>
+            <a href="forum/delete.php">Delete Forum</a>
+            <a href="forum/report.php">Report Post</a>
+            <a href="createpost.php">create Forum</a>
+            </div>
+        </div>
+        <div class="paste-button2">
+            <a href="index.php">Quiz page</a>
+            <div class="dropdown-content2">
+            <a href="../quiz.php">Quiz Page</a>
+            <a href="quiz.php">create Quiz</a>
+            <a href="addquiz1.php">Add quiz 1</a>
+            <a href="addquiz2.php">Add quiz 2</a>
+            <a href="../work/quiz.html">quiz html</a>
+            <a href="../work/quiz1.php">Quiz 1</a>
+            <a href="../work/quiz2.php">Quiz 2</a>
+           
+            </div>
+        </div>
+        <div class="paste-button2">
+            <a href="index.php">QNA page</a>
+            <div class="dropdown-content2">
+            <a href="qna.php">Qna page</a>
+            <a href="createqna.php">create Qna</a>
+            <a href="../work/qna.html"> Qna design</a>
+            
+           
+            </div>
+        </div>
+        <div class="paste-button2">
+            <a href="adminregister.php">Admin Register</a>
+        </div>
+    
     </div>
    
  </section>

@@ -1,5 +1,5 @@
 <?php
-require('connection.php');
+require('../connection.php');
 session_start();
  ?>
 <!DOCTYPE html>
@@ -80,7 +80,7 @@ if(isset($_POST['submit']))
 {
     $filename=$_FILES['postimg']['name'];
 $tmpname=$_FILES['postimg']['tmp_name'];
-$folder="uploads/".$filename;
+$folder="../uploads/".$filename;
 move_uploaded_file($tmpname,$folder);
     $fullname=$_SESSION['userpanel']['fullname'];
      $account_type=$_SESSION['userpanel']['account_type'];
@@ -100,7 +100,7 @@ if($result)
       
     echo" <script>
     alert('Your Post is uploaded');
-    window.location.href='forum.php';
+    window.location.href='../forum.php';
     </script>";
 }
 else{

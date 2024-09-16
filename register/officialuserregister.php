@@ -1,4 +1,4 @@
-<?php require('connection.php'); ?>
+<?php require('../connection.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,14 +61,14 @@ if($email!=""&&$password!="")
             {
                 echo" <script>
                 alert('Email already taken');
-                window.location.href='register.php';
+                window.location.href='../register.php';
                 </script>";
             }
             else
             {
         echo" <script>
         alert('username already taken');
-        window.location.href='register.php';
+        window.location.href='../register.php';
         </script>";
     }
 }
@@ -81,7 +81,7 @@ else
     {
         echo" <script>
         alert('Data is submitted succesfully');
-        window.location.href='register.php';
+        window.location.href='../register.php';
         </script>";
     }
     else{
@@ -108,14 +108,14 @@ if($id_type="official user")
         {
             echo" <script>
             alert('Email already taken');
-            window.location.href='register.php';
+            window.location.href='../register.php';
             </script>";
         }
         else
         {
     echo" <script>
     alert('username already taken');
-    window.location.href='register.php';
+    window.location.href='../register.php';
     </script>";
 }
 }
@@ -128,7 +128,7 @@ if($result)
 {
     echo" <script>
     alert('Data is submitted succesfully');
-    window.location.href='register.php';
+    window.location.href='../register.php';
     </script>";
 }
 else{
@@ -148,7 +148,7 @@ if($id_type="professional")
 {
     echo" <script>
     alert('Only Authorized user can register account!!!');
-    window.location.href='professionalregister.php';
+    window.location.href='../professionalregister.php';
     </script>";
 }
 // professional
@@ -158,7 +158,7 @@ if($id_type="admin")
 {
     echo" <script>
     alert('Only Authorized user can register account!!!');
-    window.location.href='admin/adminregister.php';
+    window.location.href='../admin/adminregister.php';
     </script>";
 }
 // admin

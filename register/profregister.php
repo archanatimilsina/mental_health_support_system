@@ -1,4 +1,4 @@
-<?php require('connection.php'); ?>
+<?php require('../connection.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +17,7 @@ if(isset($_POST['submit']))
 {
     $filename=$_FILES['profile']['name'];
     $tmpname=$_FILES['profile']['tmp_name'];
-    $folder="uploads/".$filename;
+    $folder="../uploads/".$filename;
     move_uploaded_file($tmpname,$folder);
     $name=$_POST['fullname'];
     $address=$_POST['address'];
@@ -43,7 +43,7 @@ if($email!=""&&$password!="")
          
             echo" <script>
             alert('Email already taken you need to wait till your account registered officially after that you get your secret code');
-            window.location.href='profregister.php';
+            window.location.href='../profregister.php';
             </script>";
         }
         else
@@ -51,7 +51,7 @@ if($email!=""&&$password!="")
            
     echo" <script>
     alert('username already taken  you need to wait till your account registered officially after that you get your secret code');
-    window.location.href='profregister.php';
+    window.location.href='../profregister.php';
     </script>";
 }
 }
@@ -65,7 +65,7 @@ if($result)
 {
     echo" <script>
     alert('your account is registered succesfully');
-    window.location.href='index.php';
+    window.location.href='../index.php';
     </script>";
 }
 else{
