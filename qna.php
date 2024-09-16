@@ -130,7 +130,7 @@ while($data=mysqli_fetch_array($result))
       <div class="qna-box">
     <form action="" method="POST">
     <input type="text" readonly name="<?php echo 'question'.$n; ?>" class="question-box" value="<?php  echo $data['questions']; ?>">
-    <input type="text" name="<?php echo 'answer'.$n; ?>" class="answer-box">
+    <input type="text" name="<?php echo 'answer'.$n; ?>" class="answer-box" value="archana">
 
        </div> 
        <div class="pagination">
@@ -146,7 +146,7 @@ for($i=1; $i<5; $i++)
 }
 if($page<$tpage)
 {
-    echo '<a href="qna.php?page='.($page+1).'" class="next-btn"><input type="submit" name="next" value="Next"></a>';
+    echo '<a href="qna.php?page='.($page+1).'" class="next-btn"><input type="submit" name="next" value="Next" onclick="arry()"></a>';
 } 
 ?>
 </form>
@@ -155,13 +155,29 @@ if($page<$tpage)
 if(isset($_POST['next']))
 {
         
-            $k='question'.$n;
-            $data=$_POST[$k];
-            echo $data;
-        
+            $questionpost='question'.$n;
+            $question=$_POST[$questionpost];
+            $answerpost='answer'.$n;
+            $answer=$_POST[$answerpost];
+            
+        echo $question;
+        echo $answer;
+
+     
 }
 ?>
  </div>
+ <script>
+    function submt()
+    {
+        window.location.href="qna.php?page=<?php echo ($page+1); ?>"
+    }
+    function arry(){
+        let m=<?php echo $offset; ?>
+        console.log(m);
+
+    }
+ </script>
     </body>
     </html>
    
