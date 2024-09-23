@@ -381,7 +381,7 @@ align-items: center;
 <!-- user register -->
 <div id="register-popup">
     <div class="register popup">
-        <form action="userregister.php" method="POST" enctype="multipart/form-data">
+        <form action="register/userregister.php" method="POST" enctype="multipart/form-data">
                 <h2 class="reset-heading">
                     <span>User Register</span>
                     <button type="reset" onclick="popupbox('register-popup')" >X</button>
@@ -401,7 +401,7 @@ align-items: center;
 <!-- user login -->
 <div id="login-popup">
     <div class="login popup">
-        <form action="userlogin.php" method="POST">
+        <form action="login/userlogin.php" method="POST">
             <h2 class="reset-heading">
                 <span>User Login</span>
                 <button type="reset" onclick="popupbox('login-popup')">X</button>
@@ -430,7 +430,7 @@ align-items: center;
 <!-- official user login -->
 <div id="offlogin-popup">
     <div class="login popup">
-        <form action="offlogin.php" method="POST">
+        <form action="login/offlogin.php" method="POST">
             <h2 class="reset-heading">
                 <span>Official userLogin</span>
                 <button type="reset" onclick="offlogin()">X</button>
@@ -448,7 +448,7 @@ align-items: center;
 <!-- professional register -->
 <div id="profregister-popup">
     <div class="register popup">
-        <form action="profregister.php" method="POST" enctype="multipart/form-data">
+        <form action="register/profregister.php" method="POST" enctype="multipart/form-data">
                 <h2 class="reset-heading">
                     <span>Professional Register</span>
                     <button type="reset" onclick="profregpopup()" >X</button>
@@ -471,7 +471,7 @@ align-items: center;
 <!-- professional login -->
 <div id="proflogin-popup">
     <div class="login popup">
-        <form action="proflogin.php" method="POST">
+        <form action="login/proflogin.php" method="POST">
             <h2 class="reset-heading">
                 <span>Professional Login</span>
                 <button type="reset" onclick="proflogin()">X</button>
@@ -489,7 +489,7 @@ align-items: center;
 <!-- admin login -->
 <div id="adminlogin-popup">
          <div class="login popup">
-             <form action="adminlogin.php" method="POST">
+             <form action="login/adminlogin.php" method="POST">
                  <h2 class="reset-heading">
                      <span>Admin Login</span>
                      <button type="reset" onclick="adminlogin()">X</button>

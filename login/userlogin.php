@@ -18,7 +18,6 @@ session_start();
       $select_query="SELECT * from users where email='$email_username' OR username='$email_username'";
       $select_result=mysqli_query($con,$select_query);
       $count=mysqli_num_rows($select_result);
-        
       if($count!=0)
       {
 $data=mysqli_fetch_array($select_result);
@@ -41,7 +40,7 @@ else
 {
     echo" <script>
     alert('password incorrect!Try again');
-    window.location.href='../register.php';
+    window.location.href='../register/userregister.php';
     </script>";
 }
 
@@ -50,7 +49,7 @@ else
       {
         echo" <script>
     alert('No email or any username is found!!');
-    window.location.href='../register.php';
+    window.location.href='../register/userregister.php';
     </script>";
       }
     }

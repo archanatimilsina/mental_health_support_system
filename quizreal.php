@@ -134,7 +134,7 @@ display: flex;
    while($data=mysqli_fetch_array($result))
    {
    ?>
-   
+   $n=$page;
    <div class="quizbody">  
 <input class="question" name="<?php echo 'question'.$n; ?>" value="<?php echo $data['question'];?>" readonly></input>
 <div class="options">
@@ -151,13 +151,10 @@ display: flex;
 <?php 
  $n++;
 }
-
 ?>
-
     <input type="submit" value="Submit Quiz" class="submitbtn" name="submit">
 </form>
 <?php
-
 if(isset($_POST['submit']))
 {
    $question1=$_POST['question1'];
@@ -183,7 +180,7 @@ if(isset($_POST['submit']))
 
 // $fullname=$_SESSION['userpanel']['fullname'];
 // $email=$_SESSION['userpanel']['email'];
-$fullname="Arcahana TImilsina";
+$fullname="Archana TImilsina";
 $email="archu@gmail.com";
 $query="INSERT INTO quiz_report (fullname,email,question1,answer1,question2,answer2,question3,answer3,question4,answer4,question5,answer5,question6,answer6,question7,answer7,question8,answer8,question9,answer9,question10,answer10) Values('$fullname','$email','$question1','$answer1','$question2','$answer2','$question3','$answer3','$question4','$answer4','$question5','$answer5','$question6','$answer6','$question7','$answer7','$question8','$answer8','$question9','$answer9','$question10','$answer10')";
 $result=mysqli_query($con,$query);

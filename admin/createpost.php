@@ -18,8 +18,7 @@ session_start();
         .addpost
         {
             width: 70%;
-            height: 300px;
-           
+            height: 300px;     
             margin: auto;
             margin-top: 40px;
             padding: 20px;
