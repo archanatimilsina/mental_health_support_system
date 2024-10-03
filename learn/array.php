@@ -3,29 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hello</title>
+    <title>array try</title>
 </head>
-<body>
-    
-    <?php
-   for($m=1; $m<3; $m++)
-   {
-    $i=$m*3;
-   }
-   while($i<2)
-   {
-    $j=array($i*5);
-    $i++;
-   }
 
+    <form action="" method="POST">
+        <?php
+
+    for($i=0; $i<=4; $i++)
+    {
     ?>
-    <script>
-      while(var k<2)
-        {
-            array[k]=<?php echo $j;?>
-            console.log(array);
-            var k++;
-        }
-    </script>
+        <input type="text" name="question<?php echo $n ;?>" placeholder="Enter the question">
+        <input type="text" name="answer<?php echo $n ;?>" placeholder="Enter the answer">
+        <input type="submit" name="submit" value="Post">
+    </form>
+<?php  }
+?>
+    <?php
+if(isset($_POST['Submit']))
+{
+    for($i=0; $i<=4; $i++)
+    {
+        $questionform='question'.$i;
+$question[]=$_POST[$questionform];
+    }
+}
+    ?>
 </body>
 </html>
