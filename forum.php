@@ -208,7 +208,7 @@ font-size: 20px;
 .star-icon i{
     font-size: 40px;
 }
-.star-count
+#star-count
 {
     width: fit-content;
     height: 100%;
@@ -331,11 +331,13 @@ border-radius: 50%
     
 <section class="messageprint">
 <?php
-$query1="SELECT * from posts";
+$limit=20;
+$query1="SELECT * from posts LIMIT $limit";
 $result=mysqli_query($con,$query1);
 $n=1;
 while($data=mysqli_fetch_array($result))
 {
+$id=$data['id'];
 $profile=$data['profile'];
 $name=$data['pfullname'];
 $username=$data['pusername'];
@@ -345,7 +347,6 @@ $postimg=$data['postimg'];
 $post=$data['post'];
 $star_count=$data['star'];
 $comment=$data['comment'];
-
 ?>
     <div class="post-containeer">
         <div class="post-head">
@@ -364,9 +365,9 @@ $comment=$data['comment'];
         <i class="fa-solid fa-ellipsis threedot"></i>
       </div>
          <div class="dropdown-content">
-             <a href="logout.php">Edit</a>
-             <a href="logout.php">Delete</a>
-             <a href="logout.php">Report</a>
+             <a href="logout.php?id='<?php echo $id; ?>'">Edit</a>
+             <a href="logout.php?id='<?php echo $id; ?>'">Delete</a>
+             <a href="logout.php?id='<?php echo $id; ?>'">Report</a>
         </div>
     </div>
         </div>
@@ -382,9 +383,9 @@ $comment=$data['comment'];
         <div class="post-footer">
             <div class="fh star">
                 <div class="star-icon">
-                    <i class="fa-solid fa-star fa-sm" style="color: red" onclick="starcount()"></i>
+                    <i class="fa-solid fa-star fa-sm" style="color: black"  id="star"></i>
                 </div>
-                <div class="star-count">1000</div>
+                <div id="star-count">0</div>
             </div>
             <div class="fh comment">
                 <div class="comment-icon"><i class="fa-solid fa-comment fa-sm" style="color: #000000;" onclick="commentcount()"></i></div>
@@ -399,5 +400,32 @@ $comment=$data['comment'];
 </section>
      </section>
      
+     <script>
+          let isLiked = false; 
+    let likeCount = 0; 
+    let starBox = document.getElementById("star");
+    let starCountBox = document.getElementById("star-count");
+
+    function updateStarCount() {
+        starCountBox.textContent = `${likeCount}`; 
+    }
+
+   
+    starBox.addEventListener("click", function() {
+        if (!isLiked) {
+            isLiked = true;
+            likeCount++;
+            starBox.style.color = "red"; 
+        } else {
+          
+            isLiked = false;
+            likeCount--;
+            starBox.style.color = "black"; 
+        }
+        updateStarCount();
+    });
+
+    updateStarCount();
+     </script>
 </body>
 </html>
