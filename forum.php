@@ -303,12 +303,13 @@ border-radius: 50%
 <nav>
 
     <ul>
-        <li><div class="profile"><img src="assets/images/introvert.jpg" alt="not found"></div></li>
+        <li>
+            <a href="dashboard.php"><div class="profile"><img src="assets/images/introvert.jpg" alt="not found"></div></li></a>
        
-        <?php
+        <!-- <?php
     if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true)
     {
-?>
+?> -->
         <li><a href="createpost.php"><button>Create New Post</button></a></li>
         <li>
          <div class="paste-button">  
@@ -321,10 +322,10 @@ border-radius: 50%
         </div>
     </div>
      </li> 
-    <?php
+    <!-- <?php
     }
     ?>
-    
+     -->
 </ul>
 </nav>
     </div>
@@ -359,6 +360,10 @@ $comment=$data['comment'];
                 <div class="ainfo post-time"><?php echo $posttime; ?></div>
 
             </div>
+            <?php
+            if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true)
+    {
+?> 
             <div class="ph three-dot">
             <div class="paste-button">  
     <div id="user-icon">
@@ -371,6 +376,10 @@ $comment=$data['comment'];
         </div>
     </div>
         </div>
+        <?php
+    }
+        ?>
+      
         </div>
         <div class="post-body">
             <div class="postimg">

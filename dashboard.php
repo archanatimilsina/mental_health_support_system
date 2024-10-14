@@ -16,7 +16,7 @@
             width: 100%;
             margin: auto;
             height: 300px;
-            background-color: rgb(250, 218, 190);
+            background-color: lavender;
             border: 1px solid black;
             display: flex;
             flex-direction: column;
