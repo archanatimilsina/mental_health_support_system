@@ -1,5 +1,13 @@
 <?php
 require('connection.php');
+session_set_cookie_params([
+    'lifetime' => 0,  // Session cookie expires when the browser is closed
+    'path' => '/',
+    'domain' => 'your-domain.com',  // Change to your domain
+    'secure' => true,  // Ensures cookie is sent over HTTPS
+    'httponly' => true,  // Prevents JavaScript access to the cookie
+    'samesite' => 'Lax'  // Set SameSite attribute (Lax, Strict, or None)
+]);
 session_start();
  ?>
 <!DOCTYPE html>
@@ -229,9 +237,10 @@ justify-content: center;
     position: sticky; /* Makes the section stick to the viewport */
     display: none;
     flex-direction: column;
-    margin: 250px auto 0; /* Center the section horizontally */
+    margin:0 auto 0; /* Center the section horizontally */
     box-shadow: 0 2px 6px rgb(0, 0, 0);
     border-radius: 15px;
+    z-index: 10;
 }
 
 #comment-head {
@@ -307,6 +316,7 @@ top: calc(55px + 10px + 250px  );
  width: 500px;
  overflow: auto;
  display: none;
+ z-index: 10;
 }
 #createinput
 {
@@ -460,7 +470,7 @@ $comment=$data['comment'];
                 <div class="ainfo post-time"><?php echo $posttime; ?></div>
 
             </div>
-     
+    
             <div class="ph three-dot">
             <div class="paste-button">  
     <div id="user-icon">
@@ -494,7 +504,7 @@ $comment=$data['comment'];
 
 
             <div class="fh commentTab">
-                <div id="comment-icon1"><i class="fa-solid fa-comment fa-sm comment-Icon" style="color: #000000;" ata-postid="<?php echo $postid ;?>"></i></div>
+                <div id="comment-icon1"><i class="fa-solid fa-comment fa-sm comment-Icon" style="color: #000000;" data-postid="<?php echo $postid ;?>"></i></div>
                 <div id="comment-count">777</div>
             </div>
         </div>
@@ -527,37 +537,44 @@ $comment=$data['comment'];
 }
  ?>
      <script>
-//comment
-    document.addEventListener("DOMContentLoaded" , function()
-{
+        //comment
+document.addEventListener("DOMContentLoaded", function() {
 
-   const commentIcon=document.querySelectorAll(".comment-Icon");
-commentIcon.forEach(icon=>
-icon.addEventListener("click", function() {
-    const postid = this.dataset.postid;
-    const commentSection = document.getElementById(`comment-section-${postid}`);
-    const commentCreateSection = document.getElementById(`commentCreate-${postid}`);
-
-    if (commentSection) {
-        if (commentSection.style.display === "none" || commentSection.style.display === "") {
-            commentSection.style.display = "flex"; 
-        } else {
-            commentSection.style.display = "none"; 
+const commentIcons = document.querySelectorAll(".comment-Icon");
+commentIcons.forEach(icon => {
+    icon.addEventListener("click", function() {
+        const postid = this.dataset.postid;
+        const commentSection = document.getElementById(`comment-section-${postid}`);
+        const commentCreateSection = document.getElementById(`commentCreate-${postid}`);
+        
+        if (commentSection) {
+            commentSection.style.display = commentSection.style.display === "none" || commentSection.style.display === "" ? "flex" : "none";
         }
-    }
-    if (commentCreateSection) {
-        if (commentCreateSection.style.display === "none" || commentCreateSection.style.display === "") {
-            commentCreateSection.style.display = "flex"; 
-        } else {
-            commentCreateSection.style.display = "none";  
-        }
-    }
-
-} 
-    )
-)    
     });
+});
+
+const commentplusIcons = document.querySelectorAll(".commentCreateIcon");
+
+commentplusIcons.forEach(plusIcon => {
+    plusIcon.addEventListener("click", function() {
+        const postid = this.dataset.postid;
+        const commentSection = document.getElementById(`comment-section-${postid}`);
+        const commentCreateSection = document.getElementById(`commentCreate-${postid}`);
+
+        if (commentCreateSection) {
+            // Toggle display of commentCreateSection
+            if (commentCreateSection.style.display === "none" || commentCreateSection.style.display === "") {
+                commentCreateSection.style.display = "flex";
+            } else {
+                commentCreateSection.style.display = "none";
+            }
+        }
+    });
+});
+
+});
 //comment
+
 //like/ star
 document.addEventListener("DOMContentLoaded", () => {
     const starIcons = document.querySelectorAll(".star");
@@ -578,7 +595,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 this.style.color = "black"; // Change the star color back to black
                 likeCount--; // Decrement the like count
             }
-
+           fetch("forum.php",
+            {
+                "method":"POST",
+                "headers":{
+                    "Content-Type":"application/json; character=utf-8"
+                },
+           "body":JSON.stringify({likeCount:likeCount})
+            }
+           )
+           <?php
+          if(isset($_POST))
+          {
+            $data=file_get_contents("php://input");
+            $LikeCountArray=json_decode($data,true);
+           $likeCount=$LikeCountArray['likeCount'];
+           $sql = "INSERT INTO posts (pid, star) VALUES ($postid, $likeCount)
+        ON DUPLICATE KEY UPDATE star = $likeCount";
+mysqli_query($con, $sql);
+          }
+       
+           ?>
             // Update the star count in the box
             starCountBox.textContent = `${likeCount}`;
             // Toggle the liked state
