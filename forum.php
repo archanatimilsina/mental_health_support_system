@@ -188,7 +188,7 @@ font-size: 20px;
     height: fit-content;
     font-size: 10px;
 }
-.star
+.stardiv
 {
    width: 10%;
     height: 100%;
@@ -207,8 +207,9 @@ font-size: 20px;
 }
 .star-icon i{
     font-size: 40px;
+    z-index: 10;
 }
-#star-count
+.star-count
 {
 width: fit-content;
 height: 100%;
@@ -220,7 +221,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 }
-#comment-section {
+.comment-section{
     border: 0.3px solid black;
     width: 90%;
     min-height: 605px; /* Minimum height for the section */
@@ -295,7 +296,7 @@ border-radius: 50%;
     margin-left: auto;
     position: relative;
 }
-#commentCreate
+.commentCreate
 {
 position: absolute;
 top: calc(55px + 10px + 250px  );
@@ -324,7 +325,7 @@ top: calc(55px + 10px + 250px  );
     display: flex;
     flex-direction: row;
 }
-#comment-icon
+#comment-icon1
 {
     width: 50%;
     height: 100%;
@@ -334,8 +335,12 @@ top: calc(55px + 10px + 250px  );
    background-color: inherit;
   
 }
-#comment-icon i{
+.comment-Icon{
     font-size: 40px;
+    pointer-events: auto;
+    cursor: pointer;
+    z-index: 10;
+
 }
 #comment-count
 {
@@ -480,28 +485,27 @@ $comment=$data['comment'];
             </div>
         </div>
         <div class="post-footer">
-            <div class="fh star">
+            <div class="fh stardiv">
                 <div class="star-icon">
-                    <i class="fa-solid fa-star fa-sm" style="color: black"  id="star-<?php echo $postid; ?>"></i>
+                    <i class="fa-solid fa-star fa-sm star" style="color: black" data-postid="<?php echo $postid ;?>"></i>
                 </div>
-                <div id="star-count-<?php echo $postid; ?>"><?php echo $star_count; ?></div>
+                <div id="star-count-<?php echo $postid; ?>" class="star-count"><?php echo $star_count; ?></div>
             </div>
+
+
             <div class="fh commentTab">
-                <div id="comment-icon"><i class="fa-solid fa-comment fa-sm" style="color: #000000;"></i></div>
+                <div id="comment-icon1"><i class="fa-solid fa-comment fa-sm comment-Icon" style="color: #000000;" ata-postid="<?php echo $postid ;?>"></i></div>
                 <div id="comment-count">777</div>
             </div>
         </div>
     </div>
-<?php
-     $n++;   
-}
- ?>
+
 </section>
      </section>
      <!-- comment section -->
-     <section id="comment-section">
+     <section id="comment-section-<?php echo $postid; ?>" class="comment-section">
      <h1 id="comment-head">Comments
-            <i class="fas fa-plus" id="commentCreateIcon"></i>
+            <i class="fas fa-plus" class="commentCreateIcon" data-postid="<?php echo $postid ;?>"> </i>
        </h1>
   
     <div class="comments">
@@ -515,73 +519,77 @@ $comment=$data['comment'];
         </div>
     </div>
 </section>
-<section id="commentCreate">
+<section id="commentCreate-<?php echo $postid; ?>" class="commentCreate">
 <input type="text" id="createinput" placeholder="Write Here">
      </section>
-     
+     <?php
+     $n++;   
+}
+ ?>
      <script>
-       
-            let comment_icon=document.getElementById("comment-icon");
-            let commentIcon=document.getElementById("commentCreateIcon");
-    let commentCreate=document.getElementById("commentCreate");
-    let commentSection=document.getElementById("comment-section");
+//comment
+    document.addEventListener("DOMContentLoaded" , function()
+{
 
-    comment_icon.addEventListener("click", function() {
+   const commentIcon=document.querySelectorAll(".comment-Icon");
+commentIcon.forEach(icon=>
+icon.addEventListener("click", function() {
+    const postid = this.dataset.postid;
+    const commentSection = document.getElementById(`comment-section-${postid}`);
+    const commentCreateSection = document.getElementById(`commentCreate-${postid}`);
+
+    if (commentSection) {
         if (commentSection.style.display === "none" || commentSection.style.display === "") {
-            commentSection.style.display = "flex"; // Show the comment section
+            commentSection.style.display = "flex"; 
         } else {
-            commentSection.style.display = "none"; // Hide the comment section
+            commentSection.style.display = "none"; 
         }
-    });
-
-    // Event listener for the icon in the comment section to toggle the comment input
-    commentIcon.addEventListener("click", function() {
-        if (commentCreate.style.display === "none" || commentCreate.style.display === "") {
-            commentCreate.style.display = "flex"; // Show the comment input
+    }
+    if (commentCreateSection) {
+        if (commentCreateSection.style.display === "none" || commentCreateSection.style.display === "") {
+            commentCreateSection.style.display = "flex"; 
         } else {
-            commentCreate.style.display = "none"; // Hide the comment input
+            commentCreateSection.style.display = "none";  
         }
-    });
-
-    commentSection.style.display = "none";
-    commentCreate.style.display = "none";
-    
-          let isLiked = false; 
-    let likeCount = 0; 
-    
-    let starBox = document.getElementById("star-<?php echo $postid; ?>");
-    let starCountBox = document.getElementById("star-count-<?php echo $postid; ?>");
-
-    function updateStarCount() {
-        starCountBox.textContent = `${likeCount}`; 
     }
 
-   
-    starBox.addEventListener("click", function() {
-        if (!isLiked) {
-            isLiked = true;
-            likeCount++;
-            starBox.style.color = "red"; 
-        } else {
-          
-            isLiked = false;
-            likeCount--;
-            starBox.style.color = "black"; 
-        }
-        updateStarCount();
+} 
+    )
+)    
     });
+//comment
+//like/ star
+document.addEventListener("DOMContentLoaded", () => {
+    const starIcons = document.querySelectorAll(".star");
 
-    updateStarCount();
+    starIcons.forEach(icon => {
+        let isLiked = false; // Track if the star has been liked
+        const postid = icon.dataset.postid; // Get the post ID from the icon
+        const starCountBox = document.getElementById(`star-count-${postid}`); // Get the corresponding star count box
+        let likeCount = parseInt(starCountBox.textContent); // Get the current like count
 
-    function commentBox()
-    {
-        let commentSection=document.getElementById("comment-section");
-        commentSection.style.display="flex";
-    }
-    function updateComment()
-    {
-        
-    }
+        icon.addEventListener("click", function() {
+            if (!isLiked) {
+                // First click: like the post
+                this.style.color = "red"; // Change the star color to indicate it's liked
+                likeCount++; // Increment the like count
+            } else {
+                // Second click: unlike the post
+                this.style.color = "black"; // Change the star color back to black
+                likeCount--; // Decrement the like count
+            }
+
+            // Update the star count in the box
+            starCountBox.textContent = `${likeCount}`;
+            // Toggle the liked state
+            isLiked = !isLiked; // Flip the liked state
+        });
+    });
+});
+//like/ star
+
+
+
      </script>
 </body>
 </html>
