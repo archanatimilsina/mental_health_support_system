@@ -77,6 +77,7 @@ session_start();
 <?php 
 if(isset($_POST['submit']))
 {
+
     $filename=$_FILES['postimg']['name'];
 $tmpname=$_FILES['postimg']['tmp_name'];
 $folder="../uploads/".$filename;
