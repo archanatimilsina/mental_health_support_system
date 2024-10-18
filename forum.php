@@ -610,6 +610,7 @@ document.addEventListener("DOMContentLoaded", () => {
             $data=file_get_contents("php://input");
             $LikeCountArray=json_decode($data,true);
            $likeCount=$LikeCountArray['likeCount'];
+           
            $sql = "INSERT INTO posts (pid, star) VALUES ($postid, $likeCount)
         ON DUPLICATE KEY UPDATE star = $likeCount";
 mysqli_query($con, $sql);
