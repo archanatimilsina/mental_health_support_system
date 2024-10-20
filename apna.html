@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c5a4938a4c.js" crossorigin="anonymous"></script>
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: lavender;
+        }
+        .container
+        {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            min-height: 45vh;
+            min-width:40vh;
+        }
+        form
+        {
+            margin: 2rem 0 1rem 0;
+        }
+        form select,
+        button,
+        input{
+width: 100%;
+border: none;
+outline: none;
+border-radius: 0.15rem;
+        }
+        form input{
+            border: 1px solid lightgray;
+            font-size: 1rem;
+            height: 3rem;
+            padding-left:0.5rem ;
+
+        }
+        .dropdown
+        {
+            display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 2rem;
+        }
+        .dropdown i{
+            font-size: 1.5rem;
+            margin-top: 1rem;
+        }
+        .select-container img{
+            max-width:2rem;
+        }
+        .select-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 6rem;
+            border-radius: 0.75rem;
+            border: 1px solid lightgray;
+        }
+        .select-container select{
+            font-size: 1rem;
+            width: auto;
+        }
+        .msg
+        {
+            margin: 2rem 0 2rem 0;
+        }
+        form button{
+            height: 3rem;
+            background-color: #af4d98;
+            color: white;
+            font-size: 1.15rem;
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>
+            Currency Converter
+        </h2>
+        <form action="">
+            <div class="amount">
+                <p>Enter Amount</p>
+                <input type="text" value="1000">
+            </div>
+       
+    
+    <div class="dropdown">
+        <div class="from">
+            <p>From</p>
+            <div class="select-container">
+                <img src="https://flagsapi.com/US/flat/64.png" alt="">
+                <select name="from" id="">
+                    <option value="">USD</option>
+                    <option value="">INR</option>
+                    <option value="">Nep</option>
+                    <option value="">IND</option>
+                </select>
+            </div>
+        </div>
+        <i class="fa-solid fa-arrow-right-arrow-left"></i>
+
+        <div class="to">
+            <p>To</p>
+            <div class="select-container">
+                <img src="https://flagsapi.com/NP/flat/64.png" alt="">
+                <select name="to" id="">
+                    <option value="">USD</option>
+                    <option value="">INR</option>
+                    <option value="">Nep</option>
+                    <option value="">IND</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="msg">1USD=80INR</div>
+    <button>Get Exchange rate</button>
+     </form>
+    </div>
+    <script src="code.js"></script>
+    <script src="apna.js"></script>
+</body>
+</html>
