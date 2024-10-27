@@ -1,23 +1,18 @@
-const container =document.createElement("div");
-const container1=document.querySelector(".container1");
-container.className="container";
-container.style.width="500px";
-container.style.height="500px";
-container.style.border="1px solid black";
-container.style.borderRadius="10px";
-container.style.margin="auto";
-container.style.position="absolute";
-container.style.top="100px";
-container.style.left="auto";
-container.style.top="100px";
-container.style.zIndex="10";
-container.style.backgroundColor="white";
-const heading=document.createElement("h1");
-const input=document.createElement("input");
-input.type="text";
-input.placeholder="Enter your name";
-input.value="500";
-container.firstChild(heading);
+const user = {
+    name: "Archana",
+    roll: 89,
+    age: 23,
+    weight: 56
+};
 
-container1.appendChild(container);
+console.log("Sending Data:", JSON.stringify(user));  
+
+fetch('dump.php',  
+{
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json; charset=utf-8"
+    },
+    body: JSON.stringify(user)
+})
 

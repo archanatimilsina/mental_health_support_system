@@ -1,29 +1,22 @@
+
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+$data=file_get_contents("php://input");
+echo $data;
+$user=json_decode($data,true); //associative array
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <style>
-        .container1
-        {
-            width: 100%;
-            height: 1000px;
-            background-color: pink;
-            border: 1px solid black;
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
+    <title>Document</title>
 </head>
 <body>
-    <div class="container1">
-
-    </div>
-
-
-<script src="dump.js"></script>
+    <?php
+     echo $user["name"];
+    ?>
 </body>
 </html>
