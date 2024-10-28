@@ -1,32 +1,15 @@
 <?php
-require("connection.php");
-error_reporting(E_ALL);
-ini_set("display_errors", 1); 
-
-$limit = 5;
-$queryPost = "SELECT * FROM posts LIMIT $limit";
-$result = mysqli_query($con, $queryPost);
-
-// Handling POST data for likes
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $data = file_get_contents("php://input");
-    $LikeCountArray = json_decode($data, true);
-    
-    if (isset($LikeCountArray['likeCount']) && isset($LikeCountArray['postid'])) {
-        $likeCount = $LikeCountArray['likeCount'];
-        $postid = $LikeCountArray['postid']; // Ensure postid is set
-
-        $sql = "UPDATE posts SET star = $likeCount WHERE pid = $postid";
-        mysqli_query($con, $sql);
-    } else {
-        // Log or handle the error for missing data
-        error_log("Error: Missing likeCount or postid in the request.");
-    }
-    echo json_encode(array("likecount" => $likeCount, "postid" => $postid));
-    exit;
-}
-?>
-
+require('connection.php');
+session_set_cookie_params([
+    'lifetime' => 0,  // Session cookie expires when the browser is closed
+    'path' => '/',
+    'domain' => 'your-domain.com',  // Change to your domain
+    'secure' => true,  // Ensures cookie is sent over HTTPS
+    'httponly' => true,  // Prevents JavaScript access to the cookie
+    'samesite' => 'Lax'  // Set SameSite attribute (Lax, Strict, or None)
+]);
+session_start();
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -232,7 +215,6 @@ font-size: 20px;
 }
 .star-icon i{
     font-size: 40px;
-    position: absolute;
     z-index: 10;
 }
 .star-count
@@ -435,8 +417,8 @@ border-radius: 50%
             <a href="dashboard.php"><div class="profile"><img src="assets/images/introvert.jpg" alt="not found"></div></li></a>
        
         <!-- <?php
-    // if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true)
-    // {
+    if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true)
+    {
 ?> -->
         <li><a href="createpost.php"><button>Create New Post</button></a></li>
         <li>
@@ -451,16 +433,18 @@ border-radius: 50%
     </div>
      </li> 
     <!-- <?php
-    // }
-    ?> -->
-    
+    }
+    ?>
+     -->
 </ul>
 </nav>
     </div>
     
 <section class="messageprint">
 <?php
-
+$limit=20;
+$query1="SELECT * from posts LIMIT $limit";
+$result=mysqli_query($con,$query1);
 $n=1;
 while($data=mysqli_fetch_array($result))
 {
@@ -550,47 +534,100 @@ $comment=$data['comment'];
      </section>
      <?php
      $n++;   
- }
+}
  ?>
- <script>
-    document.addEventListener("DOMContentLoaded", () => {
-    const starIcons = document.querySelectorAll(".star");
+     <script>
+        //comment
+document.addEventListener("DOMContentLoaded", function() {
 
-    starIcons.forEach(icon => {
-        let isLiked = false; // State variable to track if liked or not
-        const postid = icon.dataset.postid; 
-        const starCountBox = document.getElementById(`star-count-${postid}`); 
-        let likeCount = parseInt(starCountBox.textContent); 
-
-        icon.addEventListener("click", function() {
-            isLiked = !isLiked; // Toggle the isLiked state on each click
-            if (isLiked) {
-                this.style.color = "red";
-                likeCount++;
-            } else {
-                this.style.color = "black";
-                likeCount--;
-            }
-
-            fetch("forum.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8"
-                },
-                body: JSON.stringify({
-                    postid: postid,
-                    likeCount: likeCount
-                })
-            }).then(response => response.json())
-              .then(data => {
-                  console.log(data);
-                  starCountBox.innerHTML = data.likecount; // Update the displayed like count
-              });
-        });
+const commentIcons = document.querySelectorAll(".comment-Icon");
+commentIcons.forEach(icon => {
+    icon.addEventListener("click", function() {
+        const postid = this.dataset.postid;
+        const commentSection = document.getElementById(`comment-section-${postid}`);
+        const commentCreateSection = document.getElementById(`commentCreate-${postid}`);
+        
+        if (commentSection) {
+            commentSection.style.display = commentSection.style.display === "none" || commentSection.style.display === "" ? "flex" : "none";
+        }
     });
 });
 
+const commentplusIcons = document.querySelectorAll(".commentCreateIcon");
 
- </script>
- </body>
+commentplusIcons.forEach(plusIcon => {
+    plusIcon.addEventListener("click", function() {
+        const postid = this.dataset.postid;
+        const commentSection = document.getElementById(`comment-section-${postid}`);
+        const commentCreateSection = document.getElementById(`commentCreate-${postid}`);
+
+        if (commentCreateSection) {
+            // Toggle display of commentCreateSection
+            if (commentCreateSection.style.display === "none" || commentCreateSection.style.display === "") {
+                commentCreateSection.style.display = "flex";
+            } else {
+                commentCreateSection.style.display = "none";
+            }
+        }
+    });
+});
+
+});
+//comment
+
+//like/ star
+document.addEventListener("DOMContentLoaded", () => {
+    const starIcons = document.querySelectorAll(".star");
+
+    starIcons.forEach(icon => {
+        let isLiked = false; // Track if the star has been liked
+        const postid = icon.dataset.postid; // Get the post ID from the icon
+        const starCountBox = document.getElementById(`star-count-${postid}`); // Get the corresponding star count box
+        let likeCount = parseInt(starCountBox.textContent); // Get the current like count
+
+        icon.addEventListener("click", function() {
+            if (!isLiked) {
+                // First click: like the post
+                this.style.color = "red"; // Change the star color to indicate it's liked
+                likeCount++; // Increment the like count
+            } else {
+                // Second click: unlike the post
+                this.style.color = "black"; // Change the star color back to black
+                likeCount--; // Decrement the like count
+            }
+           fetch("forum.php",
+            {
+                "method":"POST",
+                "headers":{
+                    "Content-Type":"application/json; character=utf-8"
+                },
+           "body":JSON.stringify({likeCount:likeCount})
+            }
+           )
+           <?php
+          if(isset($_POST))
+          {
+            $data=file_get_contents("php://input");
+            $LikeCountArray=json_decode($data,true);
+           $likeCount=$LikeCountArray['likeCount'];
+           
+           $sql = "INSERT INTO posts (pid, star) VALUES ($postid, $likeCount)
+        ON DUPLICATE KEY UPDATE star = $likeCount";
+mysqli_query($con, $sql);
+          }
+       
+           ?>
+            // Update the star count in the box
+            starCountBox.textContent = `${likeCount}`;
+            // Toggle the liked state
+            isLiked = !isLiked; // Flip the liked state
+        });
+    });
+});
+//like/ star
+
+
+
+     </script>
+</body>
 </html>
