@@ -569,15 +569,15 @@ Articles
       //  print page numbers
 if($page1>1)
 {
-echo '<a href="resources.php?page1='.($page1-1).'" class="page-btn prev-btn">Previous</a>'  ;
+echo '<a href="resources.php?page1='.($page1-1).'" class="page-btn prev-btn" data-page="'.($page1-1).'">Previous</a>'  ;
 }
       for($i=1; $i<=$tpage1; $i++)
       {
-echo '<a href="resources.php?page1='.$i.'" class="page-btn pg-num">'.$i.'</a>';
+echo '<a href="resources.php?page1='.$i.'" class="page-btn pg-num" data-page="'.($i).'">'.$i.'</a>';
       }
       if($page1<$tpage1)
       {
-echo '<a href="resources.php?page1='.($page1+1).'" class="page-btn next-btn">Next</a>';
+echo '<a href="resources.php?page1='.($page1+1).'" class="page-btn next-btn" data-page="'.($page1+1).'">Next</a>';
       }
       // print page numbers
       ?>
@@ -619,15 +619,15 @@ Books
     <?php 
   if($page2>1)
   {
-    echo '<a href="resources.php?page2='.($page2-1).'" class="page-btn prev-btn">Previous</a>';
+    echo '<a href="resources.php?page2='.($page2-1).'" class="page-btn prev-btn" data-page="'.($page2-1).'">Previous</a>';
   }
   for($j=1; $j<=$tpage2; $j++)
   {
-    echo '<a href="resources.php?page2='.$j.'" class="page-btn pg-num">'.$j.'</a>';
+    echo '<a href="resources.php?page2='.$j.'" class="page-btn pg-num" data-page="'.($j).'">'.$j.'</a>';
   }
   if($page2<$tpage2)
   {
-echo '<a href="resources.php?page2='.($page2+1).'" class="page-btn next-btn">Next</a>';
+echo '<a href="resources.php?page2='.($page2+1).'" class="page-btn next-btn" data-page="'.($page2+1).'">Next</a>';
   }
   ?>
 </div>
@@ -647,8 +647,12 @@ while($data3=mysqli_fetch_assoc($result3))
 {
     ?>
       <div class="videos">
-       
-        <iframe src="<?php echo  $data3['video']; ?>" frameborder="0">
+      <!-- <video controls>
+  <source src="path/to/yourvideo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video> -->
+
+        <iframe src="" frameborder="0">
         <a href="video.php" class="video">
           <div class="time">
             <?php echo  $data3['time_interval']; ?>
@@ -669,15 +673,15 @@ while($data3=mysqli_fetch_assoc($result3))
       <?php 
     if($page3>1)
     {
-echo '<a href="resources.php?page3='.($page3-1).'" class="page-btn prev-btn">Previous</a>';
+echo '<a href="resources.php?page3='.($page3-1).'" class="page-btn prev-btn" data-page="'.($page3-1).'">Previous</a>';
     }
     for($k=1; $k<=$tpage3; $k++)
     {
-      echo '<a href="resources.php?page3='.$k.'" class="page-btn pg-num">'.$k.'</a>';
+      echo '<a href="resources.php?page3='.$k.'" class="page-btn pg-num" data-page="'.($k).'">'.$k.'</a>';
     }
     if($page3<$tpage3)
     {
-      echo '<a href="resources.php?page3='.($page3+1).'" class="page-btn next-btn">Next</a>';
+      echo '<a href="resources.php?page3='.($page3+1).'" class="page-btn next-btn" data-page="'.($page3+1).'">Next</a>';
     }
     ?>
     </div>
@@ -719,21 +723,36 @@ Suporter
       <?php
 if($page4>1)
 {
-  echo '<a href="resources.php?page4='.($page4-1).'" class="page-btn prev-btn">Previous</a>';
+  echo '<a href="resources.php?page4='.($page4-1).'" class="page-btn prev-btn" data-page="'.($page4-1).'">Previous</a>';
   
 }
 for($l=1; $l<=$tpage4; $l++) 
 {
-  echo '<a href="resources.php?page4='.$l.'" class="page-btn pg-num">'.$l.'</a>';
+  echo '<a href="resources.php?page4='.$l.'" class="page-btn pg-num" data-page="'.($l).'">'.$l.'</a>';
 }
 if($page4<$tpage4)
 {
-  echo '<a href="resources.php?page4='.($page4+1).'" class="page-btn next-btn">Next</a>';
+  echo '<a href="resources.php?page4='.($page4+1).'" class="page-btn next-btn" data-page="'.($page4+1).'">Next</a>';
   
 }
 ?>
 </div>
     </div>
   <!-- supporter -->
+   <script>
+//  $(document).ready(function () {
+//   $('.pagination').on('click', function () {
+//     // Get the page number from data attribute
+//     const page = $(this).data('page');
+    
+//     // Select the container where you want to load the data
+//     const $container = $('.book-profile'); // Replace with your actual container class
+
+//     // Simulate page reload by changing the URL with the selected page
+//     window.location.href = `resources.php?page=${page}`;
+//   });
+// });
+
+   </script>
 </body>
 </html>
