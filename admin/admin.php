@@ -329,14 +329,20 @@ display: block;
              <a href="logout.php">Logout</a>
         </div>
     </div>
-     </li>
+     </li> 
+      <?php
+    }
+  else{
+
+  
+    ?>
       <li>
           <button class="button register-button"><a href="adminregister.php">Register</a></button>
       </li> 
-    <?php
-    }
   
-    ?>
+      <?php
+    }  
+      ?>
 </ul>
         </div>
 

@@ -2,16 +2,22 @@
 require("../connection.php");
 if(isset($_POST['submit']))
 {
-    //hello1
-    echo '<script>alert("i am here")</script>';
-    // hello1
+ 
     $question=$_POST['question'];
+    if($question != "")
+    {
+
+    
     $query="INSERT INTO qna (questions) values('$question')";
     $result=mysqli_query($con,$query);
     if($result)
     {
         echo '<script>alert("Data is inserted Successfully")</script>';
     }
+}
+else{
+    echo '<script>alert("Input is empty")</script>';
+}
 }
 
 ?>
