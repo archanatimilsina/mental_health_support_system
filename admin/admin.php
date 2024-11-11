@@ -312,11 +312,8 @@ display: block;
         </div> -->
         <div class="right-nav">
 <ul>
-    <li><a href="index/index.php">Home</a></li>
-    <li><a href="resources.php">Resources</a></li>
-    <li><a href="quiz.php">Quizzes</a></li>
-    <li><a href="forum.php">Forum</a></li>
-
+    <li><a href="#">Home</a></li>
+   <li><a href="quiz.php">Quizzes</a></li>
     <?php
       if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true)
     {
