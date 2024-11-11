@@ -8,45 +8,36 @@ session_start(); ?>
     <title>Login Page</title>
 </head>
 <body>
-<!--     
-<div class="login-popup">
-        <div class="login-form">
-<form action="#" method="POST">
- <label for="email">Email/username</label>
-   <input type="text" required name="email_username">
-   <label for="password">Password</label>
-   <input type="password" required name="password">
-  <label for="Secret code">Secret Code</label> -->
-   <!-- <input type="password" required name="scode"> -->
-   <!-- <input type="submit" required name="submit"> -->
-<!-- </form> 
-        </div>
-    </div> -->
-
     <?php 
     if(isset($_POST['submit']))
     {
-        // $scode=$_POST['scode'];
+         $scode=$_POST['scode'];
         $email_username=$_POST['email_username'];
         $password=$_POST['password'];
-      $select_query="SELECT * from aapplication where email='$email_username' OR username='$email_username'";
+      $select_query="SELECT * from admin where email='$email_username' OR username='$email_username'";
       $select_result=mysqli_query($con,$select_query);
       $count=mysqli_num_rows($select_result);
-        
       if($count!=0)
       {
 $data=mysqli_fetch_array($select_result);
 if(password_verify($password,$data['password']))
 {
+  if (password_verify($scode, $data['scode'])) {
+    {
     $_SESSION['adminpanel']['logged_in']=true;
     $_SESSION['admin']['id']=$data['a_id'];
     $_SESSION['admin']['username']=$data['username'];
     $_SESSION['admin']['email']=$data['email'];
+    echo" <script>
+    alert('This is the secured section!!');
+   
+    </script>";
     ?>
     <script>
-window.location.href='../index.php'; 
+window.location.href='../admin/admin.php'; 
 </script>
 <?php
+}
 }
 else
 {
@@ -65,6 +56,7 @@ else
     </script>";
       }
     }
+  }
     ?>
 </body>
 </html>

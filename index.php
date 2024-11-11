@@ -495,6 +495,7 @@ align-items: center;
                      <button type="reset" onclick="adminlogin()">X</button>
                      </h2>
                      <input type="text" placeholder="E-mail or Username" name="email_username" required>
+                     <input type="password" placeholder="Secret Code" name="scode" required>
                      <input type="password" placeholder="Password" name="password" required>
                      <button type="submit" class="login-btn" name="submit">Login</button>
                      </form>

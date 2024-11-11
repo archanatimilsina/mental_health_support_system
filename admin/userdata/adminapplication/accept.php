@@ -70,7 +70,9 @@ display: flex;
   if(isset($_POST['submit']))
   {
         $id=$_POST['urlid'];
-       $scode=$_POST['scode']; 
+       $scode1=$_POST['scode']; 
+       $scode=password_hash($scode1,PASSWORD_BCRYPT);
+
 $query1="SELECT * FROM aapplication where aaid='$id' ";
 $result=mysqli_query($con,$query1);
 $data=mysqli_fetch_array($result);
