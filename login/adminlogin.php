@@ -38,7 +38,7 @@ session_start(); ?>
 $data=mysqli_fetch_array($select_result);
 if(password_verify($password,$data['password']))
 {
-    $_SESSION['logged_in']=true;
+    $_SESSION['adminpanel']['logged_in']=true;
     $_SESSION['admin']['username']=$data['username'];
     $_SESSION['admin']['email']=$data['email'];
     ?>

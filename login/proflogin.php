@@ -25,7 +25,7 @@ $data=mysqli_fetch_array($select_result);
 if(password_verify($password,$data['password']))
 {
     
-    $_SESSION['logged_in']=true;
+    $_SESSION['professionalpanel']['logged_in']=true;
     $_SESSION['professional']['username']=$data['username'];
     $_SESSION['professional']['email']=$data['email'];
     $_SESSION['professional']['fullname']=$data['fullname'];

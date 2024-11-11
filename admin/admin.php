@@ -307,15 +307,17 @@ display: block;
 <body>
   
     <nav>
-        <!-- <div class="left-nav">
-<img src="assets/images/hello.jpg" alt="#" width="100%" height="100%">
-        </div> -->
+    
         <div class="right-nav">
 <ul>
     <li><a href="#">Home</a></li>
-   <li><a href="quiz.php">Quizzes</a></li>
+   <li><a href="addqna.php">QNA</a></li>
+   <li><a href="addquiz.php">Quiz</a></li>
+   <li><a href="userdata/adminapplication/index.php">Admin Applications</a></li>
+   <li><a href="userdata/professionalapplication/index.php">professional Applications</a></li>
+   
     <?php
-      if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true)
+      if(isset($_SESSION['adminpanel']['logged_in']) && $_SESSION['adminpanel']['logged_in']==true)
     {
         ?>
           <li>

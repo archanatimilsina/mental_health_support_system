@@ -333,7 +333,7 @@ align-items: center;
    <li><a href="qna.php">Quizzes</a></li>
    <li><a href="admin/admin.php">website Func.</a></li>
    <?php
-      if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true)
+      if(isset($_SESSION['userpanel']['logged_in']) && $_SESSION['userpanel']['logged_in']==true)
     {
         ?>
           <li>

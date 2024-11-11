@@ -422,7 +422,71 @@ border-radius: 50%
   
 
 }
+#login-btn
+{
+    width: 150px;
+    height: 40px;
+    background-color: white;
+    color: black;
+    position: absolute;
+    right: 30px;
+    outline: none;
+    font-size: 1.2rem;
+}
+#login-popup
+                {
+                    width: 300px;
+            height: 300px;
+        border: 1px solid rgb(58, 46, 163);
+        display: none;
+        flex-direction: column;
+        z-index: 1;
+        background-color: #f0f0f0;
+             border-radius: 5px;
+            padding: 20px 25px 25px 25px;
+            position: fixed;
+            left: 520px;
+            top: 90px;
+                }
 
+                .reset-heading{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .popup input{
+            width: 100%;
+            margin-bottom: 8px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #30475e;
+            border-radius: 0px;
+            padding: 2px 0;
+            font-size: 12px;
+            
+        }
+        .popup{
+            background-color: #f0f0f0;
+             border-radius: 5px;
+            padding: 20px 25px 30px 25px;
+            width: 100%;
+            height: 100%;
+        }
+        .popup h2{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            color: #30475e;
+            border: none;
+            background-color: transparent;
+            outline: none;
+            font-size: 18px;
+            font-weight: 550;
+          
+        }
     </style>
 </head>
 <body>
@@ -431,13 +495,20 @@ border-radius: 50%
 <nav>
 
     <ul>
+        <?php
+          if(isset($_SESSION['userpanel']['logged_in']) && $_SESSION['userpanel']['logged_in']==true)
+          {
+        ?>
         <li>
-            <a href="dashboard.php"><div class="profile"><img src="assets/images/introvert.jpg" alt="not found"></div></li></a>
-       
-        <!-- <?php
-    // if(isset($_SESSION['logged_in']) && $_SESSION['logged_in']==true)
-    // {
-?> -->
+            <a href="dashboard.php"><div class="profile"><img src="assets/images/introvert.jpg" alt="not found"></div></a>
+        </li>
+        <?php
+          }
+        ?>
+ <?php
+     if(isset($_SESSION['userpanel']['logged_in']) && $_SESSION['userpanel']['logged_in']==true)
+     {
+?> 
         <li><a href="createpost.php"><button>Create New Post</button></a></li>
         <li>
          <div class="paste-button">  
@@ -450,14 +521,35 @@ border-radius: 50%
         </div>
     </div>
      </li> 
-    <!-- <?php
-    // }
-    ?> -->
+    <?php
+    }
+    else{
+        ?>
+ <button id="login-btn" onclick="popupbox('login-popup')">Login</button>
+        <?php
+     }
+    ?>
     
 </ul>
 </nav>
     </div>
-    
+    <!-- user login -->
+<div id="login-popup">
+    <div class="login popup">
+        <form action="login/userlogin.php" method="POST">
+            <h2 class="reset-heading">
+                <span>User Login</span>
+                <button type="reset" onclick="popupbox('login-popup')">X</button>
+            </h2>
+            <input type="text" placeholder="E-mail or Username" name="email_username" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <button type="submit" class="login-btn" name="submit">Login</button>
+        </form>
+    <p>Are you new here?</p><a href="">Register</a>
+
+    </div>
+  </div>  
+<!-- user login -->
 <section class="messageprint">
 <?php
 
@@ -590,7 +682,18 @@ $comment=$data['comment'];
     });
 });
 
-
+function popupbox(popupname)
+{
+    let x=document.getElementById(popupname);
+    
+    if(x.style.display=="none")
+    {
+        x.style.display="flex";
+        }
+        else{
+            x.style.display="none";
+            }
+            }
  </script>
  </body>
 </html>

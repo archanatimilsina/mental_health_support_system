@@ -1,4 +1,3 @@
-<?php  require("../connection.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,13 +24,9 @@
             width: 80%;
             height:550px;
             margin: auto;
+            border: 1px solid black;
             margin-top:70px;
-            margin-bottom: 70px;
-            background-color: white;
-             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); 
-             border: 3px solid white;
-             border-radius: 20px;
-
+            margin-buttom:70px;
         }
         .addquiz form{
             width: 100%;
@@ -69,13 +64,12 @@ text-align: center;
         }
         .subbtn
         {
-            background-color: lavender;
-            width: 150px;
-            height: 50px;
+            background-color: sandybrown;
+            width: 100px;
+            height: 40px;
             display: block;
             margin: auto;
             margin-top: 40px;
-            font-size: 1.2rem;
 
         }
         .addoptions
@@ -99,20 +93,11 @@ font-size: 22px;
         .optionValue
         {
             margin: 10px;
-            height: 30px;
-            border: 1px solid black;
-          
 
         }
         .optionName
         {
             margin-left: 30px;
-            height: 30px;
-            border: 1px solid black;
-        }
-        .optionName,.optionValue::placeholder
-        {
-            text-align: center;
         }
     </style>
 </head>
@@ -120,8 +105,8 @@ font-size: 22px;
     <div class="addquiz">
         <form action="#" method="post">
             <h1>Add Your Quiz Here</h1>
-            <input type="text" placeholder="Write Question Here" name="question" id="questioninput">
-            <label for="Options" id="optionlabel">options(atmost 4 options)</label><br>
+            <input type="text" placeholder="Write Question Here" name="Question" id="questioninput">
+            <label for="Options" id="optionlabel">options(atmost 6 options)</label><br>
             <input type="text" class="optionName" placeholder="Option name" name="option1">
             <input type="text" class="optionValue" placeholder="Option Value" name="value1">
             <br>
@@ -133,6 +118,14 @@ font-size: 22px;
             <br>
             <input type="text" class="optionName" placeholder="Option name" name="option4">
             <input type="text" class="optionValue" placeholder="Option Value" name="value4">
+            <br>
+            <input type="text" class="optionName" placeholder="Option name" name="option5">
+            <input type="text" class="optionValue" placeholder="Option Value" name="value5">
+            <br>
+            <input type="text" class="optionName" placeholder="Option name" name="option6">
+            <input type="text" class="optionValue" placeholder="Option Value" name="value6">
+            <br>
+
     <input type="submit" value="Add Quiz" class="subbtn" name="submit">
         </form>
     </div>
@@ -148,16 +141,19 @@ $option3=$_POST['option3'];
 $value3=$_POST['value3'];
 $option4=$_POST['option4'];
 $value4=$_POST['value4'];
+$option5=$_POST['option5'];
+$value5=$_POST['value5'];
+$option6=$_POST['option6'];
+$value6=$_POST['value6'];
 
-
-$query="INSERT INTO quizzes (question,option1,value1,option2,value2,option3,value3,option4,value4) VALUES ('$question','$option1','$value1','$option2','$value2','$option3','$value3','$option4','$value4')";
+$query="INSERT INTO quizzes (question,option1,value1,option2,value2,option3,value3,option4,value4,option5,value5,option6,value6) VALUES ('$question','$option1','$value1','$option2','$value2','$option3','$value3','$option4','$value4','$option5','$value5','$option6','$value6')";
 $result=mysqli_query($con,$query);
 
 if($result)
 {
     echo" <script>
     alert('data passed successfully');
-    window.location.href='quiz.php';
+    window.location.href='index.php';
     </script>";
 }
 else{

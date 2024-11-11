@@ -150,12 +150,7 @@ display: block;
         left: 450px;
         top: 100px;
         }
-        .reset-heading{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-        }
+     
         
         #offuserpopup .reset-btn{
            position: relative;
