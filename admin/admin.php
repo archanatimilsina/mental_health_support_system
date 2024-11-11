@@ -1,8 +1,28 @@
 <?php require('../connection.php');
 session_start();
+if (isset($_POST['scode-check'])) {
+    $scode = $_POST['scode'];
+    if ($scode != "") {
+        $id = $_SESSION['adminpanel']['id'];
+        $query = "select * from admin WHERE a_id=$id";
+        $result = mysqli_query($con, $query);
+        $data = mysqli_fetch_assoc($result);
+        if (password_verify($scode, $data['scode'])) {
+            ?>
+            <script>
+                window.location.href = 'admin/adminregister.php'; 
+            </script>
+            <?php
+        }
+    } else {
+        echo '<script>alert("Insert data first")</script>';
+    }
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,164 +30,211 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/c5a4938a4c.js" crossorigin="anonymous"></script>
     <style>
-    *
-    {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    nav{
-        width: 100%;
-        height: 60px;
-      
-        background: lavender;
-    
-    }
-    /* .left-nav{
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        nav {
+            width: 100%;
+            height: 60px;
+
+            background: lavender;
+
+        }
+
+        /* .left-nav{
         width: 18%;
         height: 100%;
         position: relative;
         display: inline-block;
         padding-left: 30px;
     } */
-    .right-nav{
-        width: 100%;
-        height: 100%;
-        display: inline-block;
-        position: relative;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    }
-    /* .left-nav img{
+        .right-nav {
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            position: relative;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        /* .left-nav img{
         position: absolute;
         width: 30%;
         height: 60px;
        
     } */
-    .right-nav ul{
-      list-style-type: none;
-      position: absolute;
+        .right-nav ul {
+            list-style-type: none;
+            position: absolute;
 
-    }
-    .right-nav ul li{
-        display: inline-block;
-        margin: 20px;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 17px;
-    
+        }
 
-    }
-    .right-nav ul li a{
-        text-decoration: none;
-        color: black;
-        font-size: 1.4rem;
-       font-family: cursive;
-    }
-     .right-nav ul li a button{
-        width: 100px;
-        height: 30px;
-         margin-top: -20px;
-    } 
-    .login-button
-    {
-        width: 150px;
-        height: 30px;
-    }
-    .register-button
-    {
-        width: 150px;
-        height: 30px;
-    }
-    body{
-        display: flex;
-        flex-direction: column
-    }
-    .welcome
-    {
-        width: 94%;
-        height: 700px;
-        margin: auto;
-       
-        margin-top: 15px;
+        .right-nav ul li {
+            display: inline-block;
+            margin: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 17px;
 
-    }
-    .welcome img{
-        width: 100%;
-        height: 100%;
-    }
 
-        #adminlogin-popup
-        {
+        }
+
+        .right-nav ul li a {
+            text-decoration: none;
+            color: black;
+            font-size: 1.4rem;
+            font-family: cursive;
+        }
+
+        .right-nav ul li a button {
+            width: 100px;
+            height: 30px;
+            margin-top: -20px;
+        }
+
+        .login-button {
+            width: 150px;
+            height: 30px;
+        }
+
+        .register-button {
+            width: 150px;
+            height: 40px;
+
+        }
+
+        #scode-check {
+            width: 340px;
+            height: 200px;
+            border: 1px solid black;
+            margin: auto;
+            padding: 20px;
+            position: absolute;
+            top: 150px;
+            right: 45%;
+            z-index: 10;
+            background-color: white;
+            display: none;
+            flex-direction: column;
+        }
+
+        #scode-check form {
+
+            padding: 10px;
+
+        }
+
+        #scode-check input {
+            height: 40px;
+        }
+
+        #scode-check #submit-btn {
+            width: 150px;
+            height: 40px;
+            margin-top: 10px;
+            background-color: blue;
+            color: white;
+        }
+
+        #scode-check h3 {
+
+            margin: 30px 0 10px 0;
+
+        }
+
+        body {
+            display: flex;
+            flex-direction: column
+        }
+
+        .welcome {
+            width: 94%;
+            height: 700px;
+            margin: auto;
+
+            margin-top: 15px;
+
+        }
+
+        .welcome img {
+            width: 100%;
+            height: 100%;
+        }
+
+        #adminlogin-popup {
             width: 300px;
-    height: 300px;
-border: 1px solid rgb(58, 46, 163);
-display: none;
-flex-direction: column;
-z-index: 1;
-background-color: #f0f0f0;
-     border-radius: 5px;
-    padding: 20px 25px 25px 25px;
-    position: fixed;
-    left: 400px;
-    top: 90px;
+            height: 300px;
+            border: 1px solid rgb(58, 46, 163);
+            display: none;
+            flex-direction: column;
+            z-index: 1;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            padding: 20px 25px 25px 25px;
+            position: fixed;
+            left: 400px;
+            top: 90px;
         }
- 
-        
-   
-      .popup{
-    background-color: #f0f0f0;
-     border-radius: 5px;
-    padding: 20px 25px 30px 25px;
-    width: 100%;
-    height: 100%;
-}
-.popup h2{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 30px;
-    color: #30475e;
-    border: none;
-    background-color: transparent;
-    outline: none;
-    font-size: 18px;
-    font-weight: 550;
-  
-}
-.login-btn
-{
-    margin-bottom: 15px;
-}
 
-.popup input{
-    width: 100%;
-    margin-bottom: 8px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid #30475e;
-    border-radius: 0px;
-    padding: 2px 0;
-    font-size: 12px;
-    
-}
-#user-icon
-{
-    padding: 10px;
-    position: relative;
-    display: inline-block;
 
-}
 
-.paste-button{
-          position: relative;
-          margin: auto;
-     display: inline-block;
+        .popup {
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            padding: 20px 25px 30px 25px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .popup h2 {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            color: #30475e;
+            border: none;
+            background-color: transparent;
+            outline: none;
+            font-size: 18px;
+            font-weight: 550;
 
         }
-        .dropdown-content
-        {
+
+        .login-btn {
+            margin-bottom: 15px;
+        }
+
+        .popup input {
+            width: 100%;
+            margin-bottom: 8px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #30475e;
+            border-radius: 0px;
+            padding: 2px 0;
+            font-size: 12px;
+
+        }
+
+        #user-icon {
+            padding: 10px;
+            position: relative;
+            display: inline-block;
+
+        }
+
+        .paste-button {
+            position: relative;
+            margin: auto;
+            display: inline-block;
+
+        }
+
+        .dropdown-content {
             width: 150px;
             height: 150px;
             display: none;
@@ -175,11 +242,12 @@ background-color: #f0f0f0;
             left: 30px;
             z-index: 1;
         }
-        .paste-button:hover .dropdown-content
-        {
-display: block;
+
+        .paste-button:hover .dropdown-content {
+            display: block;
         }
-        .dropdown-content a{
+
+        .dropdown-content a {
             display: block;
             text-decoration: none;
             background-color: lavender;
@@ -188,99 +256,104 @@ display: block;
             height: 25%;
             border-radius: 5px;
         }
-        .dropdown-content a:hover{
+
+        .dropdown-content a:hover {
             background-color: white;
         }
 
-.reset-heading{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
+        .reset-heading {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-.welcome
-    {
-        width: 100%;
-        height: 700px;
-        margin: auto;
-        border: 1px solid black;
-        
-        background: url("../assets/images/dolphin.jpg") no-repeat;
-       background-position: center;
-        background-size: cover;
+        .welcome {
+            width: 100%;
+            height: 700px;
+            margin: auto;
+            border: 1px solid black;
 
-    }
-    .welcome img{
-        width: 100%;
-        height: 100%;
-    }
-    
-    .paste-button1{
-          position: relative;
-      
-          margin: auto;
-     left: 30px;
-          display: inline-block;
+            background: url("../assets/images/dolphin.jpg") no-repeat;
+            background-position: center;
+            background-size: cover;
 
         }
-        .paste-button1 button 
-        {
-         width: 40px;
-       position: absolute;
-       height: 35px;
+
+        .welcome img {
+            width: 100%;
+            height: 100%;
         }
-        .paste-button1 button i{
-font-size: 30px;
-margin-top: 10px;
+
+        .paste-button1 {
+            position: relative;
+
+            margin: auto;
+            left: 30px;
+            display: inline-block;
 
         }
-        .paste-button2{
-          position: relative;
-          width: 200px;
-          margin: auto;
-        
-          display: inline-block;
-      height: 40px;
+
+        .paste-button1 button {
+            width: 40px;
+            position: absolute;
+            height: 35px;
         }
-        .dropdown-content1
-        {
+
+        .paste-button1 button i {
+            font-size: 30px;
+            margin-top: 10px;
+
+        }
+
+        .paste-button2 {
+            position: relative;
+            width: 200px;
+            margin: auto;
+
+            display: inline-block;
+            height: 40px;
+        }
+
+        .dropdown-content1 {
             display: none;
             position: absolute;
             left: 20px;
-              z-index: 1;
-              top: 27px;
+            z-index: 1;
+            top: 27px;
         }
-        .dropdown-content2
-        {
+
+        .dropdown-content2 {
             display: none;
             position: absolute;
             left: 130px;
-       top: 15px;
+            top: 15px;
             z-index: 5;
-        height: 40px;
+            height: 40px;
         }
-        .paste-button1:hover .dropdown-content1
-        {
-display: block;
+
+        .paste-button1:hover .dropdown-content1 {
+            display: block;
         }
-        .paste-button2:hover .dropdown-content2
-        {
-display: block;
+
+        .paste-button2:hover .dropdown-content2 {
+            display: block;
         }
-        .dropdown-content1 a{
+
+        .dropdown-content1 a {
             display: block;
             text-decoration: none;
             color: black;
             background-color: white;
-            height:100%;
+            height: 100%;
             border-radius: 5px;
             border: 1px solid black;
             font-size: 20px;
-           text-align: center;
-           font-family: cursive;
+            text-align: center;
+            font-family: cursive;
         }
-        .dropdown-content2 a{
+
+        .dropdown-content2 a {
             display: block;
             text-decoration: none;
             color: black;
@@ -292,183 +365,195 @@ display: block;
             font-family: cursive;
 
         }
-        .dropdown-content1 a:hover{
+
+        .dropdown-content1 a:hover {
             border: 1px solid black;
             background-color: lavender;
 
         }
-        .dropdown-content2 a:hover{
+
+        .dropdown-content2 a:hover {
             border: 1px solid black;
             background-color: white;
         }
-
     </style>
 </head>
-<body>
-  
-    <nav>
-    
-        <div class="right-nav">
-<ul>
-    <li><a href="#">Home</a></li>
-   <li><a href="addqna.php">QNA</a></li>
-   <li><a href="addquiz.php">Quiz</a></li>
-   <li><a href="userdata/adminapplication/index.php">Admin Applications</a></li>
-   <li><a href="userdata/professionalapplication/index.php">professional Applications</a></li>
-   
-    <?php
-      if(isset($_SESSION['adminpanel']['logged_in']) && $_SESSION['adminpanel']['logged_in']==true)
-    {
-        ?>
-          <li>
-         <div class="paste-button">  
-    <div id="user-icon">
-         <i class="fa-solid fa-user"></i>
-      </div>
-         <div class="dropdown-content">
-             <a href="logout.php">Logout</a>
-        </div>
-    </div>
-     </li> 
-      <?php
-    }
-  else{
 
-  
-    ?>
-      <li>
-          <button class="button register-button"><a href="adminregister.php">Register</a></button>
-      </li> 
-  
-      <?php
-    }  
-      ?>
-</ul>
+<body>
+
+    <nav>
+
+        <div class="right-nav">
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="addqna.php">QNA</a></li>
+                <li><a href="addquiz.php">Quiz</a></li>
+
+                <li><a href="userdata/adminapplication/index.php">Admin Applications</a></li>
+                <li><a href="userdata/professionalapplication/index.php">professional Applications</a></li>
+
+                <?php
+                if (isset($_SESSION['adminpanel']['logged_in']) && $_SESSION['adminpanel']['logged_in'] == true) {
+                    ?>
+                    <li>
+                        <div class="paste-button">
+                            <div id="user-icon">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <div class="dropdown-content">
+                                <a href="adminlogout.php">Logout</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li>
+                        <button class="button register-button" id="register-btn"><a>Register</a></button>
+                    </li>
+
+                    <?php
+                }
+                ?>
+            </ul>
         </div>
 
     </nav>
 
 
-     <!-- admin login popup -->
-     <div id="adminlogin-popup">
-         <div class="login popup">
-             <form action="login.php" method="POST">
-                 <h2 class="reset-heading">
-                     <span>Admin Login</span>
-                     <button type="reset" onclick="adminlogin()">X</button>
-                     </h2>
-                     <input type="text" placeholder="E-mail or Username" name="email_username" required>
-                     <input type="password" placeholder="Password" name="password" required>
-                     <button type="submit" class="login-btn" name="submit">Login</button>
-                     </form>
-                     
-                     <button onclick="popupbox('forgot-popup')">Forget password?</button>
-                     </div>
-                     </div>  
-                    <!-- admin login popup -->
+    <!-- admin login popup -->
+    <div id="adminlogin-popup">
+        <div class="login popup">
+            <form action="login.php" method="POST">
+                <h2 class="reset-heading">
+                    <span>Admin Login</span>
+                    <button type="reset" onclick="adminlogin()">X</button>
+                </h2>
+                <input type="text" placeholder="E-mail or Username" name="email_username" required>
+                <input type="password" placeholder="Password" name="password" required>
+                <button type="submit" class="login-btn" name="submit">Login</button>
+            </form>
 
-         
- <section class="welcome">
- <div class="paste-button1">
-        <button class="button"><i class="fa-solid fa-bars fa-lg"></i></button>
-        <div class="dropdown-content1">
-        <div class="paste-button2">
-            <a href="index.php">Applications</a>
-            <div class="dropdown-content2">
-            <a href="userdata/adminapplication/index.php">Admin Application</a>
-            <a href="userdata/professionalapplication/index.php">Professional Application</a>
-            </div>
-            </div>
-            <div class="paste-button2">
-            <a href="index.php">User data</a>
-            <div class="dropdown-content2">
-            <a href="index.php">Admin</a>
-            <a href="index.php">professional</a>
-            <a href="index.php">Official Users</a>
-            <a href="index.php">Users</a>
-            </div>
-            </div>
-            <div class="paste-button2">
-            <a href="../index.php">Home page</a>
+            <button onclick="popupbox('forgot-popup')">Forget password?</button>
         </div>
-        <div class="paste-button2">
-            <a href="../resources.php">Resources Page</a>
-        </div>
-        <div class="paste-button2">
-            <a href="index.php">Forum Page</a>
-            <div class="dropdown-content2">
-            <a href="../forum.php">Forum Page</a>
-            <a href="forum/edit.php">Edit Forum</a>
-            <a href="forum/delete.php">Delete Forum</a>
-            <a href="forum/report.php">Report Post</a>
-            <a href="createpost.php">create Forum</a>
-            </div>
-        </div>
-        <div class="paste-button2">
-            <a href="index.php">Quiz page</a>
-            <div class="dropdown-content2">
-            <a href="../quiz.php">Quiz Page</a>
-            <a href="quiz.php">create Quiz</a>
-            <a href="addquiz1.php">Add quiz 1</a>
-            <a href="addquiz2.php">Add quiz 2</a>
-            <a href="../work/quiz.html">quiz html</a>
-            <a href="../work/quiz1.php">Quiz 1</a>
-            <a href="../work/quiz2.php">Quiz 2</a>
-           
-            </div>
-        </div>
-        <div class="paste-button2">
-            <a href="index.php">QNA page</a>
-            <div class="dropdown-content2">
-            <a href="qna.php">Qna page</a>
-            <a href="createqna.php">create Qna</a>
-            <a href="../work/qna.html"> Qna design</a>
-            
-           
-            </div>
-        </div>
-        <div class="paste-button2">
-            <a href="adminregister.php">Admin Register</a>
-        </div>
-    
     </div>
-   
- </section>
- 
+    <!-- admin login popup -->
 
- <script>
-    // user login and register
-    function popupbox(popupname)
-    {
-        let x=document.getElementById(popupname);
-        
-        if(x.style.display=="none")
-        {
-            x.style.display="flex";
+
+    <section class="welcome">
+        <div class="paste-button1">
+            <button class="button"><i class="fa-solid fa-bars fa-lg"></i></button>
+            <div class="dropdown-content1">
+
+                <div class="paste-button2">
+                    <a href="index.php">User data</a>
+                    <div class="dropdown-content2">
+                        <a href="index.php">Admin</a>
+                        <a href="index.php">professional</a>
+                        <a href="index.php">Official Users</a>
+                        <a href="index.php">Users</a>
+                    </div>
+                </div>
+                <div class="paste-button2">
+                    <a href="../index.php">Home page</a>
+                </div>
+                <div class="paste-button2">
+                    <a href="../resources.php">Resources Page</a>
+                </div>
+                <div class="paste-button2">
+                    <a href="index.php">Forum Page</a>
+                    <div class="dropdown-content2">
+                        <a href="../forum.php">Forum Page</a>
+                        <a href="forum/edit.php">Edit Forum</a>
+                        <a href="forum/delete.php">Delete Forum</a>
+                        <a href="forum/report.php">Report Post</a>
+                        <a href="createpost.php">create Forum</a>
+                    </div>
+                </div>
+                <div class="paste-button2">
+                    <a href="index.php">Quiz page</a>
+                    <div class="dropdown-content2">
+                        <a href="../quiz.php">Quiz Page</a>
+                        <a href="quiz.php">create Quiz</a>
+                        <a href="addquiz1.php">Add quiz 1</a>
+                        <a href="addquiz2.php">Add quiz 2</a>
+                        <a href="../work/quiz.html">quiz html</a>
+                        <a href="../work/quiz1.php">Quiz 1</a>
+                        <a href="../work/quiz2.php">Quiz 2</a>
+
+                    </div>
+                </div>
+                <div class="paste-button2">
+                    <a href="index.php">QNA page</a>
+                    <div class="dropdown-content2">
+                        <a href="qna.php">Qna page</a>
+                        <a href="createqna.php">create Qna</a>
+                        <a href="../work/qna.html"> Qna design</a>
+
+
+                    </div>
+                </div>
+                <div class="paste-button2">
+                    <a href="adminregister.php">Admin Register</a>
+                </div>
+
+            </div>
+
+    </section>
+    <style>
+
+    </style>
+    <div id="scode-check">
+        <h2>Enter Your secret code<button type="reset" onclick="handleClick()">X</button></h2>
+        <form action="" method="POST">
+            <input type="password" placeholder="Write here" name="scode">
+            <button type="submit" id="submit-btn" name="scode-check">okay</button>
+        </form>
+    </div>
+    <script>
+        // user login and register
+        function popupbox(popupname) {
+            let x = document.getElementById(popupname);
+
+            if (x.style.display == "none") {
+                x.style.display = "flex";
             }
-            else{
-                x.style.display="none";
-                }
-                }
-            // user login and register
+            else {
+                x.style.display = "none";
+            }
+        }
+        // user login and register
 
 
-            
 
-                                        // admin login
-                                        function adminlogin()
-                                        {
-                                            let x=document.getElementById('adminlogin-popup');
-                                            if(x.style.display=="none")
-                                            {
-                                                x.style.display="flex";
-                                                }
-                                                else{
-                                                    x.style.display="none";
-                                                    }
-                                                    }
-                                                // admin login
 
-                                                    </script>
+        // admin login
+        function adminlogin() {
+            let x = document.getElementById('adminlogin-popup');
+            if (x.style.display == "none") {
+                x.style.display = "flex";
+            }
+            else {
+                x.style.display = "none";
+            }
+        }
+        // admin login
+
+        let registerBtn = document.getElementById("register-btn");
+
+        registerBtn.addEventListener("click", handleClick);
+
+        function handleClick() {
+            let scode_check = document.getElementById("scode-check");
+            if (scode_check.style.display == "none") {
+                scode_check.style.display = "flex";
+            }
+            else {
+                scode_check.style.display = "none";
+            }
+        }
+
+
+
+    </script>
 </body>
+
 </html>
