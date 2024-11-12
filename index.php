@@ -374,7 +374,7 @@ align-items: center;
 
 <a href="index.php" class="chatbox"><i class="fa-solid fa-comment-sms" style="color:purple;" title="Open Chatbox"></i></a>
 <nav>
-    <img src="assets/images/meditate.jpg" alt="" id="logo">
+    <img src="assets/images/mlogo1.jpg" alt="" id="logo">
     <ul>
     <li><a href="index.php">Home</a></li>
     <li><a href="resources.php">Resources</a></li>
