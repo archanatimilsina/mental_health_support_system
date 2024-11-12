@@ -320,8 +320,59 @@ align-items: center;
             height: 350px;
             background-color: lavender;
             margin-top: 70px;
-            border: 1px solid black;
+          
         }
+
+/*  Footer  */
+#footer
+{
+    margin-top: 50px;
+}
+.footer{
+    background-color: #222;
+    padding: 5rem 1rem;
+    line-height: 2rem;
+    margin-top: 600px;
+
+}
+
+.footer-center{
+    margin-right: 1rem;
+
+}
+
+.footer-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    color: #fff;
+}
+
+.footer-center a:link,
+.footer-center a:visited{
+    display: block;
+    color: #f1f1f1;
+    font-size: 1.4rem;
+    transition: 0.6s;
+}
+
+.footer-center a:hover{
+    color: #f60091;
+}
+.footer-center p{
+    font-size: 20px;
+}
+
+.footer-center div{
+    color: #f1f1f1;
+    font-size: 1.4rem;
+}
+
+.footer-center h3{
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+/* footer */
     </style>
 </head>
 <body>
@@ -593,14 +644,49 @@ align-items: center;
 </div>
 <!-- <a href="index.php" class="chatbox"><i class="fa-solid fa-message fa-xlg" style="color: #63E6BE;" title="Open Chatbox"></i></a> -->
 <footer>
-<div class="absolute inset-0 flex items-center justify-center backdrop-blur-md z-50" data-test="account_setup">
-    <div class="text-center bg-box p-5 shadow-2xl rounded-md text-sm border-2 border-primary-400">
-    <h3 class="text-lg font-medium text-copy-main mb-3 text-center"> Finalizing Account </h3>
-    <div class="progress-indicator w-full rounded-full relative overflow-hidden h-5 mb-3 bg-gray-200" data-v-0953cf42="">
-        <div class="progress-indicator-bar absolute overflow-hidden top-0 rounded-full bottom-0 transition-all duration-200 text-center bg-primary left-0 h-5 mb-3" style="width: 95%;" data-v-0953cf42=""></div>
-    </div><div class="text-copy-light"> Your account setup is being finished. Just a few more seconds! </div>
-</div>
-</div>
+
+<section id="footer" class="section footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-center">
+                <h3>ABOUT US</h3>
+                <p>The majority of independent <br> properties are losing out <br> on a lot of business for <br> one very simple reason: <br> their hotel websites are poorly <br> designed.</p>
+                </div>
+                <div class="footer-center">
+                    <h3>USEFUL LINKS</h3>
+                    <a href="index.php">Home</a>
+                    <a href="food.php">Food</a>
+                    <a href="room.php">Rooms</a>
+                    <a href="contact.php">Contact Us</a>
+                    <a href="feedback.php">Feedback</a>
+
+                </div>
+                <div class="footer-center">
+                    <h3>CONTACT INFO</h3>
+                    <p>Sudal-9,Bhaktapur <br>9806531378<br>www.swiftstay.com</p>
+                </div>
+                <div class="footer-center">
+                    <h3>OPENING HOURS</h3>
+                    <div>
+                        
+                        Sun: 6AM-10PM
+                    </div>
+                  
+                    <div>
+                       
+                       Mon-wed: 8AM-9PM
+                    </div>
+                    <div>
+                       Thu: 7AM-10PM
+                    </div>
+                    <div>
+                   Fri & Sat: 5AM-11PM
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 </footer>
 <script src="assets/js/script.js"></script>
 </body>
