@@ -315,18 +315,13 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
         }
-        footer{
-            width: 100%;
-            height: 350px;
-            background-color: lavender;
-            margin-top: 70px;
-          
-        }
+      
 
-/*  Footer  */
+/*  Footer  */ 
+
 #footer
 {
-    margin-top: 50px;
+    margin-top: 70px;
 }
 .footer{
     background-color: #222;
@@ -643,7 +638,6 @@ align-items: center;
     </div>
 </div>
 <!-- <a href="index.php" class="chatbox"><i class="fa-solid fa-message fa-xlg" style="color: #63E6BE;" title="Open Chatbox"></i></a> -->
-<footer>
 
 <section id="footer" class="section footer">
         <div class="container">
@@ -686,8 +680,7 @@ align-items: center;
             </div>
         </div>
     </section>
-    
-</footer>
+
 <script src="assets/js/script.js"></script>
 </body>
 </html>

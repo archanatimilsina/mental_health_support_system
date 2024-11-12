@@ -488,6 +488,59 @@ border-radius: 50%
             font-weight: 550;
           
         }
+
+
+        /*  Footer  */ 
+
+#footer
+{
+    margin-top: 70px;
+}
+.footer{
+    background-color: #222;
+    padding: 5rem 1rem;
+    line-height: 2rem;
+    margin-top: 600px;
+
+}
+
+.footer-center{
+    margin-right: 1rem;
+
+}
+
+.footer-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    color: #fff;
+}
+
+.footer-center a:link,
+.footer-center a:visited{
+    display: block;
+    color: #f1f1f1;
+    font-size: 1.4rem;
+    transition: 0.6s;
+}
+
+.footer-center a:hover{
+    color: #f60091;
+}
+.footer-center p{
+    font-size: 20px;
+}
+
+.footer-center div{
+    color: #f1f1f1;
+    font-size: 1.4rem;
+}
+
+.footer-center h3{
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+/* footer */
     </style>
 </head>
 <body>
@@ -645,6 +698,50 @@ $comment=$data['comment'];
      $n++;   
  }
  ?>
+
+
+<section id="footer" class="section footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-center">
+                <h3>ABOUT US</h3>
+                <p>The majority of independent <br> properties are losing out <br> on a lot of business for <br> one very simple reason: <br> their hotel websites are poorly <br> designed.</p>
+                </div>
+                <div class="footer-center">
+                    <h3>USEFUL LINKS</h3>
+                    <a href="index.php">Home</a>
+                    <a href="food.php">Food</a>
+                    <a href="room.php">Rooms</a>
+                    <a href="contact.php">Contact Us</a>
+                    <a href="feedback.php">Feedback</a>
+
+                </div>
+                <div class="footer-center">
+                    <h3>CONTACT INFO</h3>
+                    <p>Sudal-9,Bhaktapur <br>9806531378<br>www.swiftstay.com</p>
+                </div>
+                <div class="footer-center">
+                    <h3>OPENING HOURS</h3>
+                    <div>
+                        
+                        Sun: 6AM-10PM
+                    </div>
+                  
+                    <div>
+                       
+                       Mon-wed: 8AM-9PM
+                    </div>
+                    <div>
+                       Thu: 7AM-10PM
+                    </div>
+                    <div>
+                   Fri & Sat: 5AM-11PM
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
  <script>
     document.addEventListener("DOMContentLoaded", () => {
     const starIcons = document.querySelectorAll(".star");

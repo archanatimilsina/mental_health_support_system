@@ -1,101 +1,93 @@
-<?php 
+<?php
 require('connection.php');
 ?>
 
-<?php 
+<?php
 // get page
-if(isset($_GET['page1']))
-{
-  $page1=$_GET['page1'];
+if (isset($_GET['page1'])) {
+  $page1 = $_GET['page1'];
+} else {
+  $page1 = 1;
 }
-else{
-  $page1=1;
-}
-if(isset($_GET['page2']))
-{
-  $page2=$_GET['page2'];
-}
-else{
-  $page2=1;
+if (isset($_GET['page2'])) {
+  $page2 = $_GET['page2'];
+} else {
+  $page2 = 1;
 }
 
-if(isset($_GET['page3']))
-{
-  $page3=$_GET['page3'];
+if (isset($_GET['page3'])) {
+  $page3 = $_GET['page3'];
+} else {
+  $page3 = 1;
 }
-else{
-  $page3=1;
-}
-if(isset($_GET['page4']))
-{
-  $page4=$_GET['page4'];
-}
-else{
-  $page4=1;
+if (isset($_GET['page4'])) {
+  $page4 = $_GET['page4'];
+} else {
+  $page4 = 1;
 }
 // get page
 // initialize limit 
-$limit1=3; //articles
-$limit2=4; //books
-$limit3=5; //videos
-$limit4=4; //health supporter
+$limit1 = 3; //articles
+$limit2 = 4; //books
+$limit3 = 3; //videos
+$limit4 = 4; //health supporter
 // initialize limit
 // calculate offset
-$offset1=($page1-1)*$limit1;
-$offset2=($page2-1)*$limit2;
-$offset3=($page3-1)*$limit3;
-$offset4=($page4-1)*$limit4;
+$offset1 = ($page1 - 1) * $limit1;
+$offset2 = ($page2 - 1) * $limit2;
+$offset3 = ($page3 - 1) * $limit3;
+$offset4 = ($page4 - 1) * $limit4;
 // calculate offset
 // take data from database
 // articles
-$query1="SELECT * FROM articles LIMIT $offset1,$limit1";
-$result1=mysqli_query($con,$query1);
+$query1 = "SELECT * FROM articles LIMIT $offset1,$limit1";
+$result1 = mysqli_query($con, $query1);
 // articles
 
 // books
-$query2="SELECT * FROM Books LIMIT $offset2, $limit2";
-$result2=mysqli_query($con,$query2);
+$query2 = "SELECT * FROM Books LIMIT $offset2, $limit2";
+$result2 = mysqli_query($con, $query2);
 // books
 
 // videos
-$query3="SELECT * FROM videos LIMIT $offset3,$limit3";
-$result3=mysqli_query($con,$query3);
+$query3 = "SELECT * FROM videos LIMIT $offset3,$limit3";
+$result3 = mysqli_query($con, $query3);
 // videos
 
 // health supporter
-$query4="SELECT * FROM supporters LIMIT $offset4,$limit4";
-$result4=mysqli_query($con,$query4);
+$query4 = "SELECT * FROM supporters LIMIT $offset4,$limit4";
+$result4 = mysqli_query($con, $query4);
 // health supporter
 // take data from database
 
 //extract data from database to check total_record and calculate total_page we can make
 
 //articles
-$aquery="SELECT * FROM articles";
-$aresult=mysqli_query($con,$aquery);
-$trecord1=mysqli_num_rows($aresult);
-$tpage1=ceil($trecord1/$limit1);
+$aquery = "SELECT * FROM articles";
+$aresult = mysqli_query($con, $aquery);
+$trecord1 = mysqli_num_rows($aresult);
+$tpage1 = ceil($trecord1 / $limit1);
 //articles
 
 // books
-$bquery="SELECT * FROM books";
-$bresult=mysqli_query($con,$bquery);
-$trecord2=mysqli_num_rows($bresult);
-$tpage2=ceil($trecord2/$limit2);
+$bquery = "SELECT * FROM books";
+$bresult = mysqli_query($con, $bquery);
+$trecord2 = mysqli_num_rows($bresult);
+$tpage2 = ceil($trecord2 / $limit2);
 // books
 
 // videos
-$vquery="SELECT * FROM videos";
-$vresult=mysqli_query($con,$vquery);
-$trecord3=mysqli_num_rows($vresult);
-$tpage3=ceil($trecord3/$limit3);
+$vquery = "SELECT * FROM videos";
+$vresult = mysqli_query($con, $vquery);
+$trecord3 = mysqli_num_rows($vresult);
+$tpage3 = ceil($trecord3 / $limit3);
 // videos
 
 // supporter
-$squery="SELECT * FROM supporters";
-$sresult=mysqli_query($con,$squery);
-$trecord4=mysqli_num_rows($sresult);
-$tpage4=ceil($trecord4/$limit4);
+$squery = "SELECT * FROM supporters";
+$sresult = mysqli_query($con, $squery);
+$trecord4 = mysqli_num_rows($sresult);
+$tpage4 = ceil($trecord4 / $limit4);
 // supporter
 
 //extract data from database to check total_record and calculate total_page we can make
@@ -147,7 +139,7 @@ nav ul li a{
 }
 .heading1
 {
-  font-size: 26px;
+  font-size: 40px;
   font-family: cursive;
   color: indigo;
   padding: 5px;
@@ -158,37 +150,54 @@ margin-top: 30px;
     text-decoration: none;
     margin-right: 10px;
     font-size: 20px;
+    
 }
 .pg-num
 {
 color: black;
-height: 30px;
+height: 50px;
 border-radius: 60%;
-width: 30px;
-text-align: center;
+width: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
 background-color: lavender;
 box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); 
-margin-top: 10px;
-
-
-
+/* margin-top: 10px; */
+}
+.pg-num:hover{
+  background-color: gray;
+  color: white;
+}
+.prev-btn:hover,.next-btn:hover{
+  background-color: gray;
+  color: white;
 }
 .prev-btn
 {
     color: black;
-    margin-top: 10px;
+    display: flex;
+align-items: center;
+justify-content: center;
     background-color: lavender;
-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); 
-margin-top: 10px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6); 
+
+height:50px;
+
+padding: 7px;
+
 }
 .next-btn
 {
+  display: flex;
+align-items: center;
+justify-content: center;
+  width: 90px;
     color: black;
-    margin-top: 10px;
     background-color: lavender;
-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); 
-margin-top: 10px;
-height:30px;
+box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6); 
+height:50px;
+
 }
 
 /* common*/
@@ -197,9 +206,8 @@ height:30px;
 .article-block
 {
   width: 100%;
-  height: 500px;
+  height: 600px;
   margin-bottom: 40px;
-  
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -214,7 +222,6 @@ box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   margin-top:30px;
   display: flex;
   flex-direction: column;
-
 background-color: white;
 box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); 
 }
@@ -236,8 +243,13 @@ box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 .topic{
   width: 100%;
   height: 50px;
-  border: 1px solid black;
-  text-align: center;
+   display: flex;
+  align-items: center;
+  justify-content: center; 
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); 
+  background-color: gray;
+  font-size: 28px;
+color: white;
 }
 .summary
 {
@@ -263,14 +275,13 @@ box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: row;
   justify-content: end;
+  align-items: center;
    background-color: white; 
   margin: auto; 
    width: 80%;
-  height: 9%;
+  height: 14%;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  margin-bottom: 10px; 
- 
 }
 /* article style */
 
@@ -278,7 +289,7 @@ box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 .book-block
 {
   width: 100%;
-  height: 400px;
+  height:600px;
   margin-bottom: 40px;
   border: 1px solid black;
   display: flex;
@@ -304,38 +315,52 @@ position: relative;
 {
   width: 100%;
   height: 10%;
-  border: 1px solid black;
-  text-align: center;
-  font-family: cursive;
-  font-size: 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+  font-size: 24px;
   padding: 3px;
+  background-color: gray;
+  color: white;
+  
 }
 .book-caption
 {
   width: 100%;
   height:30%;
-font-size: 14px;
-font-family: cursive;
+font-size: 20px;
+
 padding: 5px;
 
 }
 .access-btn
 {
   width: 140px;
-  height: 10%;
+  height: 12%;
  margin: auto;
   margin-top: 5px;
+  margin-bottom: 10px
 }
 .access-btn button{
-  
+  width: 150px;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+height: 100%;
+margin-bottom: 20px;
+background-color: white;
+}
+.access-btn button:hover{
+  background-color: gray;
+  color: white;
+  border: 1pxs solid black;
+  cursor: pointer;
 }
 .books
 {
   width: 20%;
   height: 90%;
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 
 }
 
@@ -357,7 +382,7 @@ padding: 5px;
   background-color: white; 
   margin: auto; 
    width: 80%;
-  height: 10%;
+  height: 16%;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px; 
@@ -369,7 +394,7 @@ padding: 5px;
 .video-block
 {
   width: 100%;
-  height: 320px;
+  height: 500px;
   margin-bottom: 40px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -379,27 +404,34 @@ background-color: lavender;
 }
 .videos
 {
-  width: 18%;
-  height: 80%;
+  width: 28%;
+  height: 90%;
 background-color: white;
   display: flex;
   flex-direction: column;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
+.videos video{
+  height: 80%;
+}
+.videos video:hover{
+  cursor: pointer;
+}
 .video{
-  
   width: 100%;
-  height: 85%;
-  display: block;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   position: relative;
   z-index:-5;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
  
 }
+
 .time
 {
   display: inline-block;
-  z-index: 1;
+  z-index: 10;
   background-color: transparent;
   position: absolute;
 bottom: 2px;
@@ -410,8 +442,13 @@ color: black;
 {
   font-family: 'Times New Roman', Times, serif;
 background-color: lavender;
-  font-size: 18px;
-  height: 100%;
+  font-size: 20px;
+  height: 20%;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+ 
+
+  
+
 }
 .vudiv
 {
@@ -432,7 +469,7 @@ background-color: lavender;
   background-color: white; 
   margin: auto; 
    width: 80%;
-  height: 15%;
+  height: 21%;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 margin-bottom: 10px;
@@ -445,7 +482,7 @@ margin-bottom: 10px;
 .supporter-block
 {
   width: 100%;
-  height: 350px;
+  height:400px ;
   margin-bottom: 40px;
   
   display: flex;
@@ -512,12 +549,64 @@ text-align: center;
   background-color: white; 
   margin: auto; 
    width: 80%;
-  height: 15%;
+  height: 18%;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 margin-bottom: 10px;
  
 }
+
+/*  Footer  */ 
+
+#footer
+{
+    margin-top: 50px;
+}
+.footer{
+    background-color: #222;
+    padding: 5rem 1rem;
+    line-height: 2rem;
+    margin-top: 600px;
+
+}
+
+.footer-center{
+    margin-right: 1rem;
+
+}
+
+.footer-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    color: #fff;
+}
+
+.footer-center a:link,
+.footer-center a:visited{
+    display: block;
+    color: #f1f1f1;
+    font-size: 1.4rem;
+    transition: 0.6s;
+}
+
+.footer-center a:hover{
+    color: #f60091;
+}
+.footer-center p{
+    font-size: 20px;
+}
+
+.footer-center div{
+    color: #f1f1f1;
+    font-size: 1.4rem;
+}
+
+.footer-center h3{
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+/* footer */
 /* supporter style */
     </style>
 </head>
@@ -544,43 +633,39 @@ Articles
 <div class="audiv">
 <!-- articles div -->
 <?php
- while($data1=mysqli_fetch_array($result1))
- {
- ?>
-<div class="articles">
-  <div class="img">
-    <img src="<?php echo $data1['profile']; ?>" alt="">
-    </div>
-    <div class="topic">
-    <?php echo $data1['writer'];  ?>
+while ($data1 = mysqli_fetch_array($result1)) {
+  ?>
+  <div class="articles">
+    <div class="img">
+      <img src="<?php echo $data1['profile']; ?>" alt="">
       </div>
-      <div class="summary">
-        <p><?php echo $data1['content']; ?></p>
+      <div class="topic">
+      <?php echo $data1['writer']; ?>
         </div>
-      </div> 
+        <div class="summary">
+          <p><?php echo $data1['content']; ?></p>
+          </div>
+        </div> 
      
-    <?php
-    }
-    ?>
+      <?php
+}
+?>
       <!-- article div -->
       </div>
       <div class="aldiv">
-       <?php 
-      //  print page numbers
-if($page1>1)
-{
-echo '<a href="resources.php?page1='.($page1-1).'" class="page-btn prev-btn" data-page="'.($page1-1).'">Previous</a>'  ;
-}
-      for($i=1; $i<=$tpage1; $i++)
-      {
-echo '<a href="resources.php?page1='.$i.'" class="page-btn pg-num" data-page="'.($i).'">'.$i.'</a>';
-      }
-      if($page1<$tpage1)
-      {
-echo '<a href="resources.php?page1='.($page1+1).'" class="page-btn next-btn" data-page="'.($page1+1).'">Next</a>';
-      }
-      // print page numbers
-      ?>
+       <?php
+       //  print page numbers
+       if ($page1 > 1) {
+         echo '<a href="resources.php?page1=' . ($page1 - 1) . '" class="page-btn prev-btn" data-page="' . ($page1 - 1) . '">Previous</a>';
+       }
+       for ($i = 1; $i <= $tpage1; $i++) {
+         echo '<a href="resources.php?page1=' . $i . '" class="page-btn pg-num" data-page="' . ($i) . '">' . $i . '</a>';
+       }
+       if ($page1 < $tpage1) {
+         echo '<a href="resources.php?page1=' . ($page1 + 1) . '" class="page-btn next-btn" data-page="' . ($page1 + 1) . '">Next</a>';
+       }
+       // print page numbers
+       ?>
       </div>
     </div>
   <!-- article -->
@@ -593,43 +678,39 @@ Books
 <div class="main-block book-block">
 <div class="budiv">
  <!-- book div -->
- <?php 
-     while($data2=mysqli_fetch_assoc($result2))
-     {
-     ?>
-    <div class="books">
-      <div class="book-profile">
-        <img src="<?php echo $data2['profile']; ?>" alt="it's okay">
-      </div>
-      <div class="book-topic">
-      <?php echo $data2['topic']; ?>
-      </div>
-      <div class="book-caption">
-        <?php echo $data2['caption']; ?>
+ <?php
+ while ($data2 = mysqli_fetch_assoc($result2)) {
+   ?>
+      <div class="books">
+        <div class="book-profile">
+          <img src="<?php echo $data2['profile']; ?>" alt="it's okay">
         </div>
-        <a href="resorces.php" class="access-btn"><button>Access here</button> </a> 
-      </div>
-    <!-- </div> -->
-    <?php 
-     }
-    ?>
+        <div class="book-topic">
+        <?php echo $data2['topic']; ?>
+        </div>
+        <div class="book-caption">
+          <?php echo $data2['caption']; ?>
+          </div>
+          <a href="resorces.php" class="access-btn"><button>Access here</button> </a> 
+        </div>
+      <!-- </div> -->
+    <?php
+ }
+ ?>
     <!-- book div -->
     </div>
    <div class="bldiv">
-    <?php 
-  if($page2>1)
-  {
-    echo '<a href="resources.php?page2='.($page2-1).'" class="page-btn prev-btn" data-page="'.($page2-1).'">Previous</a>';
-  }
-  for($j=1; $j<=$tpage2; $j++)
-  {
-    echo '<a href="resources.php?page2='.$j.'" class="page-btn pg-num" data-page="'.($j).'">'.$j.'</a>';
-  }
-  if($page2<$tpage2)
-  {
-echo '<a href="resources.php?page2='.($page2+1).'" class="page-btn next-btn" data-page="'.($page2+1).'">Next</a>';
-  }
-  ?>
+    <?php
+    if ($page2 > 1) {
+      echo '<a href="resources.php?page2=' . ($page2 - 1) . '" class="page-btn prev-btn" data-page="' . ($page2 - 1) . '">Previous</a>';
+    }
+    for ($j = 1; $j <= $tpage2; $j++) {
+      echo '<a href="resources.php?page2=' . $j . '" class="page-btn pg-num" data-page="' . ($j) . '">' . $j . '</a>';
+    }
+    if ($page2 < $tpage2) {
+      echo '<a href="resources.php?page2=' . ($page2 + 1) . '" class="page-btn next-btn" data-page="' . ($page2 + 1) . '">Next</a>';
+    }
+    ?>
 </div>
     </div>
   <!-- book -->
@@ -642,48 +723,43 @@ Videos
 <div class="main-block video-block">
 <div class="vudiv">
       <!-- video div -->
-      <?php 
-while($data3=mysqli_fetch_assoc($result3))
-{
-    ?>
-      <div class="videos">
-      <!-- <video controls>
-  <source src="path/to/yourvideo.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video> -->
+      <?php
+      while ($data3 = mysqli_fetch_assoc($result3)) {
+        ?>
+        <div class="videos">
+        <video controls frameborder="0">
+  <source src="" type="video/mp4">
+ <a href="video.php" class="video">
+            <div class="time">
+              <?php echo $data3['time_interval']; ?>
+            </div>
+          </a>
+</video> 
 
-        <iframe src="" frameborder="0">
-        <a href="video.php" class="video">
-          <div class="time">
-            <?php echo  $data3['time_interval']; ?>
+          <!-- <iframe src="" frameborder="0">
+          
+      </iframe> -->
+          <div class="video-caption" title="<?php $data3['topic']; ?>">
+          <?php echo $data3['topic']; ?>
           </div>
-        </a>
-    </iframe>
-
-        <div class="video-caption" title="<?php $data3['topic']; ?>">
-        <?php echo  $data3['topic']; ?>
         </div>
-      </div>
-      <?php 
-}
+      <?php
+      }
       ?>
       <!-- video div -->
       </div>
       <div class="vldiv">
-      <?php 
-    if($page3>1)
-    {
-echo '<a href="resources.php?page3='.($page3-1).'" class="page-btn prev-btn" data-page="'.($page3-1).'">Previous</a>';
-    }
-    for($k=1; $k<=$tpage3; $k++)
-    {
-      echo '<a href="resources.php?page3='.$k.'" class="page-btn pg-num" data-page="'.($k).'">'.$k.'</a>';
-    }
-    if($page3<$tpage3)
-    {
-      echo '<a href="resources.php?page3='.($page3+1).'" class="page-btn next-btn" data-page="'.($page3+1).'">Next</a>';
-    }
-    ?>
+      <?php
+      if ($page3 > 1) {
+        echo '<a href="resources.php?page3=' . ($page3 - 1) . '" class="page-btn prev-btn" data-page="' . ($page3 - 1) . '">Previous</a>';
+      }
+      for ($k = 1; $k <= $tpage3; $k++) {
+        echo '<a href="resources.php?page3=' . $k . '" class="page-btn pg-num" data-page="' . ($k) . '">' . $k . '</a>';
+      }
+      if ($page3 < $tpage3) {
+        echo '<a href="resources.php?page3=' . ($page3 + 1) . '" class="page-btn next-btn" data-page="' . ($page3 + 1) . '">Next</a>';
+      }
+      ?>
     </div>
     </div>
   <!-- video -->
@@ -697,48 +773,89 @@ Suporter
 
 <div class="sudiv">
   <!-- supporters div -->
-  <?php 
-    while($data4=mysqli_fetch_assoc($result4))
-{
+  <?php
+  while ($data4 = mysqli_fetch_assoc($result4)) {
     ?>
-    <div class="supporter">
-    <div class="sprofile">
-<img src="<?php echo $data4['profile'] ;?>" alt="">
+      <div class="supporter">
+      <div class="sprofile">
+  <img src="<?php echo $data4['profile']; ?>" alt="">
+      </div>
+      <div class="sname">
+        <b>
+        <?php echo $data4['name']; ?>
+        </b>
+      </div>
+      <div class="field">
+      <?php echo $data4['special_field']; ?>
+      </div>
     </div>
-    <div class="sname">
-      <b>
-      <?php echo $data4['name'] ;?>
-      </b>
-    </div>
-    <div class="field">
-    <?php echo $data4['special_field'] ;?>
-    </div>
-  </div>
- <?php 
-    }
-    ?>
+ <?php
+  }
+  ?>
     </div>
     <!-- supporters div -->
    <div class="sldiv">
       <?php
-if($page4>1)
-{
-  echo '<a href="resources.php?page4='.($page4-1).'" class="page-btn prev-btn" data-page="'.($page4-1).'">Previous</a>';
-  
-}
-for($l=1; $l<=$tpage4; $l++) 
-{
-  echo '<a href="resources.php?page4='.$l.'" class="page-btn pg-num" data-page="'.($l).'">'.$l.'</a>';
-}
-if($page4<$tpage4)
-{
-  echo '<a href="resources.php?page4='.($page4+1).'" class="page-btn next-btn" data-page="'.($page4+1).'">Next</a>';
-  
-}
-?>
+      if ($page4 > 1) {
+        echo '<a href="resources.php?page4=' . ($page4 - 1) . '" class="page-btn prev-btn" data-page="' . ($page4 - 1) . '">Previous</a>';
+
+      }
+      for ($l = 1; $l <= $tpage4; $l++) {
+        echo '<a href="resources.php?page4=' . $l . '" class="page-btn pg-num" data-page="' . ($l) . '">' . $l . '</a>';
+      }
+      if ($page4 < $tpage4) {
+        echo '<a href="resources.php?page4=' . ($page4 + 1) . '" class="page-btn next-btn" data-page="' . ($page4 + 1) . '">Next</a>';
+
+      }
+      ?>
 </div>
     </div>
   <!-- supporter -->
+
+  <!-- footer -->
+<section id="footer" class="section footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-center">
+                <h3>ABOUT US</h3>
+                <p>The majority of independent <br> properties are losing out <br> on a lot of business for <br> one very simple reason: <br> their hotel websites are poorly <br> designed.</p>
+                </div>
+                <div class="footer-center">
+                    <h3>USEFUL LINKS</h3>
+                    <a href="index.php">Home</a>
+                    <a href="food.php">Food</a>
+                    <a href="room.php">Rooms</a>
+                    <a href="contact.php">Contact Us</a>
+                    <a href="feedback.php">Feedback</a>
+
+                </div>
+                <div class="footer-center">
+                    <h3>CONTACT INFO</h3>
+                    <p>Sudal-9,Bhaktapur <br>9806531378<br>www.swiftstay.com</p>
+                </div>
+                <div class="footer-center">
+                    <h3>OPENING HOURS</h3>
+                    <div>
+                        
+                        Sun: 6AM-10PM
+                    </div>
+                  
+                    <div>
+                       
+                       Mon-wed: 8AM-9PM
+                    </div>
+                    <div>
+                       Thu: 7AM-10PM
+                    </div>
+                    <div>
+                   Fri & Sat: 5AM-11PM
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- footer -->
    <script>
 //  $(document).ready(function () {
 //   $('.pagination').on('click', function () {
