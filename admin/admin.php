@@ -1,18 +1,18 @@
 <?php require('../connection.php');
+
 session_start();
 if (isset($_POST['scode-check'])) {
     $scode = $_POST['scode'];
     if ($scode != "") {
-        $id = $_SESSION['adminpanel']['id'];
+        $id = $_SESSION['admin']['id'];
         $query = "select * from admin WHERE a_id=$id";
         $result = mysqli_query($con, $query);
         $data = mysqli_fetch_assoc($result);
         if (password_verify($scode, $data['scode'])) {
-            ?>
-            <script>
-                window.location.href = 'admin/adminregister.php'; 
-            </script>
-            <?php
+            //check-->
+            echo '<script>
+              window.location.href = "adminregister.php";
+            </script>';
         }
     } else {
         echo '<script>alert("Insert data first")</script>';

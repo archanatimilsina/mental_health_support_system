@@ -1,4 +1,5 @@
 <?php require('../connection.php');
+
 session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,11 +26,11 @@ if(password_verify($password,$data['password']))
   if (password_verify($scode, $data['scode'])) {
     {
     $_SESSION['adminpanel']['logged_in']=true;
-    $_SESSION['admin']['id']=$data['a_id'];
-    $_SESSION['admin']['username']=$data['username'];
-    $_SESSION['admin']['email']=$data['email'];
+    $_SESSION['adminpanel']['id']=$data['a_id'];
+    $_SESSION['adminpanel']['username']=$data['username'];
+    $_SESSION['adminpanel']['email']=$data['email'];
     echo" <script>
-    alert('This is the secured section!!');
+    alert('".$_SESSION['admin']['id']."');
    
     </script>";
     ?>

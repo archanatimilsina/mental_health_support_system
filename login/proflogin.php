@@ -26,10 +26,10 @@ if(password_verify($password,$data['password']))
 {
     
     $_SESSION['professionalpanel']['logged_in']=true;
-    $_SESSION['professional']['username']=$data['username'];
-    $_SESSION['professional']['email']=$data['email'];
-    $_SESSION['professional']['fullname']=$data['fullname'];
-    $_SESSION['professional']['account_type']='professional';
+    $_SESSION['professionalpanel']['username']=$data['username'];
+    $_SESSION['professionalpanel']['email']=$data['email'];
+    $_SESSION['professionalpanel']['fullname']=$data['fullname'];
+    $_SESSION['professionalpanel']['account_type']='professional';
     ?>
      <script>
 window.location.href='../index.php'; 
